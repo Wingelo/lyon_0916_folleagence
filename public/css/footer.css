@@ -1,0 +1,57 @@
+/*footer*/
+
+#logo_ptt_foot {
+    width: 140px;
+    margin-top: 13px;
+}
+
+footer {
+    color: white;
+}
+
+#first_foot {
+    padding: 16px 0;
+    background-color: #2d2d2d;
+}
+
+footer a {
+    color: white;
+    font-size: 1em;
+}
+
+.pink {
+    color: #d01d64;
+}
+
+.alright {
+    text-align: right;
+}
+
+
+#second_foot {
+    background-color: #3d3d3d;
+    padding : 0;
+    line-height: normal;
+    margin : 0 0 0 0;
+}
+
+#second_foot p {
+    padding : 0;
+    line-height: normal;
+    margin : 5px 0 5px 0;
+}
+
+#res_sociaux_foot {
+/*    padding:0;
+    margin:0;
+    list-style-type:none;
+    flex-direction: row;
+    list-style-position:inside;     */
+
+}
+
+.footer_li {
+    padding: 0;
+    margin: 0;
+    display:inline;
+}
