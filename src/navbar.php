@@ -12,8 +12,8 @@
                     <div class="collapse navbar-collapse navbar-menubuilder">
                         <ul class="nav navbar-nav navbar-right icone-nav">
                             <li><a href="https://www.facebook.com/LaFolleAgence"><img src="../public/images/facebook.png"></a></li>
-                            <li><a href="https://twitter.com/lafolleagence"><img src="../public/images/instagram.png"></a></li>
-                            <li><a href="https://www.instagram.com/lafolleagence/"><img src="../public/images/twitter.png"></a></li>
+                            <li><a href="https://twitter.com/lafolleagence"><img src="../public/images/twitter.png"></a></li>
+                            <li><a href="https://www.instagram.com/lafolleagence/"><img src="../public/images/instagram.png"></a></li>
                             <li><a href="https://plus.google.com/+Lafolleagence"><img src="../public/images/googleplus.png"></a></li>
                             <li><a href="http://www.justine-remaudiere.com/"><img src="../public/images/persona.png"></a></li>
                         </ul>
