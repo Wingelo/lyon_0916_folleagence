@@ -11,26 +11,117 @@
     <title>La Folle Agence</title>
 </head>
 
-<body>
+        <body>
 
-<!-- Entête du site -->
-<header>
-    <!-- Menu de navigation -->
-    <?php
-    include('../src/navbar.php');
-    ?>
-</header>
+        <!-- Entête du site -->
+        <header>
+            <!-- Menu de navigation -->
+            <?php
+            include('../src/navbar.php');
+            ?>
+        </header>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: damien
- * Date: 28/09/16
- * Time: 10:01
- */
-?>
+            <section class="container-fluid">
+                <div class="container">
+                    <div class="image_prestations">
+                        <img src="">
+                    </div>
+                    <div class="">
+                        <button class="scroll_top"></button>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <h1>Que vous propose La Folle Agence</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bandeau container-fluid"></section>
+
+            <section class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <h3>Gestion de projets événementiels</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <div class="image_gestion">
+                                <img src="">
+                            </div>
+                        </div>
+                        <div class="">
+                            <p class="gras"></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <h3>Community Management</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <p class="gras"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <p></p>
+                        </div>
+                        <div class="">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bandeau container-fluid"></section>
+
+            <section class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <h3>Veille concurrentielle</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <div class="image_veille">
+                                <img src="">
+                            </div>
+                        </div>
+                        <div class="">
+                            <p></p>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
-<?php
-include('../src/footer.php');
-?>
+
+
+        <?php
+        include('../src/footer.php');
+        ?>

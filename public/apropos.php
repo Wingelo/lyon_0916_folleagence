@@ -11,26 +11,100 @@
     <title>La Folle Agence</title>
 </head>
 
-<body>
+        <body>
 
-<!-- Entête du site -->
-<header>
-    <!-- Menu de navigation -->
-    <?php
-    include('../src/navbar.php');
-    ?>
-</header>
+        <!-- Entête du site -->
+        <header>
+            <!-- Menu de navigation -->
+            <?php
+            include('../src/navbar.php');
+            ?>
+        </header>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: damien
- * Date: 28/09/16
- * Time: 10:01
- */
-?>
+        <section class="container-fluid">
+            <div class="container">
+                <div class="image_apropos">
+                    <img src="">
+                </div>
+                <div class="row">
+                    <h1></h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="bandeau container-fluid"></section>
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <div class="portrait_apropos">
+                            <img src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <h3>Présentation</h3>
+                        <hr>
+                    </div>
+                    <div class="">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <h3>Parcours professionnel</h3>
+                        <hr>
+                    </div>
+                    <div class="">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <h3>Parcours étudiant</h3>
+                        <hr>
+                    </div>
+                    <div class="">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        //lien cvthèque à insérer ici
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <h3>Portrait chinois</h3>
+                        <hr>
+                    </div>
+                    <div class="">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
-<?php
-include('../src/footer.php');
-?>
+        <?php
+        include('../src/footer.php');
+        ?>
