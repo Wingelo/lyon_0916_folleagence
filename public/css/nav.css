@@ -1,0 +1,46 @@
+/*NAVBAR*/
+.navbar-default {
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.navbar-brand {
+    padding:8px 15px;
+}
+
+.navbar-brand > img {
+    width: 140px;
+}
+
+/*SOCIAL MEDIA ICONS*/
+.social-icons {
+    padding: 12px 0 10px 0;
+    text-align: center;
+}
+
+.social-icons li {
+    display: inline-block;
+}
+
+.social-media {
+    background-color: #641032;
+    border-radius: 25px;
+    width: 25px;
+    height:25px;
+    margin-left: 3px;
+}
+
+.social-media:hover {
+    background-color: #d01d64;
+}
+
+.social-media a i {
+    color: #ffffff;
+}
+
+.navbar-nav .social-media a {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-top:3px;
+}
