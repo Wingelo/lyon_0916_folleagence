@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html>
 <head>
     <meta charset="utf-8" name="viewport">
@@ -6,9 +7,12 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/blog-post.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <title>La Folle Agence</title>
 </head>
+
 
         <body>
 
