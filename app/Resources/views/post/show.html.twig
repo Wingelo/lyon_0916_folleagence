@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Post</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ post.link }}</td>
+            </tr>
+            <tr>
+                <th>Publicationdate</th>
+                <td>{% if post.publicationDate %}{{ post.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            <tr>
+                <th>Opencomment</th>
+                <td>{% if post.openComment %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if post.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Onetomany</th>
+                <td>{{ post.oneToMany }}</td>
+            </tr>
+            <tr>
+                <th>Manytomany</th>
+                <td>{{ post.manyToMany }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

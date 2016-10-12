@@ -1,0 +1,34 @@
+LaFolleAgenceBundle\Entity\Comment:
+    type: entity
+    table: null
+    repositoryClass: LaFolleAgenceBundle\Repository\CommentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        author:
+            type: string
+            length: '40'
+        authorEmail:
+            type: string
+            length: '50'
+            column: author_email
+        date:
+            type: datetime
+        content:
+            type: text
+        approved:
+            type: boolean
+
+    manyToOne:
+        post:
+            targetEntity: Post
+            inversedBy: comments
+            joinColumn:
+                name: post_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }
