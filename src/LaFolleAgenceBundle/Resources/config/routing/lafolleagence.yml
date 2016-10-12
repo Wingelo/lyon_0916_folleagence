@@ -1,0 +1,23 @@
+lafolleagence_mentionslegales:
+    path:   /mentionslegales.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:mentionsLegales"}
+
+lafolleagence_a-propos:
+    path:   /a-propos.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:apropos"}
+
+lafolleagence_prestations:
+    path:   /prestations.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:prestations"}
+
+lafolleagence_references_et_projets:
+    path:   /references-et-projets.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:referencesEtProjets"}
+
+lafolleagence_contact:
+    path:   /contact.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
+
+lafolleagence_blog:
+    path:   /blog.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:blog"}

@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
+{% endblock %}
+{% block title %}La Folle Agence | Me contacter{% endblock %}
+{% block body %}
+<header>
+    <section class="container-fluid" id="contact-header">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2 page-header-style">
+                <h1><span>Et si on discutait</span> autour d'un café ?</h1>
+            </div>
+        </div>
+    </section>
+</header>
+
+<section class="bandeau container-fluid"></section>
+
+<section class="container-fluid grey" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-5 col-md-2">
+                <h2>Me Contacter:</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-5 col-md-3">
+                <p>
+                    Justine REMAUDIERE
+                    <br>
+                    06 62 13 19 08
+                    <br>
+                    <a href="mailto:justine@lafolleagence.com">justine@lafolleagence.com</a>
+                    <br>
+                    Skype: justine.remaudiere
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid grey">
+    <div class="container">
+        <form class="form-horizontal" action=" " method="post"  id="contact_form">
+            <fieldset>
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  name="first_name" placeholder="Nom" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  name="last_name" placeholder="Prénom" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input  name="mail" placeholder="E-mail" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                <input  name="tel" placeholder="Téléphone" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <textarea class="form-control" name="comment" placeholder="Message" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-5 col-md-2">
+                        <div class="form-group">
+                            <button class="pink-button" name="submit" type="submit">
+                                Envoyer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script type='text/javascript' src='js/contact.js'></script>
+{% endblock %}

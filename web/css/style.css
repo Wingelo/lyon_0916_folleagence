@@ -1,0 +1,614 @@
+/*GLOBAL CSS*/
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', cursive;
+    font-weight: 300;
+}
+
+h1 {
+    font-family: 'Raleway', cursive;
+    font-size: 2em;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Bad Script', cursive ;
+    text-align: center;
+    font-size: 1.8em;
+    margin: 50px 0 0 0;
+}
+
+h3 {
+
+    font-family: 'Raleway', cursive;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+}
+
+hr {
+    width: 45px;
+    margin: 15px auto 30px auto;
+    text-align: center;
+    border-bottom: 2px solid #641032;
+}
+
+.bold {
+    font-weight: 500;
+}
+.bandeau {
+    background: url("../images/bandeau.jpeg");
+    background-repeat: repeat;
+    height: 15px;
+}
+
+.purple-button,
+.pink-button {
+    background-color: #641032;
+    color: #FFFFFF;
+    border:none;
+    padding:6px 20px;
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto;
+    font-weight: 300;
+}
+
+.purple-button:hover,
+.pink-button:hover {
+    font-weight: 500;
+}
+
+.pink-button {
+    background-color: #d01d64;
+}
+
+/*Polygon triangle white sections*/
+.triangle-down {
+    background-color: #e6e6e6;
+    clear: both;
+}
+
+polygon {
+    stroke:#ffffff;
+}
+
+.liencouleur {
+    color: #641032;
+    font-weight: 500;
+}
+
+.liencouleur:hover {
+    color: #641032;
+}
+
+.grey {
+    background-color: #e6e6e6;
+    clear: both;
+    padding-bottom: 50px;
+}
+
+.white {
+    background-color: #FFFFFF;
+    padding-bottom: 50px;
+    clear: both;
+}
+
+/*Scroll top arrow button*/
+#scroll-top-button {
+    opacity: 0;
+    z-index: 999;
+}
+
+#scroll-top-arrow {
+    position: fixed;
+    margin-top: 80vh;
+}
+
+#scroll-top-arrow img {
+    width:50px;
+}
+
+/**//**//**//**//**/
+/* PAGE D'ACCUEIL*/
+/**//**//**//**//**/
+
+/*HEADER INDEX*/
+#header-index {
+    background-image: url("../images/la-folle-agence-evenementiel-community-management.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+#header-index #logo-hook {
+    width:60%;
+    min-width: 260px;
+    display: block;
+    margin:35vh auto 0 auto;
+}
+
+#header-index #fleche-descendre {
+    width:45px;
+    display: block;
+    margin:0 auto;
+}
+
+#header-index h1 {
+    padding-bottom: 30px;
+}
+
+#header-index .purple-button {
+    margin-bottom: 30px;
+}
+
+/*BANDEAU 1 | QUI SE CACHE DERRIERE LA FOLLE AGENCE*/
+#agence-pres h2,
+#last-articles h2 {
+    color: #641032;
+}
+
+#justine-remaudiere {
+    display: block;
+    width:250px;
+    margin: 0 auto;
+}
+
+.text-pres {
+    margin-top: 10px;
+}
+
+#agence-pres .text-pres a {
+    text-decoration: none;
+    color: #641032;
+    font-weight: 500;
+}
+
+#agence-pres #text-pres a:hover {
+    color: #d01d64;
+}
+
+/*BANDEAU 2 | PRESTATIONS PROPOSEES*/
+#services h2 {
+    color: #d01d64;
+}
+
+#services hr,
+#parcourspro hr,
+#portraitchi hr,
+#references hr,
+#community-management hr
+{
+    border-bottom: 2px solid #d01d64;
+}
+
+/*--------------------------*/
+/*Appearing Effect on images*/
+/*--------------------------*/
+
+/*Global style of the animations*/
+.grid figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    height: auto;
+    background: #000000;
+    text-align: center;
+    cursor: pointer;
+}
+
+.grid figure img {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+    opacity: 0.8;
+}
+
+.grid figure figcaption {
+    padding: 2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+    pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
+}
+
+.grid figure h3 {
+    word-spacing: -0.15em;
+    font-weight: 300;
+}
+
+.grid figure h3 span {
+    font-weight: 500;
+}
+
+.grid figure h3,
+.grid figure p {
+    margin: 0;
+}
+
+.grid figure p {
+    letter-spacing: 0.8px;
+    font-size: 68.5%;
+    font-family: 'Raleway', cursive;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/*-----------------------*/
+/*** Appearing Effect ***/
+/*----------------------*/
+
+figure.effect-sadie figcaption::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(top, rgba(45,45,45,0) 0%, rgba(45,45,45,0.8) 75%);
+    background: linear-gradient(to bottom, rgba(45,45,45,0) 0%, rgba(45,45,45,0.8) 75%);
+    content: '';
+    opacity: 0;
+    -webkit-transform: translate3d(0,50%,0);
+    transform: translate3d(0,50%,0);
+}
+
+figure.effect-sadie h3 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    color: #ffffff;
+    font-size: 1.1em;
+    -webkit-transition: -webkit-transform 0.35s, color 0.35s;
+    transition: transform 0.35s, color 0.35s;
+    -webkit-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+}
+
+figure.effect-sadie figcaption::before,
+figure.effect-sadie p {
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.effect-sadie p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2em;
+    width: 100%;
+    opacity: 0;
+    -webkit-transform: translate3d(0,10px,0);
+    transform: translate3d(0,10px,0);
+}
+
+figure.effect-sadie:hover h3 {
+    color: #ffffff;
+    -webkit-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+}
+
+figure.effect-sadie:hover figcaption::before ,
+figure.effect-sadie:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+/*BANDEAU 3 | HOOK CONTACT*/
+.hook-contact {
+    background: url("../images/management-projet-evenementiel-contact-hook.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    padding-bottom: 50px;
+}
+
+.hook-contact h2 {
+    margin-bottom: 30px;
+    color: #FFFFFF;
+}
+
+.hook-contact h2 span {
+    color: #d01d64;
+}
+
+/*BANDEAU 4 | DERNIERS ARTICLES DE BLOG */
+
+/*Carrousel*/
+.multi-item-carousel .carousel-inner .item {
+    transition: 800ms ease-in-out left;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .multi-item-carousel .carousel-inner .item {
+        transition: 500ms ease-in-out all;
+        backface-visibility: visible;
+        transform: none!important;
+    }
+}
+.multi-item-carousel .carousel-inner .active .left {
+    left:-33%;
+}
+
+.multi-item-carousel .carousel-inner .active .right {
+    left:33%;
+}
+
+.multi-item-carousel .carousel-inner .next {
+    left: 33%;
+}
+
+.multi-item-carousel .carousel-inner .prev{
+    left: -33%;
+}
+
+.carousel-control.left,
+.carousel-control.right{
+    background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
+}
+
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .glyphicon-chevron-left{
+    color: #641032;
+}
+
+/*Bouton carrousel*/
+#see-blog {
+    margin-top: 2em;
+}
+
+/*---------------*/
+/* PAGE A PROPOS */
+/*---------------*/
+
+#a_propos,
+#prestation-header,
+#contact-header,
+#references-header,
+#blog-header{
+    background-image: url("../images/la-folle-agence-a-propos-infos.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75vh;
+}
+
+.page-header-style {
+    padding-top: 30vh;
+    display: block;
+}
+
+#a_propos h1,
+#prestation-header h1,
+#contact-header h1,
+#references-header h1,
+#blog-header h1 {
+    font-size: 3.5em;
+    font-weight: 400;
+    background-color: rgba(255,255,255,0.2);
+    padding:15px 0;
+}
+
+#a_propos h1 span,
+#prestation-header h1 span,
+#contact-header h1 span,
+#references-header h1 span,
+#blog-header h1 span {
+    color: #d01d64;
+    font-weight: 500;
+}
+
+#a_propospres h2 {
+    color: #641032;
+}
+
+#parcourspro h2 {
+    color: #d01d64;
+}
+
+#parcoursetu h2 {
+    color: #641032;
+}
+
+#portraitchi h2 {
+    color: #d01d64;
+}
+
+/*------------------*/
+/* PAGE PRESTATIONS */
+/*------------------*/
+
+#prestation-header {
+    background-image: url("../images/management-projet-prestations-la-folle-agence-lyon.jpg");
+}
+
+#gestion-event h2,
+#veille-concurrentielle h2 {
+    color: #641032;
+}
+
+#community-management h2 {
+    color: #d01d64;
+}
+
+#gestion-event h3,
+#community-management h3,
+#veille-concurrentielle h3 {
+    text-align: left;
+    font-weight: 500;
+}
+
+#gestion-event img,
+#veille-concurrentielle img{
+    display: block;
+    width:100%;
+}
+
+/*----------------------------*/
+/* PAGE REFERENCES ET PROJETS */
+/*----------------------------*/
+
+#references-header {
+    background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
+}
+
+#references-pro h2 {
+    color: #641032;
+}
+
+#references-pro h3 {
+    text-align: left;
+    font-weight: 500;
+}
+
+#ref_list {
+	list-style-type:none;
+}
+
+#chiffres2013 {
+	text-align: center;
+}
+
+.image_projet {
+	display: block;
+	width:200px;
+	margin: auto;
+}
+
+.fond_proj {
+	background-color:#e6e6e6 ;
+	padding-bottom: 50px;
+}
+
+.fond_proj h2 {
+	color: #d01d64;
+}
+
+/*-------------------*/
+/* PAGE BLOG GLOBALE */
+/*-------------------*/
+
+#blog-header {
+    background-image: url("../images/ecriture-blog-la-folle-agence.jpg");
+}
+
+.panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
+	color: #641032;
+}
+.color-pink > a, .panel-title > small, .panel-title > small > a
+{
+	color : #d01d64;
+}
+
+.panel-default > .panel-heading
+{
+	background-color: #e6e6e6;
+}
+.panel-projects > .panel-heading
+{
+	background-color: white;
+}
+
+.panel-projects > .panel-heading + .panel-collapse > .panel-body{
+	background-color: #e6e6e6;
+	border-color: white;
+}
+
+/*----------------------*/
+/* PAGE ARTICLE DE BLOG */
+/*----------------------*/
+
+.media {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+	background-color: #d01d64;
+	border: 0;
+}
+
+.btn-primary:hover {
+	background-color: #641032;
+}
+
+ul.pager li a {
+	color: #641032;
+}
+
+ul.pager li a:hover{
+	background-color: #e6e6e6;
+}
+
+.well {
+	background-color: #e6e6e6;
+}
+
+ul.list-unstyled li a {
+	color: #d01d64;
+	text-decoration: none;
+}
+
+ul.list-unstyled li a:hover {
+	color:  #641032;
+}
+
+.blogtitre {
+	color:  #641032;
+}
+
+/*--------------*/
+/* PAGE CONTACT */
+/*--------------*/
+
+#contact-header {
+    background-image: url("../images/contacter-la-folle-agence-cafe.jpg");
+}
+
+#contact h2 {
+    color: #d01d64;
+}
+
+#success_message{ display: none;}
+
+/**//**//**//**//**/
+/*Mentions légales*/
+/**//**//**//**//**/
+
+#mentionsleg h2 {
+    color:  #641032;
+}
+
+#mentionsleg p {
+    text-align: justify;
+}
+
