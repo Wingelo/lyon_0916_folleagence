@@ -3,10 +3,10 @@
 {% block body %}
     <header class="container-fluid" id="header-index">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <img src="images/logo-lafolleagence-web.png" id="logo-hook">
+            <img src="{{ asset('images/logo-lafolleagence-web.png') }}" id="logo-hook">
             <h1>Votre communication numérique autrement !</h1>
             <button class="purple-button">Cliquez ici</button>
-            <a id="anchor" href="#agence-pres"><img id="fleche-descendre" src="images/fleche-blanche-la-folle-agence-lyon.png"></a>
+            <a id="anchor" href="#agence-pres"><img id="fleche-descendre" src="{{ asset('images/fleche-blanche-la-folle-agence-lyon.png') }}"></a>
         </div>
     </header>
 
@@ -21,14 +21,14 @@
                 <hr>
 
                 <div class="col-xs-12 col-md-6">
-                    <img src="images/justine-remaudiere-la-folle-agence-lyon.png" id="justine-remaudiere">
+                    <img src="{{ asset('images/justine-remaudiere-la-folle-agence-lyon.png') }}" id="justine-remaudiere">
                 </div>
 
                 <div class="col-xs-12 col-md-6 text-pres">
                     <p>Community Manager, Blogueuse, un grain de folie sous le soleil lyonnais, passionnée du web, de communication, de musique, de voyages, de bons plats.<br></p>
                     <p>Adhérente de La Cuisine Du Web, membre du CA du Club des Community Manager de Lyon, passionnée par Museomix et Les Ateliers Objets Connectés. <br></p>
                     <p>Dans une précédente vie, j'ai également évolué dans le domaine de la téléphonie mobile (Content Manager et Community Manager pour des marques comme Orange UK ou encore Playboy).</p>
-                    <p><a href="a-propos.html">Lire la suite</a></p>
+                    <p><a href="{{ path('lafolleagence_a-propos') }}">Lire la suite</a></p>
                 </div>
             </div>
         </div>
@@ -53,33 +53,33 @@
                         <div class="grid">
                             <div class="col-sm-4 col-xs-12">
                                 <figure class="effect-sadie">
-                                    <img src="images/service-evenementiel.jpg" alt="Service N°1 | Management de projet événementiel"/>
+                                    <img src="{{ asset('images/service-evenementiel.jpg') }}" alt="Service N°1 | Management de projet événementiel"/>
                                     <figcaption>
                                         <h3>Gestion <span>Evénementiel</span></h3>
                                         <p>La Folle Agence organise vos événements d'entreprise.</p>
-                                        <a href="prestations.html#gestion-event"></a>
+                                        <a href="{{ path('lafolleagence_prestations') }}#gestion-event"></a>
                                     </figcaption>
                                 </figure>
                             </div>
 
                             <div class="col-sm-4 col-xs-12">
                                 <figure class="effect-sadie">
-                                    <img src="images/service-community-management.jpg" alt="Service N°2 | Community Management" />
+                                    <img src="{{ asset('images/service-community-management.jpg') }}" alt="Service N°2 | Community Management" />
                                     <figcaption>
                                         <h3>Community <span>Management</span></h3>
                                         <p>La Folle Agence gère votre présence sur les réseaux sociaux.</p>
-                                        <a href="prestations.html#community-management"></a>
+                                        <a href="{{ path('lafolleagence_prestations') }}#community-management"></a>
                                     </figcaption>
                                 </figure>
                             </div>
 
                             <div class="col-sm-4 col-xs-12">
                                 <figure class="effect-sadie">
-                                    <img src="images/service-veille-concurrentielle.jpg" alt="Service N°3 | Veille concurrentielle" />
+                                    <img src="{{ asset('images/service-veille-concurrentielle.jpg') }}" alt="Service N°3 | Veille concurrentielle" />
                                     <figcaption>
                                         <h3>Veille <span>concurrentielle</span></h3>
                                         <p>La Folle Agence vous conseille sur la stratégie a adopter face à vos concurrents.</p>
-                                        <a href="prestations.html#veille-concurrentielle"></a>
+                                        <a href="{{ path('lafolleagence_prestations') }}#veille-concurrentielle"></a>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -97,7 +97,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
                 <h2>Discutons de <span>vos projets</span> autour d'un café ?</h2>
-                <a href="contact.html"><input type="button" class="pink-button" value="Me contacter" ></a>
+                <a href="{{ path('lafolleagence_contact') }}"><input type="button" class="pink-button" value="Me contacter" ></a>
             </div>
         </div>
     </section>
