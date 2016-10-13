@@ -30,6 +30,10 @@
     color: #641032;
 }
 
+#navbar-menubuilder ul li a:active {
+    font-weight: 500;
+}
+
 /*SOCIAL MEDIA ICONS*/
 .social-icons {
     padding: 12px 0 10px 0;
@@ -94,10 +98,6 @@
 
 #hook-footer li a:hover {
     font-weight: 500;
-}
-
-#hook-footer li.pink a{
-    color: #d01d64;
 }
 
 #first-footer-part ul.col-xs-12 li a,
