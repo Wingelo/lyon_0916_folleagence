@@ -21,3 +21,9 @@ lafolleagence_contact:
 lafolleagence_blog:
     path:   /blog.html
     defaults: {_controller: "LaFolleAgenceBundle:Default:blog"}
+
+lafolleagence_article_blog:
+    path:   /article-blog.html
+    defaults: {_controller: "LaFolleAgenceBundle:Default:articleBlog"}
+
+

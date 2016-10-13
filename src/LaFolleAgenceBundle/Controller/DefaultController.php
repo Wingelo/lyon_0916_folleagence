@@ -34,4 +34,8 @@ class DefaultController extends Controller
     public function blogAction() {
         return $this->render('front/blog.html.twig');
     }
+
+    public function articleBlogAction() {
+        return $this->render('front/article-blog.html.twig');
+    }
 }
