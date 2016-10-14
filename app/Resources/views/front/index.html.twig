@@ -5,14 +5,12 @@
         <div class="col-xs-12 col-md-10 col-md-offset-1">
             <img src="{{ asset('images/logo-lafolleagence-web.png') }}" id="logo-hook">
             <h1>Votre communication numérique autrement !</h1>
-            <button class="purple-button">Cliquez ici</button>
             <a id="anchor" href="#agence-pres"><img id="fleche-descendre" src="{{ asset('images/fleche-blanche-la-folle-agence-lyon.png') }}"></a>
         </div>
     </header>
 
     <!-- Bandeau de couleur -->
     <section class="container-fluid bandeau"></section>
-
 
     <!-- Présentation de la folle agence -->
     <section class="container-fluid white" id="agence-pres">
@@ -97,7 +95,7 @@
     <section class="container-fluid hook-contact">
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
-                <h2>Discutons de <span>vos projets</span> autour d'un café ?</h2>
+                <h2><strong>Discutons de <span>vos projets</span> autour d'un café ?</strong></h2>
                 <a href="{{ path('lafolleagence_contact') }}"><input type="button" class="pink-button" value="Me contacter" ></a>
             </div>
         </div>
@@ -166,7 +164,7 @@
                 </div>
 
                 <div class="row" id="see-blog">
-                    <button class="purple-button">Visiter le blog</button>
+                    <a href="{{ path('lafolleagence_blog') }}"><input type="button" class="purple-button" value="Visiter le blog" ></a>
                 </div>
             </div>
 
