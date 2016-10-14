@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 //Scroll top button
     //Scroll top button appearing after px
-    $(function(){
+   /* $(function(){
         $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
             if ($(this).scrollTop() > 500) { //si on a défilé de plus de 600px du haut vers le bas
                 $('#scroll-top-button').fadeIn(600);
@@ -22,7 +22,7 @@ $(document).ready(function() {
               //  $('#scroll-top-button').animate({'opacity':'0'});//sinon on retire la classe "appear" à <div id="scroll-top-button">
             }
         });
-    });
+    });*/
 
 
     //Scroll top slow
