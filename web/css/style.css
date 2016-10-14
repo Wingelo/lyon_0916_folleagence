@@ -420,7 +420,6 @@ figure.effect-sadie:hover p {
 #blog-header h1 {
     font-size: 3.5em;
     font-weight: 400;
-    background-color: rgba(255,255,255,0.2);
     padding:15px 0;
 }
 
@@ -435,6 +434,10 @@ figure.effect-sadie:hover p {
 
 #a_propospres h2 {
     color: #641032;
+}
+
+#a_propos-text {
+
 }
 
 #parcourspro h2 {
@@ -608,7 +611,11 @@ ul.list-unstyled li a:hover {
 }
 
 #contact h2 {
-    color: #d01d64;
+    color: #641032;
+}
+
+#contact p {
+    text-align: center;
 }
 
 #success_message{ display: none;}
