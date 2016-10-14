@@ -55,6 +55,7 @@ hr {
     display: block;
     margin: 10px auto;
     font-weight: 300;
+    text-decoration: none;
 }
 
 .purple-button:hover,
@@ -99,7 +100,6 @@ polygon {
 
 /*Scroll top arrow button*/
 #scroll-top-button {
-    opacity: 0;
     z-index: 999;
 }
 
@@ -168,7 +168,7 @@ polygon {
     font-weight: 500;
 }
 
-#agence-pres #text-pres a:hover {
+#agence-pres .text-pres a:hover {
     color: #d01d64;
 }
 
@@ -341,6 +341,11 @@ figure.effect-sadie:hover p {
 
 .hook-contact h2 span {
     color: #d01d64;
+}
+
+.hook-contact a,
+#last-articles a{
+    text-decoration: none;
 }
 
 /*BANDEAU 4 | DERNIERS ARTICLES DE BLOG */
@@ -520,6 +525,14 @@ figure.effect-sadie:hover p {
 
 #blog-header {
     background-image: url("../images/ecriture-blog-la-folle-agence.jpg");
+}
+
+h1.page-header {
+    color: #333333;
+}
+
+#blog-cat {
+    margin-top: 30px;
 }
 
 .panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
