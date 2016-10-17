@@ -1,9 +1,10 @@
 /*GLOBAL CSS*/
-body {
+body, html {
     padding: 0;
     margin: 0;
     font-family: 'Raleway', cursive;
     font-weight: 300;
+    text-align: justify;
 }
 
 h1 {
@@ -22,7 +23,6 @@ h2 {
 }
 
 h3 {
-
     font-family: 'Raleway', cursive;
     font-size: 1.2em;
     font-weight: 500;
@@ -122,14 +122,14 @@ polygon {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
 }
 
 #header-index #logo-hook {
     width:60%;
     min-width: 260px;
     display: block;
-    margin:35vh auto 0 auto;
+    margin:22vh auto 0 auto;
 }
 
 #header-index #fleche-descendre {
@@ -534,7 +534,7 @@ h1.page-header {
     color: #333333;
 }
 
-#blog-cat {
+.blog-cat {
     margin-top: 30px;
 }
 
