@@ -8,34 +8,48 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
+
+
 class PostAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title','text')
-            ->add('content', 'textarea')
-            ->add('open_comment', 'checkbox')
+            ->add('title','text',
+                array(
+                    'label' => 'Titre'
+                ))
+            ->add('link', 'text',
+                array(
+                    'label' => 'URL de l article'
+                ))
+            ->add('content', 'textarea',
+                array(
+                    'attr' => array('class' => 'ckeditor'),
+                    'label' => 'Contenu'
+                ))
+
+            ->add('open_comment', 'checkbox',
+                array(
+                    'label' => 'Activer commentaire'
+                ))
             ->add('statut', 'checkbox')
-            ->add('publication_date', DateType::class, array(
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
 
-                // do not render as type="date", to avoid HTML5 date pickers
-                'html5' => false,
 
-                // add a class that can be selected in JavaScript
-                'attr' => ['class' => 'js-datepicker'],
-            ))
-            ->add('link', 'text')
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title')
+            ->add('title', null,
+                array('label' => 'Titre'
+            ))
             ->add('draft')
+            ->add('date', null, array(
+                'format' => 'Y-m-d H:i',
+                'timezone' => 'America/New_York'
+            ))
         ;
     }
 }

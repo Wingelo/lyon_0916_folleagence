@@ -265,6 +265,7 @@ class Post
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->categorys = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->publicationDate = new \DateTime();
     }
 
     /**
