@@ -273,9 +273,9 @@ class Post
      * @param \LaFolleAgenceBundle\Entity\Comment $comments
      * @return Post
      */
-    public function addComment(\LaFolleAgenceBundle\Entity\Comment $comments)
+    public function addComment(\LaFolleAgenceBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comments;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -285,9 +285,9 @@ class Post
      *
      * @param \LaFolleAgenceBundle\Entity\Comment $comments
      */
-    public function removeComment(\LaFolleAgenceBundle\Entity\Comment $comments)
+    public function removeComment(\LaFolleAgenceBundle\Entity\Comment $comment)
     {
-        $this->comments->removeElement($comments);
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -306,9 +306,10 @@ class Post
      * @param \LaFolleAgenceBundle\Entity\Category $categorys
      * @return Post
      */
-    public function addCategory(\LaFolleAgenceBundle\Entity\Category $categorys)
+    public function addCategory(\LaFolleAgenceBundle\Entity\Category $category)
     {
-        $this->categorys[] = $categorys;
+		$category->addPost($this);
+    	$this->categorys[] = $category;
 
         return $this;
     }
@@ -318,9 +319,9 @@ class Post
      *
      * @param \LaFolleAgenceBundle\Entity\Category $categorys
      */
-    public function removeCategory(\LaFolleAgenceBundle\Entity\Category $categorys)
+    public function removeCategory(\LaFolleAgenceBundle\Entity\Category $category)
     {
-        $this->categorys->removeElement($categorys);
+        $this->categorys->removeElement($category);
     }
 
     /**

@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use LaFolleAgenceBundle\Entity\Category;
 use LaFolleAgenceBundle\Form\CategoryType;
+use Doctrine\DBAL\DriverManager;
+
+
 
 /**
  * Category controller.
@@ -14,6 +17,11 @@ use LaFolleAgenceBundle\Form\CategoryType;
  */
 class CategoryController extends Controller
 {
+
+
+	public function __construct() {
+
+	}
     /**
      * Lists all Category entities.
      *
@@ -42,6 +50,16 @@ class CategoryController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
+			/* ajout gestion propre */
+			$conn = $em->getConnection();
+			$sql = "INSERT into posts_categorys (post_id,category_id) VALUES (?,?)";
+			$stmt = $conn->prepare($sql);
+			$catId = $category->getId();
+			foreach ($category->getPosts() as $postId) {
+				$stmt->bindValue($postId, $catId);
+       			$stmt->execute();
+			}
+			/* fin ajout */
             $em->flush();
 
             return $this->redirectToRoute('category_show', array('id' => $category->getId()));

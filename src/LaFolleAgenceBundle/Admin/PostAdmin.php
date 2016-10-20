@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class PostAdmin extends Admin
 {
@@ -20,8 +21,12 @@ class PostAdmin extends Admin
         $formMapper
             ->add('title','text')
             ->add('content', 'textarea')
-            ->add('open_comment', 'checkbox')
-            ->add('statut', 'checkbox')
+            ->add('open_comment', CheckboxType::class, array(
+				'required' => false
+			))
+            ->add('statut', CheckboxType::class, array(
+				'data' => false,
+				'required' => false))
             ->add('publication_date', DateType::class, array(
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',

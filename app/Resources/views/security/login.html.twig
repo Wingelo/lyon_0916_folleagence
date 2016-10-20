@@ -1,0 +1,31 @@
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extend your base template, like base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <!--CSS BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/login_page.css') }}">
+    </head>
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+    <body>
+        <div class = "container">
+            <div class="wrapper">
+                <form name="Login_Form" class="form-signin" action="{{ path('login') }}" method="post">
+                    <img src="{{ asset ('images/logo-lafolleagence-web.png') }}">
+                    <h3 class="form-signin-heading">Bienvenu dans l'univers de la Folle Agence ! Connecte-toi.</h3>
+                    <hr class="colorgraph"><br>
+
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"  class="form-control" placeholder="Username" required="" autofocus="" />
+                    <input type="password" id="password" name="_password" class="form-control"  placeholder="Password" required=""/>
+
+                    <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="submit">Continuer</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
