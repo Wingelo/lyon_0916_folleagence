@@ -11,3 +11,5 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

@@ -24,7 +24,8 @@
         "sonata-project/admin-bundle": "2.3.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/core-bundle": "2.3.11",
-        "sonata-project/formatter-bundle": "2.3.*"
+        "sonata-project/formatter-bundle": "2.3.*",
+        "helios-ag/fm-elfinder-bundle": "^6.2"
 
     },
     "require-dev": {
