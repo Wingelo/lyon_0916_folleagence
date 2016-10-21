@@ -1,6 +1,7 @@
 <?php
 
 // src/AppBundle/Admin/PostAdmin.php
+
 namespace LaFolleAgenceBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -15,6 +16,7 @@ class PostAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+
             ->add('title','text',
                 array(
                     'label' => 'Titre'
@@ -30,7 +32,9 @@ class PostAdmin extends Admin
                         'instance' => 'default',
                         'homeFolder' => ''
                     )
+
                 ),
+                'content'   => 'rawContent'
             ))
 
             ->add('open_comment', 'checkbox',
@@ -39,12 +43,12 @@ class PostAdmin extends Admin
                 ))
             ->add('statut', 'checkbox')
 
-
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
+
         $listMapper
             ->add('title', null,
                 array('label' => 'Titre'
@@ -53,8 +57,8 @@ class PostAdmin extends Admin
             ->add('date', null, array(
                 'format' => 'Y-m-d H:i',
                 'timezone' => 'America/New_York'
-            ))
-        ;
+            ));
     }
 }
+
 

@@ -7,6 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
     admin.category:
             class: LaFolleAgenceBundle\Admin\CategoryAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
@@ -18,3 +19,4 @@ services:
             arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Article }
+

@@ -19,7 +19,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1 class="blogtitre">Blog Post Title</h1>
+                <h1 class="blogtitre"></h1>
                 <hr>
 
                 <!-- Date/Time -->
@@ -61,7 +61,10 @@
                     <h4>Commentaire:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="1" name="text" placeholder="Titre"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"  placeholder="Laisser un commentaire"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
@@ -118,21 +121,7 @@
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-3">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Recherche dans le blog</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
+            <div class="col-md-3 blog-cat">
 
                 <!-- Blog Categories Well -->
                 <div class="well">

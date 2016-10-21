@@ -1,9 +1,10 @@
 /*GLOBAL CSS*/
-body {
+body, html {
     padding: 0;
     margin: 0;
     font-family: 'Raleway', cursive;
     font-weight: 300;
+    text-align: justify;
 }
 
 h1 {
@@ -22,7 +23,6 @@ h2 {
 }
 
 h3 {
-
     font-family: 'Raleway', cursive;
     font-size: 1.2em;
     font-weight: 500;
@@ -122,14 +122,14 @@ polygon {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
 }
 
 #header-index #logo-hook {
     width:60%;
     min-width: 260px;
     display: block;
-    margin:35vh auto 0 auto;
+    margin:22vh auto 0 auto;
 }
 
 #header-index #fleche-descendre {
@@ -420,7 +420,6 @@ figure.effect-sadie:hover p {
 #blog-header h1 {
     font-size: 3.5em;
     font-weight: 400;
-    background-color: rgba(255,255,255,0.2);
     padding:15px 0;
 }
 
@@ -435,6 +434,10 @@ figure.effect-sadie:hover p {
 
 #a_propospres h2 {
     color: #641032;
+}
+
+#a_propos-text {
+
 }
 
 #parcourspro h2 {
@@ -531,7 +534,7 @@ h1.page-header {
     color: #333333;
 }
 
-#blog-cat {
+.blog-cat {
     margin-top: 30px;
 }
 
@@ -608,7 +611,11 @@ ul.list-unstyled li a:hover {
 }
 
 #contact h2 {
-    color: #d01d64;
+    color: #641032;
+}
+
+#contact p {
+    text-align: center;
 }
 
 #success_message{ display: none;}

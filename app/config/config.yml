@@ -75,6 +75,7 @@ sonata_block:
             contexts: [admin]
         # ...
 
+
 sonata_formatter:
     formatters:
         markdown:
@@ -141,3 +142,9 @@ ivory_ck_editor:
         default:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+
+services:
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+            - { name: twig.extension }

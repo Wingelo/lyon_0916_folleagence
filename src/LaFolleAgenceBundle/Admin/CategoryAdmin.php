@@ -1,4 +1,6 @@
 <?php
+
+
 namespace LaFolleAgenceBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -22,4 +24,5 @@ class CategoryAdmin extends Admin
     {
         $listMapper->addIdentifier('categoryName');
     }
+
 }

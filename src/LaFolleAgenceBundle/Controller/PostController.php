@@ -24,7 +24,7 @@ class PostController extends Controller
 
         $posts = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return $this->render('front/blog.html.twig', array(
             'posts' => $posts,
         ));
     }
