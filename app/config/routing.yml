@@ -15,5 +15,3 @@ login:
     path:     /login
     defaults: { _controller: LaFolleAgenceBundle:Security:login }
 
-logout:
-    path: /admin/logout
