@@ -1,6 +1,5 @@
 <?php
 
-// src/AppBundle/Admin/PostAdmin.php
 
 namespace LaFolleAgenceBundle\Admin;
 
@@ -8,15 +7,13 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
-
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class PostAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-
             ->add('title','text',
                 array(
                     'label' => 'Titre'
@@ -29,12 +26,16 @@ class PostAdmin extends Admin
                 array('label' => 'Contenu'
                 ))
 
-            ->add('open_comment', 'checkbox',
+            ->add('open_comment', CheckboxType::class,
                 array(
-                    'label' => 'Activer commentaire'
+                    'label' => 'Activer commentaire',
+                    'required' => false
                 ))
-            ->add('statut', 'checkbox')
 
+            ->add('statut', CheckboxType::class, array(
+                'data' => false,
+                'required' => false
+            ))
         ;
     }
 
@@ -52,5 +53,4 @@ class PostAdmin extends Admin
             ));
     }
 }
-
 

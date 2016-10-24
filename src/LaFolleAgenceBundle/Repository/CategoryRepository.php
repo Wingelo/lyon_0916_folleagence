@@ -12,4 +12,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+	public function deleteLink ($object)
+	{
+
+		$conn = $this->_em->getConnection();
+		$catId = $object->getId();
+
+		$sql = "DELETE from posts_categorys where category_id = $catId";
+		$stmt = $conn->prepare($sql);
+
+		$stmt->execute();
+	}
+
+	public function addLink ($object) {
+
+		$conn = $this->_em->getConnection();
+		$catId = $object->getId();
+
+		foreach ($object->getPosts() as $post) {
+			$postId = $post->getId();
+			$sql = "INSERT into posts_categorys (post_id,category_id) VALUES ($postId,$catId)";
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();
+		}
+	}
 }

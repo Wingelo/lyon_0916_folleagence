@@ -7,6 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use LaFolleAgenceBundle\Entity\Category;
 use LaFolleAgenceBundle\Form\CategoryType;
+use LaFolleAgenceBundle\Entity\PostCategorys;
+use Doctrine\DBAL\DriverManager;
+
+
+
 
 /**
  * Category controller.
@@ -14,6 +19,11 @@ use LaFolleAgenceBundle\Form\CategoryType;
  */
 class CategoryController extends Controller
 {
+
+
+	public function __construct() {
+
+	}
     /**
      * Lists all Category entities.
      *
@@ -42,6 +52,7 @@ class CategoryController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
+
             $em->flush();
 
             return $this->redirectToRoute('category_show', array('id' => $category->getId()));
@@ -80,6 +91,29 @@ class CategoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
+			/* ajout gestion propre */
+			/* Delete to renew link */
+			$conn = $em->getConnection();
+
+			$sql = "DELETE posts_categorys where category_id = ?";
+			$stmt = $conn->prepare($sql);
+			$catId = $category->getId();
+			$stmt->binvValue($catId);
+			$stmt->execute();
+
+			$sql = "INSERT into posts_categorys (post_id,category_id) VALUES (?,?)";
+			$catId = $category->getId();
+
+			foreach ($category->getPosts() as $post) {
+				$stmt = $conn->prepare($sql);
+				$stmt->bindValue($post->id, $catId);
+       			$stmt->execute();
+				/*$postCategorys = new PostCategorys();
+				$postCategorys->setCategoryId($catId);
+				$postCategorys->setPostId($post->id);
+				$em->persist($postCategorys);*/
+			}
+			/*fin ajout gestion propre*/
             $em->flush();
 
             return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
