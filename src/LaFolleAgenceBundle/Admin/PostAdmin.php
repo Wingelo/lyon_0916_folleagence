@@ -25,17 +25,9 @@ class PostAdmin extends Admin
                 array(
                     'label' => 'URL de l article'
                 ))
-            ->add('content', 'ckeditor', array(
-                'config' => array(
-                    'filebrowserBrowseRoute' => 'elfinder',
-                    'filebrowserBrowseRouteParameters' => array(
-                        'instance' => 'default',
-                        'homeFolder' => ''
-                    )
-
-                ),
-                'content'   => 'rawContent'
-            ))
+            ->add('content', 'ckeditor',
+                array('label' => 'Contenu'
+                ))
 
             ->add('open_comment', 'checkbox',
                 array(

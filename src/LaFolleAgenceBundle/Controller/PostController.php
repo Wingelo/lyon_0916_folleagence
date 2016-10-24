@@ -61,7 +61,7 @@ class PostController extends Controller
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return $this->render('front/article-blog.html.twig', array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
         ));
