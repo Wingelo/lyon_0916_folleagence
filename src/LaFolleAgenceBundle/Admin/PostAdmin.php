@@ -9,6 +9,10 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
+/**
+ * Class PostAdmin
+ * @package LaFolleAgenceBundle\Admin
+ */
 class PostAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
