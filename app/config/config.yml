@@ -66,7 +66,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -74,6 +73,7 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
         # ...
+
 
 
 sonata_formatter:
@@ -119,7 +119,8 @@ sonata_admin:
     templates:
         # default global templates
         layout:  SonataAdminBundle::layout.html.twig
-
+    title:  Back Office
+    title_logo: /images/logo-lafolleagence-web.png
 
 services:
     twig.extension.text:
