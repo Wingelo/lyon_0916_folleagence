@@ -16,7 +16,7 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('categoryName')
-            ->add('posts')
+			->add('manyToMany')
         ;
     }
     
