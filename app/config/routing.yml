@@ -15,3 +15,8 @@ login:
     path:     /login
     defaults: { _controller: LaFolleAgenceBundle:Security:login }
 
+logout:
+    path: /admin/logout
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

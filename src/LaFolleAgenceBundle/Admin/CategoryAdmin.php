@@ -47,6 +47,7 @@ class CategoryAdmin extends Admin
         $listMapper->addIdentifier('categoryName');
     }
 
+
 	public function postUpdate( $object){
 
 		$this->preRemove($object);
@@ -72,3 +73,4 @@ class CategoryAdmin extends Admin
 
     }
 }
+

@@ -18,34 +18,43 @@ class PostAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title','text')
-            ->add('content', 'textarea')
-            ->add('open_comment', CheckboxType::class, array(
-				'required' => false
-			))
+            ->add('title','text',
+                array(
+                    'label' => 'Titre'
+                ))
+            ->add('link', 'text',
+                array(
+                    'label' => 'URL de l article'
+                ))
+            ->add('content', 'ckeditor',
+                array('label' => 'Contenu'
+                ))
+
+            ->add('open_comment', CheckboxType::class,
+                array(
+                    'label' => 'Activer commentaire',
+                    'required' => false
+                ))
+
             ->add('statut', CheckboxType::class, array(
-				'data' => false,
-				'required' => false))
-            ->add('publication_date', DateType::class, array(
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
-
-                // do not render as type="date", to avoid HTML5 date pickers
-                'html5' => false,
-
-                // add a class that can be selected in JavaScript
-                'attr' => ['class' => 'js-datepicker'],
+                'data' => false,
+                'required' => false
             ))
-            ->add('link', 'text')
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
+
         $listMapper
-            ->add('title')
+            ->add('title', null,
+                array('label' => 'Titre'
+            ))
             ->add('draft')
-        ;
+            ->add('date', null, array(
+                'format' => 'Y-m-d H:i',
+                'timezone' => 'America/New_York'
+            ));
     }
 }
 

@@ -9,3 +9,4 @@ la_folle_agence_homepage:
 la_folle_agence_lafolleagence:
     resource: "@LaFolleAgenceBundle/Resources/config/routing/lafolleagence.yml"
     prefix: /
+

@@ -8,20 +8,21 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
-        admin.category:
-              class: LaFolleAgenceBundle\Admin\CategoryAdmin
-              arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
-              tags:
-                  - { name: sonata.admin, manager_type: orm, label: Categorie }
+    admin.category:
+            class: LaFolleAgenceBundle\Admin\CategoryAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Catégories }
 
-        admin.post:
-                class: LaFolleAgenceBundle\Admin\PostAdmin
-                arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
-                tags:
-                    - { name: sonata.admin, manager_type: orm, label: Article }
+    admin.blog_post:
+            class: LaFolleAgenceBundle\Admin\PostAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Articles }
 
-        admin.comment:
-                class: LaFolleAgenceBundle\Admin\CommentAdmin
-                arguments: [~, LaFolleAgenceBundle\Entity\Comment, ~]
-                tags:
-                    - { name: sonata.admin, manager_type: orm, label: Commentaires }
+    admin.comment:
+            class: LaFolleAgenceBundle\Admin\CommentAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Comment, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Commentaires }
+
