@@ -119,7 +119,8 @@ sonata_admin:
     templates:
         # default global templates
         layout:  SonataAdminBundle::layout.html.twig
-
+    title:  Back Office
+    title_logo: /images/logo-lafolleagence-web.png
 
 services:
     twig.extension.text:
@@ -158,3 +159,5 @@ ivory_ck_editor:
         default:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+
+
