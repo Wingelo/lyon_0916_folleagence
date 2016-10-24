@@ -11,9 +11,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-elfinder:
-     resource: "@FMElfinderBundle/Resources/config/routing.yml"
-
 login:
     path:     /login
     defaults: { _controller: LaFolleAgenceBundle:Security:login }
@@ -21,3 +18,5 @@ login:
 logout:
     path: /admin/logout
 
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
