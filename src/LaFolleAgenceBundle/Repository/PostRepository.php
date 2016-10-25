@@ -3,6 +3,7 @@
 namespace LaFolleAgenceBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * PostRepository
@@ -12,4 +13,42 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    const MAX_RESULT = 3;
+    /**
+     * @param int $page
+     * @param int $itemPerPage
+     * @return Paginator
+     */
+    public function getByPage($page, $itemPerPage = self::MAX_RESULT)
+    {
+        if ($page > 0) {
+            $offset = ($page - 1) * $itemPerPage;
+        } else {
+            $offset = 0;
+        }
+        $query = $this->createQueryBuilder('p')
+            ->setFirstResult($offset)
+            ->setMaxResults($itemPerPage)
+            ;
+        return new Paginator($query);
+    }
+
+    public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
+    {
+        if ($page > 0) {
+            $offset = ($page - 1) * $itemPerPage;
+        } else {
+            $offset = 0;
+        }
+        $query = $this->createQueryBuilder('p')
+            ->from('posts_categorys', 'pc')
+            ->innerJoin('p.id', 'pc.post_id')
+            ->from('category', 'c')
+            ->innerJoin('c.id', 'pc.category_id')
+            ->where("c.categoryName = '$category'")
+            ->setFirstResult($offset)
+            ->setMaxResults($itemPerPage)
+        ;
+        return new Paginator($query);
+    }
 }

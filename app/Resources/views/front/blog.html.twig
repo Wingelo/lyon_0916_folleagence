@@ -42,14 +42,27 @@
 
 
                     <!-- Pager -->
+
                     <ul class="pager">
                         <li class="previous">
-                            <a href="#">&larr; Plus ancien</a>
+
+                        {% if page > 1 %}
+                            <a href="{{ path('lafolleagence_blog', {'page': page - 1}) }}">
+                                Plus ancien
+                            </a>
+                        {% endif %}
+
                         </li>
                         <li class="next">
-                            <a href="#">Plus récent &rarr;</a>
+
+                        {% if page < maxPage %}
+                            <a href="{{ path('lafolleagence_blog', {'page': page + 1}) }}">
+                               Plus récent
+                            </a>
+                        {% endif %}
                         </li>
                     </ul>
+
 
                 </div>
 
@@ -60,32 +73,15 @@
                     <div class="well">
                         <h4>Catégories</h4>
                         <div class="row">
+                            {% for category in categories %}
                             <div class="col-lg-6">
                                 <ul class="list-unstyled">
-                                    <li><a href="#">Category Name</a>
+                                    <li><a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
                                     </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
+
                                 </ul>
                             </div>
-                            <!-- /.col-lg-6 -->
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                    <li><a href="#">Category Name</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /.col-lg-6 -->
+                            {% endfor %}
                         </div>
                         <!-- /.row -->
                     </div>
@@ -95,7 +91,7 @@
                     <div class="well">
                         <h4>Archives</h4>
                         <ul class="list-unstyled"> 2016
-                        {% for post in posts %}
+                        {% for post in archive %}
                             <li><a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
                             </li>
 

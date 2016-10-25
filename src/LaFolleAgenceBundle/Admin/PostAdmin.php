@@ -47,14 +47,16 @@ class PostAdmin extends Admin
     {
 
         $listMapper
-            ->add('title', null,
+            ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->add('draft')
-            ->add('date', null, array(
+            ->addIdentifier('draft')
+            ->addIdentifier('date', null, array(
                 'format' => 'Y-m-d H:i',
                 'timezone' => 'America/New_York'
             ));
     }
+
+
 }
 
