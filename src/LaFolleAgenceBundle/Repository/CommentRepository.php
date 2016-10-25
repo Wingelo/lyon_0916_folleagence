@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+
+    public function getComments() {
+        $comments = $this->createQueryBuilder('u')
+                             ->orderBy('u.id', 'DESC')
+                             ->getQuery();
+        return $comments->getResult();
+    }
 }

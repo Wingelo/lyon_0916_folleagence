@@ -44,13 +44,19 @@
 
                 <!-- Comments Form -->
                 <div class="well">
-                    <h4>Commentaire:</h4>
-                    <form role="form">
+                    <h4>Envie de réagir à cet article ? Déposez votre commentaire :</h4>
+                    <form role="form" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" rows="1" name="text" placeholder="Titre"></textarea>
+                            <input type="text" class="form-control" name="author" placeholder="Auteur du commentaire" />
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"  placeholder="Laisser un commentaire"></textarea>
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" placeholder="Titre" />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="Rédigez votre commentaire ici."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
@@ -59,51 +65,16 @@
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
+                {% for comment in comments %}
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading">{{ comment.title }}
+                            <small>{{ comment.author }} | {{ comment.date('Y-m-d H:i:s') }}</small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                        commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                        condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <p>{{ comment.content }}</p>
                     </div>
                 </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                        commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                        condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
 
             <!-- Blog Sidebar Widgets Column -->

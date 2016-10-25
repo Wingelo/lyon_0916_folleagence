@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -76,9 +76,6 @@ sonata_block:
         # ...
 
 
-
-
-
 sonata_formatter:
     formatters:
         markdown:
@@ -126,8 +123,6 @@ sonata_admin:
     title_logo: /images/logo-lafolleagence-web.png
 
 
-
-
 services:
     twig.extension.text:
        class: Twig_Extensions_Extension_Text
@@ -165,4 +160,5 @@ ivory_ck_editor:
         default:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+
 

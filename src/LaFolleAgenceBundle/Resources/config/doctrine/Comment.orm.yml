@@ -16,12 +16,15 @@ LaFolleAgenceBundle\Entity\Comment:
             type: string
             length: '50'
             column: author_email
-        date:
-            type: datetime
+        title:
+            type: text
         content:
             type: text
+        date:
+            type: datetime
         approved:
             type: boolean
+
 
     manyToOne:
         post:
