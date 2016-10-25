@@ -35,7 +35,9 @@ class CategoryRepository extends EntityRepository
 			$stmt = $conn->prepare($sql);
 			$stmt->execute();
 		}
+	}
 
+	public function getAll () {
 
 	}
 }
