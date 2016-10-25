@@ -116,13 +116,10 @@ sonata_formatter:
 
 
 sonata_admin:
-    templates:
-        # default global templates
-        layout:  SonataAdminBundle::layout.html.twig
     title:  LFA
     title_logo: /images/logo-lafolleagence-web.png
     templates:
-            layout:                         standard_layout_lafolleagence.html.twig
+            layout:       standard_layout_lafolleagence.html.twig
 
 services:
     twig.extension.text:
