@@ -3,6 +3,7 @@
 namespace LaFolleAgenceBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * PostRepository
@@ -12,4 +13,51 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    const MAX_RESULT = 3;
+    /**
+     * @param int $page
+     * @param int $itemPerPage
+     * @return Paginator
+     */
+    public function getByPage($page, $itemPerPage = self::MAX_RESULT)
+    {
+        if ($page > 0) {
+            $offset = ($page - 1) * $itemPerPage;
+        } else {
+            $offset = 0;
+        }
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.publicationDate', 'DESC')
+            ->setFirstResult($offset)
+            ->setMaxResults($itemPerPage)
+            ;
+        return new Paginator($query);
+    }
+
+    public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
+    {
+        if ($page > 0) {
+            $offset = ($page - 1) * $itemPerPage;
+        } else {
+            $offset = 0;
+        }
+        $query = $this->createQueryBuilder('p')
+            //->from('posts_categorys', 'pc')
+            ->innerJoin('posts_categorys', 'pc', 'WITH', 'p.id = ?1', 'pc.post_id')
+            //->from('category', 'c')
+            ->innerJoin('category', 'c', 'WITH', 'c.id = ?1', 'pc.category_id')
+            ->where("c.categoryName = '$category'")
+            ->setFirstResult($offset)
+            ->setMaxResults($itemPerPage)
+        ;
+        return new Paginator($query);
+    }
+
+    public function getAllOrderByDate()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.publicationDate', 'DESC');
+
+        return new Paginator($query);
+    }
 }

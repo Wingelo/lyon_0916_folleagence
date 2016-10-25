@@ -19,8 +19,16 @@ lafolleagence_contact:
     defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
 
 lafolleagence_blog:
-    path:   /blog
-    defaults: {_controller: "LaFolleAgenceBundle:Post:index"}
+    path:   /blog/{page}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:index", page: 1}
+    requirements:
+        page: \d+
+
+lafolleagence_category_blog:
+    path:   /blog/{categoryName}/{page}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:filterindex", categoryName: '', page: 1}
+    requirements:
+        page: \d+
 
 lafolleagence_article_blog:
     path:   /article-blog/{id}

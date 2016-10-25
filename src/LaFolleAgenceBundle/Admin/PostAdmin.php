@@ -9,6 +9,10 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
+/**
+ * Class PostAdmin
+ * @package LaFolleAgenceBundle\Admin
+ */
 class PostAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
@@ -43,14 +47,16 @@ class PostAdmin extends Admin
     {
 
         $listMapper
-            ->add('title', null,
+            ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->add('draft')
-            ->add('date', null, array(
-                'format' => 'Y-m-d H:i',
-                'timezone' => 'America/New_York'
-            ));
+            ->addIdentifier('statut')
+            ->addIdentifier('openComment')
+            ->addIdentifier('publicationDate')
+
+            ;
     }
+
+
 }
 

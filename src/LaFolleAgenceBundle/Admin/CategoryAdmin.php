@@ -9,8 +9,15 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
+/**
+ * Class CategoryAdmin
+ * @package LaFolleAgenceBundle\Admin
+ */
 class CategoryAdmin extends Admin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('categoryName', 'text');
@@ -24,11 +31,17 @@ class CategoryAdmin extends Admin
 		)) ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('categoryName');
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('categoryName');
