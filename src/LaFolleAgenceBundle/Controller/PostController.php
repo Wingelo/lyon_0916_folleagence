@@ -2,9 +2,9 @@
 
 namespace LaFolleAgenceBundle\Controller;
 
+use LaFolleAgenceBundle\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use LaFolleAgenceBundle\Entity\Post;
 use LaFolleAgenceBundle\Form\PostType;
 
@@ -18,15 +18,57 @@ class PostController extends Controller
      * Lists all Post entities.
      *
      */
-    public function indexAction()
+    const MAX_PER_PAGE = 3;
+
+
+    public function indexAction($page = 1)
     {
+
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
+        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
-        return $this->render('post/index.html.twig', array(
-            'posts' => $posts,
+        $total = count($posts);
+        $maxPage = (int)($total / PostRepository::MAX_RESULT);
+        if (($total % PostRepository::MAX_RESULT) !== 0)
+        {
+            $maxPage++;
+        }
+        return $this->render('front/blog.html.twig', array(
+            'maxPage'       => $maxPage,
+            'posts'         => $posts,
+            'page'          => $page,
+            'archive'       => $archive,
+            'categories'    => $categories
         ));
+
+    }
+
+    public function filterIndexAction($category, $page = 1)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
+
+        $total = count($posts);
+        $maxPage = (int)($total / PostRepository::MAX_RESULT);
+        if (($total % PostRepository::MAX_RESULT) !== 0)
+        {
+            $maxPage++;
+        }
+        return $this->render('front/blog.html.twig', array(
+            'maxPage'       => $maxPage,
+            'posts'         => $posts,
+            'page'          => $page,
+            'archive'       => $archive,
+            'categories'    => $categories
+        ));
+
     }
 
     /**
@@ -61,7 +103,7 @@ class PostController extends Controller
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return $this->render('front/article-blog.html.twig', array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
         ));

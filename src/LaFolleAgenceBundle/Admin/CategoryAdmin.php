@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: axcel
- * Date: 17/10/16
- * Time: 11:39
- */
+
 namespace LaFolleAgenceBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -14,8 +9,15 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
+/**
+ * Class CategoryAdmin
+ * @package LaFolleAgenceBundle\Admin
+ */
 class CategoryAdmin extends Admin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('categoryName', 'text');
@@ -29,15 +31,22 @@ class CategoryAdmin extends Admin
 		)) ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('categoryName');
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('categoryName');
     }
+
 
 	public function postUpdate( $object){
 
@@ -64,3 +73,4 @@ class CategoryAdmin extends Admin
 
     }
 }
+
