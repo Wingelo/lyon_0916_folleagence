@@ -48,7 +48,7 @@
 
                         {% if page > 1 %}
                             <a href="{{ path('lafolleagence_blog', {'page': page - 1}) }}">
-                                Plus ancien
+                                Plus récent
                             </a>
                         {% endif %}
 
@@ -57,7 +57,7 @@
 
                         {% if page < maxPage %}
                             <a href="{{ path('lafolleagence_blog', {'page': page + 1}) }}">
-                               Plus récent
+                               Plus ancien
                             </a>
                         {% endif %}
                         </li>
@@ -90,23 +90,23 @@
                     <!-- Side Widget Well -->
                     <div class="well">
                         <h4>Archives</h4>
-                        <ul class="list-unstyled"> 2016
+                        {#Init var year#}
+                        {% set year = '9999' %}
+                        {#Loop for each post in archive#}
                         {% for post in archive %}
+                        {#Test the current post year#}
+                        {% if post.publicationDate|date('Y') < year %}
+                            {#Test for close list not for the first time#}
+                            {% if year != '9999' %}
+                                </ul>
+                            {% endif %}
+                        <ul class="list-unstyled"> {{ post.publicationDate|date('Y') }}
+                            {#the current post year become the test year#}
+                            {% set year = post.publicationDate|date('Y') %}
+                        {% endif %}
                             <li><a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
                             </li>
-
                         {% endfor %}
-                        </ul>
-
-                        <ul class="list-unstyled"> 2015
-                            <li><a href="#">Blog Post Title</a>
-                            </li>
-                            <li><a href="#">Blog Post Title</a>
-                            </li>
-                            <li><a href="#">Blog Post Title</a>
-                            </li>
-                            <li><a href="#">Blog Post Title</a>
-                            </li>
                         </ul>
 
                     </div>

@@ -50,11 +50,11 @@ class PostAdmin extends Admin
             ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->addIdentifier('draft')
-            ->addIdentifier('date', null, array(
-                'format' => 'Y-m-d H:i',
-                'timezone' => 'America/New_York'
-            ));
+            ->addIdentifier('statut')
+            ->addIdentifier('openComment')
+            ->addIdentifier('publicationDate')
+
+            ;
     }
 
 
