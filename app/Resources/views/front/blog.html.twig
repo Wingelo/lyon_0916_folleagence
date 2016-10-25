@@ -45,16 +45,13 @@
 
                     <ul class="pager">
                         <li class="previous">
-
                         {% if page > 1 %}
                             <a href="{{ path('lafolleagence_blog', {'page': page - 1}) }}">
                                 Plus récent
                             </a>
                         {% endif %}
-
                         </li>
                         <li class="next">
-
                         {% if page < maxPage %}
                             <a href="{{ path('lafolleagence_blog', {'page': page + 1}) }}">
                                Plus ancien
@@ -78,7 +75,6 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
                                     </li>
-
                                 </ul>
                             </div>
                             {% endfor %}
