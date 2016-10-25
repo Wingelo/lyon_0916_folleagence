@@ -76,3 +76,5 @@ sonata_block:
 sonata_admin:
     title:  Back Office
     title_logo: /images/logo-lafolleagence-web.png
+    templates:
+            layout:                         standard_layout_lafolleagence.html.twig
