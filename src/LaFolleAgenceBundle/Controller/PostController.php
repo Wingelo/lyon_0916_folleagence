@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use LaFolleAgenceBundle\Entity\Post;
 use LaFolleAgenceBundle\Form\PostType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Post controller.
@@ -67,6 +68,26 @@ class PostController extends Controller
             'page'          => $page,
             'archive'       => $archive,
             'categories'    => $categories
+        ));
+
+    }
+
+    /**
+     * @param $comments
+     * @param int $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function commentIndexAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($id);
+        $comments = $post->getComments();
+
+        return $this->render('front/article-blog.html.twig', array(
+            'post'          => $post,
+            'comments'      => $comments
         ));
 
     }

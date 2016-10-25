@@ -60,4 +60,11 @@ class PostRepository extends EntityRepository
 
         return new Paginator($query);
     }
+
+    public function getComments() {
+        $comments = $this->createQueryBuilder('co')
+            ->orderBy('co.id', 'DESC')
+            ->getQuery();
+        return $comments->getResult();
+    }
 }

@@ -24,7 +24,7 @@ class PostAdmin extends Admin
                 ))
             ->add('link', 'text',
                 array(
-                    'label' => 'URL de l article'
+                    'label' => 'URL de l\'article'
                 ))
             ->add('content', 'ckeditor',
                 array('label' => 'Contenu'
@@ -32,14 +32,16 @@ class PostAdmin extends Admin
 
             ->add('open_comment', CheckboxType::class,
                 array(
-                    'label' => 'Activer commentaire',
+                    'label' => 'Activer les commentaires',
                     'required' => false
                 ))
 
-            ->add('statut', CheckboxType::class, array(
-                'data' => false,
-                'required' => false
-            ))
+            ->add('statut', CheckboxType::class,
+                array(
+                    'label' => 'Enregistrer comme brouillon',
+                    'data' => false,
+                    'required' => false
+                ))
         ;
     }
 

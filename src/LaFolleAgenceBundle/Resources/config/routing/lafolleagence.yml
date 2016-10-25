@@ -32,7 +32,7 @@ lafolleagence_category_blog:
 
 lafolleagence_article_blog:
     path:   /article-blog/{id}
-    defaults: {_controller: "LaFolleAgenceBundle:Post:show"}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:commentIndex"}
 
 post_index:
     path:     /

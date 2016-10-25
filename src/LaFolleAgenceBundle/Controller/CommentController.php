@@ -20,15 +20,13 @@ class CommentController extends Controller
      */
     public function indexAction()
     {
-        $repository = $this
-            ->getDoctrine()
-            ->getRepository("LaFolleAgenceBundle:Comment");
-        $comments = $repository->getComments();
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render(
-            'comment/index.html.twig',
-            array('comments' => $comments)
-        );
+        $comments = $em->getRepository('LaFolleAgenceBundle:Comment')->findAll();
+
+        return $this->render('comment/index.html.twig', array(
+            'comments' => $comments,
+        ));
     }
 
     /**
