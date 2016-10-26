@@ -38,7 +38,8 @@ class PostAdmin extends Admin
 
             ->add('statut', CheckboxType::class, array(
                 'data' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Publication'
             ))
         ;
     }
@@ -50,10 +51,18 @@ class PostAdmin extends Admin
             ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->addIdentifier('statut')
-            ->addIdentifier('openComment')
-            ->addIdentifier('publicationDate')
-
+            ->addIdentifier('statut', null,
+                array(
+                    'label' => 'Publication'
+                ))
+            ->addIdentifier('openComment', null,
+                array(
+                    'label' => 'Activer commentaire'
+                ))
+            ->addIdentifier('publicationDate', null,
+                array(
+                    'label' => 'Date de publication'
+                ))
             ;
     }
 

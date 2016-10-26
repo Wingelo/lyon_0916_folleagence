@@ -26,11 +26,11 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
-        $total = count($posts);
+        $total = count($post);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
         if (($total % PostRepository::MAX_RESULT) !== 0)
         {
@@ -38,7 +38,7 @@ class PostController extends Controller
         }
         return $this->render('front/blog.html.twig', array(
             'maxPage'       => $maxPage,
-            'posts'         => $posts,
+            'post'          => $post,
             'page'          => $page,
             'archive'       => $archive,
             'categories'    => $categories
@@ -51,11 +51,11 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
-        $total = count($posts);
+        $total = count($post);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
         if (($total % PostRepository::MAX_RESULT) !== 0)
         {
@@ -63,7 +63,7 @@ class PostController extends Controller
         }
         return $this->render('front/blog.html.twig', array(
             'maxPage'       => $maxPage,
-            'posts'         => $posts,
+            'post'          => $post,
             'page'          => $page,
             'archive'       => $archive,
             'categories'    => $categories
@@ -101,11 +101,17 @@ class PostController extends Controller
      */
     public function showAction(Post $post)
     {
+
         $deleteForm = $this->createDeleteForm($post);
+        $em = $this->getDoctrine()->getManager();
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
         return $this->render('front/article-blog.html.twig', array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
+            'archive'       => $archive,
+            'categories'    => $categories
         ));
     }
 

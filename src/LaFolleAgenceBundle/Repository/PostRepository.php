@@ -28,6 +28,7 @@ class PostRepository extends EntityRepository
         }
         $query = $this->createQueryBuilder('p')
             ->orderBy('p.publicationDate', 'DESC')
+            ->where('p.statut = 1')
             ->setFirstResult($offset)
             ->setMaxResults($itemPerPage)
             ;
@@ -42,7 +43,7 @@ class PostRepository extends EntityRepository
             $offset = 0;
         }
         $query = $this->createQueryBuilder('p')
-            //->from('posts_categorys', 'pc')
+            ->from('posts_categorys', 'pc')
             ->innerJoin('posts_categorys', 'pc', 'WITH', 'p.id = ?1', 'pc.post_id')
             //->from('category', 'c')
             ->innerJoin('category', 'c', 'WITH', 'c.id = ?1', 'pc.category_id')
@@ -56,7 +57,8 @@ class PostRepository extends EntityRepository
     public function getAllOrderByDate()
     {
         $query = $this->createQueryBuilder('p')
-            ->orderBy('p.publicationDate', 'DESC');
+            ->orderBy('p.publicationDate', 'DESC')
+            ->where('p.statut = 1');
 
         return new Paginator($query);
     }
