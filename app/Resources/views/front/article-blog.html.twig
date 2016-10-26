@@ -45,7 +45,12 @@
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Envie de réagir à cet article ? Déposez votre commentaire :</h4>
-                    <form role="form" method="post">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Envoyer un commentaire" class="btn btn-primary"/>
+                    {{ form_end(form) }}
+
+                    {#<form role="form" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" name="author" placeholder="Auteur du commentaire" />
                         </div>
@@ -59,12 +64,13 @@
                             <textarea class="form-control" name="message" placeholder="Rédigez votre commentaire ici."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </form>
+                    </form>#}
                 </div>
 
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
+
                 {% for comment in comments %}
                 <div class="media">
                     <div class="media-body">

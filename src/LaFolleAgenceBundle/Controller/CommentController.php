@@ -36,7 +36,16 @@ class CommentController extends Controller
     public function newAction(Request $request)
     {
         $comment = new Comment();
-        $form = $this->createForm('LaFolleAgenceBundle\Form\CommentType', $comment);
+
+        $form = $this->createFormBuilder('LaFolleAgenceBundle\Form\CommentType', $comment)
+            ->add('author', 'Symfony\Component\Form\Extension\Core\Type\TextType')
+            ->add('authorEmail', 'Symfony\Component\Form\Extension\Core\Type\TextType')
+            ->add('date', 'Symfony\Component\Form\Extension\Core\Type\DateType')
+            ->add('title','Symfony\Component\Form\Extension\Core\Type\TextType')
+            ->add('content','Symfony\Component\Form\Extension\Core\Type\TextArea')
+            ->add('save', 'Symfony\Component\Form\Extension\Core\Type\Submit', array('label' => 'Commenter l\'article'))
+            ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
