@@ -4,9 +4,11 @@ namespace LaFolleAgenceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use LaFolleAgenceBundle\Entity\Comment;
-use LaFolleAgenceBundle\Form\CommentType;
 
 /**
  * Comment controller.
@@ -36,7 +38,16 @@ class CommentController extends Controller
     public function newAction(Request $request)
     {
         $comment = new Comment();
-        $form = $this->createForm('LaFolleAgenceBundle\Form\CommentType', $comment);
+
+        $form = $this->createFormBuilder('LaFolleAgenceBundle\Form\CommentType', $comment)
+            ->add('author', TextType::class)
+            ->add('authorEmail', TextType::class)
+            ->add('date', DateType::class)
+            ->add('title', TextType::class)
+            ->add('content', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Commenter l\'article'))
+            ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

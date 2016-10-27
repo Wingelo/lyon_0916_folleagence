@@ -122,6 +122,7 @@ sonata_admin:
     title:  Back Office
     title_logo: /images/logo-lafolleagence-web.png
 
+
 services:
     twig.extension.text:
        class: Twig_Extensions_Extension_Text

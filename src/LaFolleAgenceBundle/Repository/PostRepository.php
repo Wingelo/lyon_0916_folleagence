@@ -36,7 +36,7 @@ class PostRepository extends EntityRepository
         return new Paginator($query);
     }
 
-    public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
+   /* public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
     {
         if ($page > 0) {
             $offset = ($page - 1) * $itemPerPage;
@@ -54,7 +54,7 @@ class PostRepository extends EntityRepository
             ->setMaxResults($itemPerPage)
         ;
         return new Paginator($query);
-    }
+    }*/
 
     public function getAllOrderByDate()
     {
@@ -64,6 +64,7 @@ class PostRepository extends EntityRepository
 
         return new Paginator($query);
     }
+
 
     public function getPrecedent(Post $post)
     {
@@ -89,5 +90,14 @@ class PostRepository extends EntityRepository
             ->getQuery();
 
         return $query->getResult();
+
+    }
+
+    public function getComments() {
+        $comments = $this->createQueryBuilder('co')
+            ->orderBy('co.id', 'DESC')
+            ->getQuery();
+        return $comments->getResult();
+
     }
 }

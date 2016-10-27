@@ -1,15 +1,45 @@
-la_folle_agence_comment:
-    resource: "@LaFolleAgenceBundle/Resources/config/routing/comment.yml"
-    prefix:   /comment
-
 la_folle_agence_homepage:
     path:     /
     defaults: { _controller: LaFolleAgenceBundle:Default:index }
 
-la_folle_agence_lafolleagence:
-    resource: "@LaFolleAgenceBundle/Resources/config/routing/lafolleagence.yml"
-    prefix: /
+lafolleagence_mentionslegales:
+    path:   /mentionslegales
+    defaults: {_controller: "LaFolleAgenceBundle:Default:mentionsLegales"}
 
-la_folle_agence_post:
-    resource: "@LaFolleAgenceBundle/Resources/config/routing/post.yml"
-    prefix:   /post
+lafolleagence_a-propos:
+    path:   /a-propos
+    defaults: {_controller: "LaFolleAgenceBundle:Default:apropos"}
+
+lafolleagence_prestations:
+    path:   /prestations
+    defaults: {_controller: "LaFolleAgenceBundle:Default:prestations"}
+
+lafolleagence_references_et_projets:
+    path:   /references-et-projets
+    defaults: {_controller: "LaFolleAgenceBundle:Default:referencesEtProjets"}
+
+lafolleagence_contact:
+    path:   /contact
+    defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
+
+lafolleagence_blog:
+    path:   /blog/{page}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:index", page: 1}
+    requirements:
+        page: \d+
+
+lafolleagence_category_blog:
+    path:   /blog/{categoryName}/{page}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:filterindex", categoryName: '', page: 1}
+    requirements:
+        page: \d+
+
+lafolleagence_article_blog:
+    path:   /article-blog/{id}
+    defaults: {_controller: "LaFolleAgenceBundle:Post:Show"}
+
+post_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFolleAgenceBundle:Post:delete" }
+    methods:  DELETE
+

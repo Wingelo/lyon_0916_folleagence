@@ -37,7 +37,7 @@ class Comment
     /**
      * @var bool
      */
-    private $approved;
+    private $approved = 0;
 
 
     /**
@@ -97,6 +97,31 @@ class Comment
     }
 
     /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Comment
+     */
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date
@@ -148,7 +173,7 @@ class Comment
      * @param boolean $approved
      * @return Comment
      */
-    public function setApproved($approved)
+    public function setApproved($approved = 0)
     {
         $this->approved = $approved;
 
@@ -220,4 +245,15 @@ class Comment
     {
         return $this->post;
     }
+    /**
+     * @var string
+     */
+    private $title;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
+
 }
