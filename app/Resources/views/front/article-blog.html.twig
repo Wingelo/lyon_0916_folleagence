@@ -57,14 +57,21 @@
                     {#{% if not(comments is defined) %}#}
                         {% for comment in comments %}
                             {% if comment.approved %}
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ comment.title }}
-                                        <small>{{ comment.author }} | </small>
-                                    </h4>
-                                    <p>{{ comment.content }}</p>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ comment.title }}
+                                            <small>{{ comment.author }}, le {{ comment.date|date ('d/m/Y')}}</small>
+                                        </h4>
+                                        <p>{{ comment.content }}</p>
+                                    </div>
                                 </div>
-                            </div>
+
+                                {% if (comment.myAnswer != '') %}
+                                    <div class="media-body">
+                                        <h5 class="media-heading">Réponse de La Folle Agence :</h5>
+                                        <p>{{ comment.myAnswer }}</p>
+                                    </div>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                 {#{% endif %}#}

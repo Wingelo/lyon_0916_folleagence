@@ -54,7 +54,6 @@ class CategoryAdmin extends Admin
 
 	}
 
-
 	public function postPersist($object){
 
 		$em = $this->modelManager->getEntityManager($object);

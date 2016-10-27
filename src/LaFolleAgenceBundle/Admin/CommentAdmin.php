@@ -45,6 +45,15 @@ class CommentAdmin extends Admin
                 array(
                     'label' => 'Valider ce commentaire',
                     'required' => false
-                ));
+                ))
+            ->add('content', 'textarea',
+                array(
+                    'label' => 'Commentaire posté sur l\'article',
+                    'disabled' => true
+                ))
+            ->add('myAnswer', 'textarea',
+            array(
+                'label' => 'Répondre à ce commentaire'
+            ));
     }
 }
