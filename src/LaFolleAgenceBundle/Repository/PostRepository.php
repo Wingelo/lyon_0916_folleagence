@@ -45,7 +45,7 @@ class PostRepository extends EntityRepository
         }
         $query = $this->createQueryBuilder('p')
             ->join('p.category', 'c')
-                ->addSelect('c')
+            //    ->addSelect('c')
             //->innerJoin('p.category', 'c', 'ON', 'c.id = p.id ')
             ->where("c.category = '$category'")
             ->getQuery()
