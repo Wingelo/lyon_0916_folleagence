@@ -61,8 +61,6 @@ class CategoryAdmin extends Admin
 		$em = $this->modelManager->getEntityManager($object);
 
 		$em->getRepository('LaFolleAgenceBundle:Category')->AddLink($object);
-
-
 	}
 
     public function preRemove ($object) {

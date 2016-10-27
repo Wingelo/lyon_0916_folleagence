@@ -5,7 +5,6 @@ namespace LaFolleAgenceBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\FormMapper;
 
 
 /**
@@ -30,9 +29,9 @@ class CommentAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('author')
+            ->add('author')
             ->add('authorEmail')
-            ->add('content')
+            ->addIdentifier('content')
             ->add('date')
             ->add('approved')
         ;

@@ -142,9 +142,12 @@ class Post
      *
      * @return string 
      */
-    public function getContent()
+    public function getContent($length = null)
     {
-        return $this->content;
+        if (false === is_null($length) && $length > 0)
+            return substr($this->content, 0, $length);
+        else
+            return $this->content;
     }
 
     /**
@@ -247,5 +250,91 @@ class Post
     public function getManyToMany()
     {
         return $this->manyToMany;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $comments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $categorys;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorys = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->publicationDate = new \DateTime();
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \LaFolleAgenceBundle\Entity\Comment $comments
+     * @return Post
+     */
+    public function addComment(\LaFolleAgenceBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \LaFolleAgenceBundle\Entity\Comment $comments
+     */
+    public function removeComment(\LaFolleAgenceBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Add categorys
+     *
+     * @param \LaFolleAgenceBundle\Entity\Category $categorys
+     * @return Post
+     */
+    public function addCategory(\LaFolleAgenceBundle\Entity\Category $category)
+    {
+		$category->addPost($this);
+    	$this->categorys[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorys
+     *
+     * @param \LaFolleAgenceBundle\Entity\Category $categorys
+     */
+    public function removeCategory(\LaFolleAgenceBundle\Entity\Category $category)
+    {
+        $this->categorys->removeElement($category);
+    }
+
+    /**
+     * Get categorys
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategorys()
+    {
+        return $this->categorys;
     }
 }

@@ -12,13 +12,13 @@ services:
             class: LaFolleAgenceBundle\Admin\CategoryAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Categorie }
+                - { name: sonata.admin, manager_type: orm, label: Catégories }
 
     admin.blog_post:
             class: LaFolleAgenceBundle\Admin\PostAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Article }
+                - { name: sonata.admin, manager_type: orm, label: Articles }
 
 
     admin.comment:
@@ -26,6 +26,5 @@ services:
             arguments: [~, LaFolleAgenceBundle\Entity\Comment, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Commentaires }
-
 
 
