@@ -12,14 +12,11 @@ LaFolleAgenceBundle\Entity\Post:
         title:
             type: string
             length: 255
-            unique: true
         link:
             type: string
             length: 255
-            unique: true
         publicationDate:
             type: datetime
-            unique: true
             column: publication_date
         content:
             type: text

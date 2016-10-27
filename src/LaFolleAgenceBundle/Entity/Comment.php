@@ -220,4 +220,9 @@ class Comment
     {
         return $this->post;
     }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }

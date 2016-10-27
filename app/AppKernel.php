@@ -25,8 +25,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
-
-
+            new MigrationBundle\MigrationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
