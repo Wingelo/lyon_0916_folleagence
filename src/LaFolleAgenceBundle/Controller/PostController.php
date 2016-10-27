@@ -102,16 +102,20 @@ class PostController extends Controller
     public function showAction(Post $post)
     {
 
-        $deleteForm = $this->createDeleteForm($post);
+        //$deleteForm = $this->createDeleteForm($post);
         $em = $this->getDoctrine()->getManager();
+        $postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
+        $postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
         return $this->render('front/article-blog.html.twig', array(
             'post' => $post,
-            'delete_form' => $deleteForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
             'archive'       => $archive,
-            'categories'    => $categories
+            'categories'    => $categories,
+            'postPrecedent' => $postPrecedent,
+            'postSuivant'   => $postSuivant
         ));
     }
 

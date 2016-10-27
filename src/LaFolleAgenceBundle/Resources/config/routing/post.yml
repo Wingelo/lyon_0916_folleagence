@@ -4,7 +4,7 @@ post_index:
     methods:  GET
 
 post_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "LaFolleAgenceBundle:Post:show" }
     methods:  GET
 
