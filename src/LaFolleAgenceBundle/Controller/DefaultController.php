@@ -4,6 +4,7 @@ namespace LaFolleAgenceBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -30,7 +31,32 @@ class DefaultController extends Controller
     }
 
     public function contactAction() {
-        return $this->render('front/contact.html.twig');
+
+    	$Request = $this->container->get('request_stack')->getCurrentRequest();
+		if ($Request->getMethod() == "POST") {
+			//$Subject = $Request->get("Subject");
+			$email = $Request->get("email");
+			$message = $Request->get("message");
+			$last_name = $Request->get("last_name");
+			$first_name = $Request->get("first_name");
+			$tel = $Request->get("tel");
+
+			$mailer = $this->container->get('mailer');
+			$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
+				->setUsername('etudiants.wildcodeschool@gmail.com')
+				->setPassword('jecode4lyon');
+			$mailer = \Swift_Mailer::newInstance($transport);
+			$message = \Swift_Message::newInstance('Test')
+				->setSubject("Un nouveau message sur La Folle Agence")
+				->setFrom($email)
+				->setTo('etudiants.wildcodeschool@gmail.com')
+				->setContentType("text/html")
+				->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
+					'N° de téléphone : ' . $tel . '<br /><br />' . $message);
+			$this->get('mailer')->send($message);
+
+		}
+		return $this->render('front/contact.html.twig');
     }
 
     public function blogAction() {

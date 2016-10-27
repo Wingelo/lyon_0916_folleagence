@@ -10,3 +10,7 @@ la_folle_agence_lafolleagence:
     resource: "@LaFolleAgenceBundle/Resources/config/routing/lafolleagence.yml"
     prefix: /
 
+lafolleagence_contact:
+    path:   /contact
+    defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
+

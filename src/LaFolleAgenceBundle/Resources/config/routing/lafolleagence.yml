@@ -14,10 +14,6 @@ lafolleagence_references_et_projets:
     path:   /references-et-projets
     defaults: {_controller: "LaFolleAgenceBundle:Default:referencesEtProjets"}
 
-lafolleagence_contact:
-    path:   /contact
-    defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
-
 lafolleagence_blog:
     path:   /blog/{page}
     defaults: {_controller: "LaFolleAgenceBundle:Post:index", page: 1}
