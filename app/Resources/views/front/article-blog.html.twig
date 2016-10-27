@@ -12,6 +12,7 @@
     </section>
 
     <!-- Page Content -->
+    <section id="article-content" class="white">
     <div class="container">
         <div class="row">
             <!-- Blog Post Content Column -->
@@ -25,9 +26,6 @@
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span>{{ post.publicationDate|date }}</p>
 
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
                 <!-- Post Content -->
                 <p class="lead">{{ post.content|raw }}</p>
 
@@ -40,64 +38,66 @@
                         <a href="#">Titre article suivant &rarr;</a>
                     </li>
                 </ul>
-                <!-- Blog Comments -->
 
+                <hr>
+                <!-- Blog Comments -->
                 {% if post.openComment %}
                     <!-- Comments Form -->
-                    <div class="well">
-                        <h4>Envie de réagir à cet article ? Déposez votre commentaire :</h4>
+                    <div class="well" id="commentForm">
+                        <h4>Envie de réagir à cet article ? Déposez un commentaire :</h4>
                         {{ form_start(formComment) }}
                         {{ form_widget(formComment) }}
-                        <input type="submit" value="Envoyer un commentaire" class="btn btn-primary"/>
+                        <input type="submit" value="Envoyer un commentaire" class="purple-button"/>
                         {{ form_end(formComment) }}
                     </div>
 
                     <!-- Posted Comments -->
                     <!-- Comment -->
-                    {#{% if not(comments is defined) %}#}
+                    <section id="comment-zone">
+                        <h4>Ils ont commenté cette publication :</h4>
                         {% for comment in comments %}
                             {% if comment.approved %}
                                 <div class="media">
                                     <div class="media-body">
-                                        <h4 class="media-heading">{{ comment.title }}
+                                        <h5 class="media-heading">{{ comment.title }}
                                             <small>{{ comment.author }}, le {{ comment.date|date ('d/m/Y')}}</small>
-                                        </h4>
+                                        </h5>
                                         <p>{{ comment.content }}</p>
                                     </div>
                                 </div>
 
                                 {% if (comment.myAnswer != '') %}
-                                    <div class="media-body">
+                                    <div class="commentAnswer">
                                         <h5 class="media-heading">Réponse de La Folle Agence :</h5>
                                         <p>{{ comment.myAnswer }}</p>
                                     </div>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-                {#{% endif %}#}
+                    </section>
                 {% endif %}
+            </div>
 
- </div>
 
- <!-- Blog Sidebar Widgets Column -->
- <div class="col-md-3 blog-cat">
+     <!-- Blog Sidebar Widgets Column -->
+     <div class="col-md-3 blog-cat">
 
-     <!-- Blog Categories Well -->
-     <div class="well">
-         <h4>Catégories</h4>
-         <div class="row">
-             {% for category in categories %}
-                 <div class="col-lg-6">
-                     <ul class="list-unstyled">
-                         <li>
-                             <a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
-                         </li>
-                     </ul>
-                 </div>
-             {% endfor %}
+         <!-- Blog Categories Well -->
+         <div class="well">
+             <h4>Catégories</h4>
+             <div class="row">
+                 {% for category in categories %}
+                     <div class="col-lg-12">
+                         <ul class="list-unstyled">
+                             <li>
+                                 <a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
+                             </li>
+                         </ul>
+                     </div>
+                 {% endfor %}
+             </div>
+             <!-- /.row -->
          </div>
-         <!-- /.row -->
-     </div>
 
      <!-- Side Widget Well -->
      <div class="well">
@@ -127,4 +127,5 @@
 
         </div><!-- /.row -->
     </div><!-- /.container -->
+    </section>
 {% endblock %}

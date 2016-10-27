@@ -52,8 +52,8 @@ class CommentAdmin extends Admin
                     'disabled' => true
                 ))
             ->add('myAnswer', 'textarea',
-            array(
-                'label' => 'Répondre à ce commentaire'
+                array(
+                    'label' => 'Répondre à ce commentaire'
             ));
     }
 }
