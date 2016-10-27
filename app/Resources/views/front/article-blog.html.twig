@@ -53,49 +53,49 @@
                     </div>
 
                     <!-- Posted Comments -->
-
                     <!-- Comment -->
-                    {% if not(comments is defined) %}
-                    {% for comment in comments %}
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">{{ comment.title }}
-                                    <small>{{ comment.author }} | {{ comment.date('Y-m-d H:i:s') }}</small>
-                                </h4>
-                                <p>{{ comment.content }}</p>
+                    {#{% if not(comments is defined) %}#}
+                        {% for comment in comments %}
+                            {% if comment.approved %}
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ comment.title }}
+                                        <small>{{ comment.author }} | </small>
+                                    </h4>
+                                    <p>{{ comment.content }}</p>
+                                </div>
                             </div>
-                        </div>
-
-                    {% endfor %}
-                        {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                {#{% endif %}#}
                 {% endif %}
 
-            </div>
+ </div>
 
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-3 blog-cat">
+ <!-- Blog Sidebar Widgets Column -->
+ <div class="col-md-3 blog-cat">
 
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>Catégories</h4>
-                    <div class="row">
-                        {% for category in categories %}
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <!-- /.row -->
-                </div>
+     <!-- Blog Categories Well -->
+     <div class="well">
+         <h4>Catégories</h4>
+         <div class="row">
+             {% for category in categories %}
+                 <div class="col-lg-6">
+                     <ul class="list-unstyled">
+                         <li>
+                             <a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
+                         </li>
+                     </ul>
+                 </div>
+             {% endfor %}
+         </div>
+         <!-- /.row -->
+     </div>
 
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Archives</h4>
-                    {#Init var year#}
+     <!-- Side Widget Well -->
+     <div class="well">
+         <h4>Archives</h4>
+         {#Init var year#}
                     {% set year = '9999' %}
                     {#Loop for each post in archive#}
                     {% for post in archive %}

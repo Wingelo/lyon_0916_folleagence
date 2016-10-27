@@ -27,7 +27,6 @@ class CategoryAdmin extends Admin
 			'expanded' => true,
 			'multiple' => true,
 			'by_reference' => true,
-
 		)) ;
     }
 

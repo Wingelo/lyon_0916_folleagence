@@ -6,7 +6,6 @@ namespace LaFolleAgenceBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
@@ -57,7 +56,7 @@ class PostAdmin extends Admin
                 ))
             ->addIdentifier('openComment', null,
                 array(
-                    'label' => 'Activer commentaire'
+                    'label' => 'Activer les commentaires'
                 ))
             ->addIdentifier('publicationDate', null,
                 array(

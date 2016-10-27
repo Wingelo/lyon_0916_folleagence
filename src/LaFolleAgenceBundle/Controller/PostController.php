@@ -52,7 +52,6 @@ class PostController extends Controller
 
     public function filterIndexAction($category, $page = 1)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
@@ -108,6 +107,7 @@ class PostController extends Controller
     public function showAction(Post $post, Request $request)
     {
         $comment = new Comment();
+        $comment->setPost($post);
         $formComment = $this->createFormBuilder($comment)
             ->add('author', TextType::class)
             ->add('authorEmail', TextType::class)
@@ -125,13 +125,11 @@ class PostController extends Controller
             return $this->redirectToRoute('lafolleagence_article_blog', array('id' => $request->get('id')));
         }
 
-        $deleteForm = $this->createDeleteForm($post);
         $em = $this->getDoctrine()->getManager();
         //$postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
         //$postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
-        $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($post->getId());
         $comments = $post->getComments();
         return $this->render('front/article-blog.html.twig', array(
             'post'          => $post,
@@ -139,10 +137,8 @@ class PostController extends Controller
             'categories'    => $categories,
             //'postPrecedent' => $postPrecedent,
             //'postSuivant'   => $postSuivant,
-            'delete_form'   => $deleteForm->createView(),
             'comments'      => $comments,
             'formComment'   => $formComment->createView()
-
         ));
     }
 
