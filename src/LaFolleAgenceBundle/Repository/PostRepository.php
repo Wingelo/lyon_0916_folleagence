@@ -2,6 +2,7 @@
 
 namespace LaFolleAgenceBundle\Repository;
 
+use LaFolleAgenceBundle\Entity\Post;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
@@ -28,13 +29,14 @@ class PostRepository extends EntityRepository
         }
         $query = $this->createQueryBuilder('p')
             ->orderBy('p.publicationDate', 'DESC')
+            ->where('p.statut = 1')
             ->setFirstResult($offset)
             ->setMaxResults($itemPerPage)
             ;
         return new Paginator($query);
     }
 
-    public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
+   /* public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
     {
         if ($page > 0) {
             $offset = ($page - 1) * $itemPerPage;
@@ -42,23 +44,53 @@ class PostRepository extends EntityRepository
             $offset = 0;
         }
         $query = $this->createQueryBuilder('p')
-            //->from('posts_categorys', 'pc')
-            ->innerJoin('posts_categorys', 'pc', 'WITH', 'p.id = ?1', 'pc.post_id')
-            //->from('category', 'c')
-            ->innerJoin('category', 'c', 'WITH', 'c.id = ?1', 'pc.category_id')
-            ->where("c.categoryName = '$category'")
+            ->join('p.category', 'c')
+            //    ->addSelect('c')
+            //->innerJoin('p.category', 'c', 'ON', 'c.id = p.id ')
+            ->where("c.category = '$category'")
+            ->getQuery()
+            //->getResult()
             ->setFirstResult($offset)
             ->setMaxResults($itemPerPage)
         ;
         return new Paginator($query);
-    }
+    }*/
 
     public function getAllOrderByDate()
     {
         $query = $this->createQueryBuilder('p')
-            ->orderBy('p.publicationDate', 'DESC');
+            ->orderBy('p.publicationDate', 'DESC')
+            ->where('p.statut = 1');
 
         return new Paginator($query);
+    }
+
+
+    public function getPrecedent(Post $post)
+    {
+        $publicationDate = $post->getPublicationDate()->format('m-d-Y');
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.publicationDate', 'DESC')
+            ->where('p.statut = 1')
+            ->setMaxResults(1)
+            ->andWhere("p.publicationDate < $publicationDate")
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function getSuivant(Post $post)
+    {
+        $publicationDate = $post->getPublicationDate()->format('m-d-Y');
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.publicationDate', 'ASC')
+            ->where('p.statut = 1')
+            ->setMaxResults(1)
+            ->andWhere("p.publicationDate > $publicationDate")
+            ->getQuery();
+
+        return $query->getResult();
+
     }
 
     public function getComments() {
@@ -66,5 +98,6 @@ class PostRepository extends EntityRepository
             ->orderBy('co.id', 'DESC')
             ->getQuery();
         return $comments->getResult();
+
     }
 }

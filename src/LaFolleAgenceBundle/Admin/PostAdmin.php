@@ -36,12 +36,11 @@ class PostAdmin extends Admin
                     'required' => false
                 ))
 
-            ->add('statut', CheckboxType::class,
-                array(
-                    'label' => 'Enregistrer comme brouillon',
-                    'data' => false,
-                    'required' => false
-                ))
+            ->add('statut', CheckboxType::class, array(
+                'data' => false,
+                'required' => false,
+                'label' => 'Publication'
+            ))
         ;
     }
 
@@ -52,10 +51,18 @@ class PostAdmin extends Admin
             ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->addIdentifier('statut')
-            ->addIdentifier('openComment')
-            ->addIdentifier('publicationDate')
-
+            ->addIdentifier('statut', null,
+                array(
+                    'label' => 'Publication'
+                ))
+            ->addIdentifier('openComment', null,
+                array(
+                    'label' => 'Activer commentaire'
+                ))
+            ->addIdentifier('publicationDate', null,
+                array(
+                    'label' => 'Date de publication'
+                ))
             ;
     }
 

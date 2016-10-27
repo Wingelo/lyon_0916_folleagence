@@ -29,21 +29,23 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
-        $total = count($posts);
+        $total = count($post);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
         if (($total % PostRepository::MAX_RESULT) !== 0) {
             $maxPage++;
         }
         return $this->render('front/blog.html.twig', array(
+
             'maxPage' => $maxPage,
-            'posts' => $posts,
+            'post' => $post,
             'page' => $page,
             'archive' => $archive,
             'categories' => $categories
+
         ));
 
     }
@@ -53,21 +55,23 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
-        $total = count($posts);
+        $total = count($post);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
         if (($total % PostRepository::MAX_RESULT) !== 0) {
             $maxPage++;
         }
         return $this->render('front/blog.html.twig', array(
+
             'maxPage' => $maxPage,
-            'posts' => $posts,
+            'post' => $post,
             'page' => $page,
             'archive' => $archive,
             'categories' => $categories
+
         ));
 
     }
@@ -103,7 +107,6 @@ class PostController extends Controller
      */
     public function showAction(Post $post, Request $request)
     {
-
         $comment = new Comment();
         $formComment = $this->createFormBuilder($comment)
             ->add('author', TextType::class)
@@ -124,13 +127,22 @@ class PostController extends Controller
 
         $deleteForm = $this->createDeleteForm($post);
         $em = $this->getDoctrine()->getManager();
+        //$postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
+        //$postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($post->getId());
         $comments = $post->getComments();
         return $this->render('front/article-blog.html.twig', array(
-            'post' => $post,
-            'delete_form' => $deleteForm->createView(),
-            'comments' => $comments,
-            'formComment' => $formComment->createView()
+            'post'          => $post,
+            'archive'       => $archive,
+            'categories'    => $categories,
+            //'postPrecedent' => $postPrecedent,
+            //'postSuivant'   => $postSuivant,
+            'delete_form'   => $deleteForm->createView(),
+            'comments'      => $comments,
+            'formComment'   => $formComment->createView()
+
         ));
     }
 
