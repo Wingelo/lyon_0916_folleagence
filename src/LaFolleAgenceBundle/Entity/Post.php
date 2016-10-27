@@ -312,9 +312,7 @@ class Post
      */
     public function addCategory(\LaFolleAgenceBundle\Entity\Category $category)
     {
-		$category->addPost($this);
     	$this->categorys[] = $category;
-
         return $this;
     }
 
@@ -336,5 +334,10 @@ class Post
     public function getCategorys()
     {
         return $this->categorys;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

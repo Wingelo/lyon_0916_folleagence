@@ -73,7 +73,6 @@ class Category
      */
     public function addPost(\LaFolleAgenceBundle\Entity\Post $post)
     {
-		$post->addCategory($this);
 		$this->posts[] = $post;
         return $this;
     }
@@ -110,4 +109,12 @@ class Category
 			$post->addObjectif($this);
 		}
 	}
+
+    /**
+     * @param int $id
+     */
+	public function setId($id)
+    {
+        $this->id = $id;
+    }
 }
