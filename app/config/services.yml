@@ -28,9 +28,4 @@ services:
                 - { name: sonata.admin, manager_type: orm, label: Commentaires }
 
 
-    admin.post:
-            class: LaFolleAgenceBundle\Admin\PostAdmin
-            arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: Article }
 
