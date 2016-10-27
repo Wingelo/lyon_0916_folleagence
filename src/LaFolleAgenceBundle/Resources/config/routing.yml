@@ -42,3 +42,8 @@ post_delete:
     path:     /{id}/delete
     defaults: { _controller: "LaFolleAgenceBundle:Post:delete" }
     methods:  DELETE
+
+comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFolleAgenceBundle:Comment:edit" }
+    methods: [GET, POST]

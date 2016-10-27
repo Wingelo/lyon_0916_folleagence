@@ -7,12 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use LaFolleAgenceBundle\Entity\Post;
 use LaFolleAgenceBundle\Entity\Comment;
-use LaFolleAgenceBundle\Form\PostType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Post controller.

@@ -33,8 +33,26 @@ class CommentAdmin extends Admin
             ->add('authorEmail')
             ->addIdentifier('content')
             ->add('date')
-            ->add('approved')
+            ->addIdentifier('approved')
         ;
     }
 
+
+    /*protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('title','text',
+                array(
+                    'label' => 'Titre'
+                ))
+            ->add('link', 'text',
+                array(
+                    'label' => 'URL de l\'article'
+                ))
+            ->add('content', 'ckeditor',
+                array('label' => 'Contenu'
+                ))
+
+        ;
+    }*/
 }
