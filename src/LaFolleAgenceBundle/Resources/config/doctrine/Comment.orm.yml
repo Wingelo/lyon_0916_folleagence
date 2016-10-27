@@ -25,7 +25,6 @@ LaFolleAgenceBundle\Entity\Comment:
         approved:
             type: boolean
 
-
     manyToOne:
         post:
             targetEntity: Post

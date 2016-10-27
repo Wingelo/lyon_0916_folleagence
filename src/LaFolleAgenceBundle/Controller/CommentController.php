@@ -4,9 +4,11 @@ namespace LaFolleAgenceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use LaFolleAgenceBundle\Entity\Comment;
-use LaFolleAgenceBundle\Form\CommentType;
 
 /**
  * Comment controller.
@@ -38,12 +40,12 @@ class CommentController extends Controller
         $comment = new Comment();
 
         $form = $this->createFormBuilder('LaFolleAgenceBundle\Form\CommentType', $comment)
-            ->add('author', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('authorEmail', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('date', 'Symfony\Component\Form\Extension\Core\Type\DateType')
-            ->add('title','Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('content','Symfony\Component\Form\Extension\Core\Type\TextArea')
-            ->add('save', 'Symfony\Component\Form\Extension\Core\Type\Submit', array('label' => 'Commenter l\'article'))
+            ->add('author', TextType::class)
+            ->add('authorEmail', TextType::class)
+            ->add('date', DateType::class)
+            ->add('title', TextType::class)
+            ->add('content', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Commenter l\'article'))
             ->getForm();
 
         $form->handleRequest($request);

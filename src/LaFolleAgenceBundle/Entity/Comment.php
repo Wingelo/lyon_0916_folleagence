@@ -37,7 +37,7 @@ class Comment
     /**
      * @var bool
      */
-    private $approved;
+    private $approved = 0;
 
 
     /**
@@ -173,7 +173,7 @@ class Comment
      * @param boolean $approved
      * @return Comment
      */
-    public function setApproved($approved)
+    public function setApproved($approved = 0)
     {
         $this->approved = $approved;
 
@@ -249,5 +249,11 @@ class Comment
      * @var string
      */
     private $title;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
 
 }

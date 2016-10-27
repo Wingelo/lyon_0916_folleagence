@@ -6,8 +6,13 @@ use LaFolleAgenceBundle\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use LaFolleAgenceBundle\Entity\Post;
+use LaFolleAgenceBundle\Entity\Comment;
 use LaFolleAgenceBundle\Form\PostType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Post controller.
@@ -33,16 +38,15 @@ class PostController extends Controller
 
         $total = count($posts);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
-        if (($total % PostRepository::MAX_RESULT) !== 0)
-        {
+        if (($total % PostRepository::MAX_RESULT) !== 0) {
             $maxPage++;
         }
         return $this->render('front/blog.html.twig', array(
-            'maxPage'       => $maxPage,
-            'posts'         => $posts,
-            'page'          => $page,
-            'archive'       => $archive,
-            'categories'    => $categories
+            'maxPage' => $maxPage,
+            'posts' => $posts,
+            'page' => $page,
+            'archive' => $archive,
+            'categories' => $categories
         ));
 
     }
@@ -58,36 +62,15 @@ class PostController extends Controller
 
         $total = count($posts);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
-        if (($total % PostRepository::MAX_RESULT) !== 0)
-        {
+        if (($total % PostRepository::MAX_RESULT) !== 0) {
             $maxPage++;
         }
         return $this->render('front/blog.html.twig', array(
-            'maxPage'       => $maxPage,
-            'posts'         => $posts,
-            'page'          => $page,
-            'archive'       => $archive,
-            'categories'    => $categories
-        ));
-
-    }
-
-    /**
-     * @param $comments
-     * @param int $page
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function commentIndexAction($id)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-
-        $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($id);
-        $comments = $post->getComments();
-
-        return $this->render('front/article-blog.html.twig', array(
-            'post'          => $post,
-            'comments'      => $comments
+            'maxPage' => $maxPage,
+            'posts' => $posts,
+            'page' => $page,
+            'archive' => $archive,
+            'categories' => $categories
         ));
 
     }
@@ -117,16 +100,40 @@ class PostController extends Controller
     }
 
     /**
-     * Finds and displays a Post entity.
-     *
+     * @param Post $post
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function showAction(Post $post)
+    public function showAction(Post $post, Request $request)
     {
-        $deleteForm = $this->createDeleteForm($post);
 
+        $comment = new Comment();
+        $formComment = $this->createFormBuilder($comment)
+            ->add('author', TextType::class)
+            ->add('authorEmail', TextType::class)
+            ->add('title', TextType::class)
+            ->add('content', TextareaType::class)
+            ->getForm();
+
+        $formComment->handleRequest($request);
+
+        if ($formComment->isSubmitted() && $formComment->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('lafolleagence_article_blog', array('id' => $request->get('id')));
+        }
+
+        $deleteForm = $this->createDeleteForm($post);
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($post->getId());
+        $comments = $post->getComments();
         return $this->render('front/article-blog.html.twig', array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
+            'comments' => $comments,
+            'formComment' => $formComment->createView()
         ));
     }
 
@@ -185,7 +192,6 @@ class PostController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
