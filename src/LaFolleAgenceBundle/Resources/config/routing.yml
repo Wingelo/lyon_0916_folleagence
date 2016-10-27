@@ -30,7 +30,7 @@ lafolleagence_blog:
 
 lafolleagence_category_blog:
     path:   /blog/{categoryName}/{page}
-    defaults: {_controller: "LaFolleAgenceBundle:Post:filterindex", categoryName: '', page: 1}
+    defaults: {_controller: "LaFolleAgenceBundle:Category:filterindex", categoryName: '', page: 1}
     requirements:
         page: \d+
 

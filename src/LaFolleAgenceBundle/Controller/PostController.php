@@ -53,13 +53,13 @@ class PostController extends Controller
 
     }
 
-    public function filterIndexAction($category, $page = 1)
+   /* public function filterIndexAction($category, $page = 1)
     {
 
         $em = $this->getDoctrine()->getManager();
 
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
-        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
 
         $total = count($post);
@@ -67,17 +67,17 @@ class PostController extends Controller
         if (($total % PostRepository::MAX_RESULT) !== 0) {
             $maxPage++;
         }
-        return $this->render('front/blog.html.twig', array(
+        return $this->render('front/article-categorie.html.twig', array(
 
-            'maxPage' => $maxPage,
-            'post' => $post,
-            'page' => $page,
-            'archive' => $archive,
-            'categories' => $categories
+            'maxPage'       => $maxPage,
+            'post'          => $post,
+            'page'          => $page,
+            'archive'       => $archive,
+            'categories'    => $categories
 
         ));
 
-    }
+    }*/
 
     /**
      * Creates a new Post entity.
@@ -130,8 +130,8 @@ class PostController extends Controller
 
         $deleteForm = $this->createDeleteForm($post);
         $em = $this->getDoctrine()->getManager();
-        //$postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
-        //$postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
+        $postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
+        $postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->find($post->getId());
@@ -140,8 +140,8 @@ class PostController extends Controller
             'post'          => $post,
             'archive'       => $archive,
             'categories'    => $categories,
-            //'postPrecedent' => $postPrecedent,
-            //'postSuivant'   => $postSuivant,
+            'postPrecedent' => $postPrecedent,
+            'postSuivant'   => $postSuivant,
             'delete_form'   => $deleteForm->createView(),
             'comments'      => $comments,
             'formComment'   => $formComment->createView()
