@@ -32,8 +32,8 @@
 
                     <hr>
                     <p><span class="glyphicon glyphicon-time"></span> {{ post.publicationDate|date }}</p>
-                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                        {{ post.content|striptags|truncate(400)|raw }}
+
+                        {{ post.content|striptags|truncate(800)|raw }}
                     <p></p>
                     <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'id': post.id }) }}">Lire la suite <span
                                 class="glyphicon glyphicon-chevron-right"></span></a>

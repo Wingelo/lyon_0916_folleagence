@@ -26,7 +26,7 @@
                         <small>Secondary Text</small>
                     </h1>
 
-                    {%  for post in post %}
+                    {%  for category in categories %}
 
                         <h2>
                             <a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
@@ -34,7 +34,7 @@
 
                         <hr>
                         <p><span class="glyphicon glyphicon-time"></span> {{ post.publicationDate|date }}</p>
-                        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
                         {{ post.content|striptags|truncate(400)|raw }}
                         <p></p>
                         <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'id': post.id }) }}">Lire la suite <span

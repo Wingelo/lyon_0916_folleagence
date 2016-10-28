@@ -2,6 +2,7 @@
 
 namespace LaFolleAgenceBundle\Repository;
 
+use LaFolleAgenceBundle\Entity\Category;
 use LaFolleAgenceBundle\Entity\Post;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -36,7 +37,13 @@ class PostRepository extends EntityRepository
         return new Paginator($query);
     }
 
-    public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
+    /**
+     * @param $category
+     * @param $page
+     * @param int $itemPerPage
+     * @return Paginator
+     */
+    public function categoryGetByPage(Category $category, $page, $itemPerPage = self::MAX_RESULT)
     {
         if ($page > 0) {
             $offset = ($page - 1) * $itemPerPage;
@@ -44,12 +51,10 @@ class PostRepository extends EntityRepository
             $offset = 0;
         }
         $query = $this->createQueryBuilder('p')
-            //->join('p.category', 'c')
-            //    ->addSelect('c')
-            //->innerJoin('p.category', 'c', 'ON', 'c.id = p.id ')
-            ->where("p.category = '$category'")
-            //->getQuery()
-            //->getResult()
+            //->select('post', 'p')
+            ->join('category', 'c')
+            ->where('c.id = ?1')
+            ->setParameter(1, $category->getId())
             ->setFirstResult($offset)
             ->setMaxResults($itemPerPage)
         ;
