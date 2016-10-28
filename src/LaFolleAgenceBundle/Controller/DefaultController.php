@@ -68,11 +68,10 @@ class DefaultController extends Controller
     	$Request = $this->container->get('request_stack')->getCurrentRequest();
 		if ($Request->getMethod() == "POST") {
 			//$Subject = $Request->get("Subject");
-			$email = $Request->get("email");
-			$message = $Request->get("message");
-			$last_name = $Request->get("last_name");
-			$first_name = $Request->get("first_name");
-			$tel = $Request->get("tel");
+
+			$comment = $Request->get("comment");
+			$name = $Request->get("name");
+
 
 			$mailer = $this->container->get('mailer');
 			$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
@@ -80,13 +79,13 @@ class DefaultController extends Controller
 				->setPassword('jecode4lyon');
 			$mailer = \Swift_Mailer::newInstance($transport);
 			$message = \Swift_Message::newInstance('Test')
-				->setSubject("Un nouveau message sur La Folle Agence")
-				->setFrom($email)
+				->setSubject("Un nouveau commentaire sur La Folle Agence")
+				->setFrom('etudiants.wildcodeschool@gmail.com')
 				->setTo('etudiants.wildcodeschool@gmail.com')
 				->setContentType("text/html")
-				->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
-					'N° de téléphone : ' . $tel . '<br /><br />' . $message);
+				->setBody("Nom : " . $name . "<br />" . "Commentaire : " . "<br />" . $comment);
 			$this->get('mailer')->send($message);
+		}
         return $this->render('front/article-blog.html.twig');
     }
 
