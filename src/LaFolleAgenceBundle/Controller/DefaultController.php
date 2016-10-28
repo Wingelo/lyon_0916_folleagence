@@ -10,8 +10,17 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('front/index.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getRepository("LaFolleAgenceBundle:Post");
+        $carouselArticles = $repository->getLastSixArticles(6);
+
+        return $this->render(
+            'front/index.html.twig',
+            array("carouselArticles" => $carouselArticles)
+        );
     }
+
 
     public function mentionslegalesAction() {
         return $this->render('front/mentionslegales.html.twig');
