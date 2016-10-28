@@ -148,7 +148,7 @@ class PostController extends Controller
 					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commente ."<br><br><br>". "Cordialement,");
 				$this->get('mailer')->send($message);
 
-            return $this->redirectToRoute('lafolleagence_article_blog', array('id' => $request->get('id')));
+            return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
         }
 
         $em = $this->getDoctrine()->getManager();
