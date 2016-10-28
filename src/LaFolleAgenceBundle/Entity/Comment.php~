@@ -192,4 +192,37 @@ class Comment
     {
         return $this->manyToOne;
     }
+    /**
+     * @var \LaFolleAgenceBundle\Entity\Post
+     */
+    private $post;
+
+
+    /**
+     * Set post
+     *
+     * @param \LaFolleAgenceBundle\Entity\Post $post
+     * @return Comment
+     */
+    public function setPost(\LaFolleAgenceBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \LaFolleAgenceBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }

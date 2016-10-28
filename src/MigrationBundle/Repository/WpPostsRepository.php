@@ -13,4 +13,12 @@ class WpPostsRepository extends EntityRepository
             ->getQuery();
         return $em->getResult();
     }
+
+    public function getImageLinks()
+    {
+        $em = $this->createQueryBuilder('p')
+            ->where("p.postType = 'attachment'")
+            ->getQuery();
+        return $em->getResult();
+    }
 }

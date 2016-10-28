@@ -661,4 +661,3 @@ class WpPosts
         return $this->commentCount;
     }
 }
-

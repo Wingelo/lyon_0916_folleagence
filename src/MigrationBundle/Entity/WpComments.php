@@ -429,4 +429,3 @@ class WpComments
         return $this->userId;
     }
 }
-

@@ -168,4 +168,3 @@ class WpTermTaxonomy
         return $this->count;
     }
 }
-

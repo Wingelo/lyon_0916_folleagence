@@ -4,6 +4,7 @@ namespace MigrationBundle\Command;
 
 use LaFolleAgenceBundle\Entity\Category;
 use LaFolleAgenceBundle\Entity\Comment;
+use LaFolleAgenceBundle\Entity\LinkImage;
 use LaFolleAgenceBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -124,6 +125,27 @@ class MigrateCommand extends ContainerAwareCommand
         $progress->finish();
         $output->writeln("");
         $output->writeln("Importing Comments done");
+
+        // image gallery links migration
+        $this->truncate('link_image');
+        $output->writeln("Importing image gallery link");
+        $links = $doctrine->getRepository('MigrationBundle:WpPosts', 'migration')->getImageLinks();
+        $totalRecords = count($links);
+        $progress = new ProgressBar($output, $totalRecords);
+        foreach($links as $link){
+            $imageLink = new LinkImage();
+            $imageLink->setId($link->getId());
+            $strLink = substr($link->getGuid(), 48);
+            $imageLink->setPath($strLink);
+            $targetManager->persist($imageLink);
+            $progress->advance();
+        }
+        $metadata = $targetManager->getClassMetaData(get_class($imageLink));
+        $metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+        $targetManager->flush();
+        $progress->finish();
+        $output->writeln("");
+        $output->writeln("Importing image gallery link done");
     }
 
     private function truncate($table)

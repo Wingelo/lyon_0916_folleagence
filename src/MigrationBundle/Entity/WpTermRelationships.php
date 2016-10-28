@@ -95,4 +95,3 @@ class WpTermRelationships
         return $this->termOrder;
     }
 }
-

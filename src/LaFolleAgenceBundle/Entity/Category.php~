@@ -71,10 +71,9 @@ class Category
      * @param \LaFolleAgenceBundle\Entity\Post $posts
      * @return Category
      */
-    public function addPost(\LaFolleAgenceBundle\Entity\Post $posts)
+    public function addPost(\LaFolleAgenceBundle\Entity\Post $post)
     {
-        $this->posts[] = $posts;
-
+		$this->posts[] = $post;
         return $this;
     }
 
@@ -83,9 +82,9 @@ class Category
      *
      * @param \LaFolleAgenceBundle\Entity\Post $posts
      */
-    public function removePost(\LaFolleAgenceBundle\Entity\Post $posts)
+    public function removePost(\LaFolleAgenceBundle\Entity\Post $post)
     {
-        $this->posts->removeElement($posts);
+        $this->posts->removeElement($post);
     }
 
     /**
@@ -96,5 +95,26 @@ class Category
     public function getPosts()
     {
         return $this->posts;
+    }
+
+	public function setPosts(\Doctrine\Common\Collections\Collection $posts)
+	{
+
+		foreach ($this->posts as $post){ // On parcours les anciens utilisateurs liés
+			$post->getcategory()->removeElement($this);
+		}
+
+		$this->posts = $posts;
+		foreach ($this->posts as $post){
+			$post->addObjectif($this);
+		}
+	}
+
+    /**
+     * @param int $id
+     */
+	public function setId($id)
+    {
+        $this->id = $id;
     }
 }

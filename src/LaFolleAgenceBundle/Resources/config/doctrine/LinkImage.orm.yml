@@ -1,0 +1,15 @@
+LaFolleAgenceBundle\Entity\LinkImage:
+    type: entity
+    table: null
+    repositoryClass: LaFolleAgenceBundle\Repository\LinkImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        path:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

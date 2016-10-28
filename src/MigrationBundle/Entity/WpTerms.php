@@ -110,4 +110,3 @@ class WpTerms
         return $this->termGroup;
     }
 }
-
