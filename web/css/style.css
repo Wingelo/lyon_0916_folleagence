@@ -498,12 +498,7 @@ figure.effect-sadie:hover p {
 /*----------------------------*/
 /* PAGE REFERENCES ET PROJETS */
 /*----------------------------*/
-@media (min-width: 768px) {
-	.div-collapse.collapse {
-		display: block !important;
-		height: auto !important;
-		overflow: visible !important;
-	}
+
 #references-header {
     background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
 }
@@ -679,6 +674,5 @@ ul.list-unstyled li a:hover {
 	margin-right: auto;
 	margin-left: auto;
 	clear: both;
-/*	margin: .8em auto;*/
-
 }
+

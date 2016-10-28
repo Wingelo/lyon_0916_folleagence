@@ -19,7 +19,6 @@ la_folle_agence:
     resource: "@LaFolleAgenceBundle/Resources/config/routing.yml"
     prefix:   /
 
-
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
