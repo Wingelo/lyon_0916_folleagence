@@ -61,6 +61,14 @@ class PostRepository extends EntityRepository
         return new Paginator($query);
     }
 
+    public function getLastSixArticles ($limit) {
+        $carouselArticles = $this->createQueryBuilder('la')
+            ->orderBy('la.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery();
+        return $carouselArticles->getResult();
+    }
+
     public function getAllOrderByDate()
     {
         $query = $this->createQueryBuilder('p')
@@ -95,7 +103,6 @@ class PostRepository extends EntityRepository
             ->getQuery();
 
         return $query->getResult();
-
     }
 
     public function getComments() {
