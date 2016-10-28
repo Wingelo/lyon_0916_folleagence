@@ -36,4 +36,8 @@ class CategoryRepository extends EntityRepository
 			$stmt->execute();
 		}
 	}
+
+	public function getAll () {
+
+	}
 }
