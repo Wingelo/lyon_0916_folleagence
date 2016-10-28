@@ -14,3 +14,6 @@ lafolleagence_contact:
     path:   /contact
     defaults: {_controller: "LaFolleAgenceBundle:Default:contact"}
 
+lafolleagence_commentaire:
+    path: /contact
+    defaults: {_controller : "LaFolleAgenceBundle:Default:articleBlogAction"}
