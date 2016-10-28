@@ -27,7 +27,7 @@
                     </h1>
                     {% for post in post %}
                     <h2>
-                        <a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
+                        <a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}" class="liencouleur">{{ post.title}}</a>
                     </h2>
 
                     <hr>
@@ -35,7 +35,7 @@
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                         {{ post.content|striptags|truncate(400)|raw }}
                     <p></p>
-                    <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'id': post.id }) }}">Lire la suite <span
+                    <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'link': post.link }) }}">Lire la suite <span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
 
                     {% endfor %}
@@ -71,7 +71,7 @@
                         <h4>Catégories</h4>
                         <div class="row">
                             {% for category in categories %}
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <ul class="list-unstyled">
                                     <li><a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
                                     </li>
@@ -100,7 +100,7 @@
                             {#the current post year become the test year#}
                             {% set year = post.publicationDate|date('Y') %}
                         {% endif %}
-                            <li><a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
+                            <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}" class="liencouleur">{{ post.title}}</a>
                             </li>
                         {% endfor %}
                         </ul>

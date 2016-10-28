@@ -35,11 +35,13 @@ lafolleagence_category_blog:
         page: \d+
 
 lafolleagence_article_blog:
-    path:   /article-blog/{id}
+    path:   /{link}/
     defaults: {_controller: "LaFolleAgenceBundle:Post:Show"}
 
 post_delete:
     path:     /{id}/delete
     defaults: { _controller: "LaFolleAgenceBundle:Post:delete" }
     methods:  DELETE
+    requirements:
+        id: \d+
 
