@@ -36,26 +36,6 @@ class PostRepository extends EntityRepository
         return new Paginator($query);
     }
 
-   /* public function categoryGetByPage($category, $page, $itemPerPage = self::MAX_RESULT)
-    {
-        if ($page > 0) {
-            $offset = ($page - 1) * $itemPerPage;
-        } else {
-            $offset = 0;
-        }
-        $query = $this->createQueryBuilder('p')
-            ->join('p.category', 'c')
-            //    ->addSelect('c')
-            //->innerJoin('p.category', 'c', 'ON', 'c.id = p.id ')
-            ->where("c.category = '$category'")
-            ->getQuery()
-            //->getResult()
-            ->setFirstResult($offset)
-            ->setMaxResults($itemPerPage)
-        ;
-        return new Paginator($query);
-    }*/
-
     public function getLastSixArticles ($limit) {
         $carouselArticles = $this->createQueryBuilder('la')
             ->orderBy('la.id', 'DESC')

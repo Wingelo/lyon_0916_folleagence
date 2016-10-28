@@ -32,39 +32,6 @@ class CommentController extends Controller
     }
 
     /**
-     * Creates a new Comment entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $comment = new Comment();
-
-        $form = $this->createFormBuilder('LaFolleAgenceBundle\Form\CommentType', $comment)
-            ->add('author', TextType::class)
-            ->add('authorEmail', TextType::class)
-            ->add('date', DateType::class)
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('save', SubmitType::class, array('label' => 'Commenter l\'article'))
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
-
-            return $this->redirectToRoute('comment_show', array('id' => $comment->getId()));
-        }
-
-        return $this->render('comment/new.html.twig', array(
-            'comment' => $comment,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a Comment entity.
      *
      */

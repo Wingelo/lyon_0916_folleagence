@@ -29,11 +29,21 @@ class CommentAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('author')
-            ->add('authorEmail')
-            ->addIdentifier('content')
-            ->add('date')
-            ->addIdentifier('approved')
+            ->add('author', null, array(
+                'label' => 'Auteur'
+            ))
+            ->add('authorEmail', null, array(
+                'label' => 'E-mail'
+            ))
+            ->addIdentifier('content', null, array(
+                'label' => 'Message'
+            ))
+            ->add('date', null, array(
+                'label' => 'Date de publication'
+            ))
+            ->addIdentifier('approved', null, array(
+                'label' => 'Approuver'
+            ))
         ;
     }
 
