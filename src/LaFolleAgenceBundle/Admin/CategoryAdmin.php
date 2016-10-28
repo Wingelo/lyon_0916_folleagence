@@ -27,7 +27,6 @@ class CategoryAdmin extends Admin
 			'expanded' => true,
 			'multiple' => true,
 			'by_reference' => true,
-
 		)) ;
     }
 
@@ -54,7 +53,6 @@ class CategoryAdmin extends Admin
 		$this->postPersist($object);
 
 	}
-
 
 	public function postPersist($object){
 

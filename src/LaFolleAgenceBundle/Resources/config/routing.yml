@@ -1,3 +1,5 @@
+
+
 la_folle_agence_homepage:
     path:     /
     defaults: { _controller: LaFolleAgenceBundle:Default:index }
@@ -45,3 +47,7 @@ post_delete:
     requirements:
         id: \d+
 
+comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFolleAgenceBundle:Comment:edit" }
+    methods: [GET, POST]

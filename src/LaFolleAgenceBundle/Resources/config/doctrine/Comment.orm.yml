@@ -17,13 +17,17 @@ LaFolleAgenceBundle\Entity\Comment:
             length: '50'
             column: author_email
         title:
-            type: text
+            type: string
+            length: '150'
         content:
             type: text
         date:
             type: datetime
         approved:
             type: boolean
+        my_answer:
+            type: text
+            nullable: TRUE
 
     manyToOne:
         post:

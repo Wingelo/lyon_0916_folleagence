@@ -19,7 +19,7 @@ h2 {
     font-family: 'Bad Script', cursive ;
     text-align: center;
     font-size: 1.8em;
-    margin: 50px 0 0 0;
+    margin: 55px 0 0 0;
 }
 
 h3 {
@@ -27,6 +27,10 @@ h3 {
     font-size: 1.2em;
     font-weight: 500;
     text-align: center;
+}
+
+h5 {
+    font-size: 1em;
 }
 
 hr {
@@ -54,17 +58,27 @@ hr {
     border-radius: 5px;
     display: block;
     margin: 10px auto;
-    font-weight: 300;
+    font-weight: 500;
     text-decoration: none;
 }
 
-.purple-button:hover,
-.pink-button:hover {
-    font-weight: 500;
+.btn-primary {
+    background-color: #641032;
+    border:none;
 }
 
+
 .pink-button {
+    background-color: #d01d64;;
+}
+
+.purple-button:hover,
+.btn-primary:hover {
     background-color: #d01d64;
+}
+
+.pink-button:hover {
+    background-color: #641032;
 }
 
 /*Polygon triangle white sections*/
@@ -94,7 +108,7 @@ polygon {
 
 .white {
     background-color: #FFFFFF;
-    padding-bottom: 50px;
+    padding-bottom: 55px;
     clear: both;
 }
 
@@ -129,7 +143,7 @@ polygon {
     width:60%;
     min-width: 260px;
     display: block;
-    margin:22vh auto 0 auto;
+    margin:25vh auto 0 auto;
 }
 
 #header-index #fleche-descendre {
@@ -350,48 +364,47 @@ figure.effect-sadie:hover p {
 
 /*BANDEAU 4 | DERNIERS ARTICLES DE BLOG */
 
-/*Carrousel*/
-.multi-item-carousel .carousel-inner .item {
-    transition: 800ms ease-in-out left;
+/* Carousel */
+
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 20px;
+    /* Control buttons  */
+    /* Previous button  */
+    /* Next button  */
+    /* Changes the position of the indicators */
+    /* Changes the color of the indicators */
 }
-@media all and (transform-3d), (-webkit-transform-3d) {
-    .multi-item-carousel .carousel-inner .item {
-        transition: 500ms ease-in-out all;
-        backface-visibility: visible;
-        transform: none!important;
-    }
+#quote-carousel .carousel-control {
+    background: none;
+    color: #CACACA;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 30px;
 }
-.multi-item-carousel .carousel-inner .active .left {
-    left:-33%;
+#quote-carousel .carousel-control.left {
+    left: -60px;
+}
+#quote-carousel .carousel-control.right {
+    right: -60px;
+}
+.carousel-inner {
+    min-height: 300px;
+}
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
 }
 
-.multi-item-carousel .carousel-inner .active .right {
-    left:33%;
+.carousel-inner {
+    min-height: 100%;
 }
-
-.multi-item-carousel .carousel-inner .next {
-    left: 33%;
-}
-
-.multi-item-carousel .carousel-inner .prev{
-    left: -33%;
-}
-
-.carousel-control.left,
-.carousel-control.right{
-    background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
-}
-
-.carousel-control .glyphicon-chevron-right,
-.carousel-control .glyphicon-chevron-left{
-    color: #641032;
-}
-
-/*Bouton carrousel*/
-#see-blog {
-    margin-top: 2em;
-}
-
 /*---------------*/
 /* PAGE A PROPOS */
 /*---------------*/
@@ -485,7 +498,12 @@ figure.effect-sadie:hover p {
 /*----------------------------*/
 /* PAGE REFERENCES ET PROJETS */
 /*----------------------------*/
-
+@media (min-width: 768px) {
+	.div-collapse.collapse {
+		display: block !important;
+		height: auto !important;
+		overflow: visible !important;
+	}
 #references-header {
     background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
 }
@@ -568,15 +586,6 @@ h1.page-header {
     margin-bottom: 15px;
 }
 
-.btn-primary {
-	background-color: #d01d64;
-	border: 0;
-}
-
-.btn-primary:hover {
-	background-color: #641032;
-}
-
 ul.pager li a {
 	color: #641032;
 }
@@ -587,6 +596,9 @@ ul.pager li a:hover{
 
 .well {
 	background-color: #e6e6e6;
+    border:none;
+    box-shadow: none;
+    border-radius: 0px;
 }
 
 ul.list-unstyled li a {
@@ -600,6 +612,32 @@ ul.list-unstyled li a:hover {
 
 .blogtitre {
 	color:  #641032;
+}
+
+#commentForm {
+    margin-bottom: 30px;
+}
+
+#commentForm h4 {
+    margin-bottom: 20px;
+}
+
+#commentForm label {
+    font-size: 1em;
+    font-weight: 300;
+    margin-right: 15px;
+}
+
+.commentAnswer {
+    margin-left: 15px;
+}
+
+#comment-zone h5 {
+    color: #641032;
+}
+
+#comment-zone .commentAnswer h5 {
+    color: #d01d64;
 }
 
 /*--------------*/
