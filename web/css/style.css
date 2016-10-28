@@ -672,3 +672,15 @@ ul.list-unstyled li a:hover {
     text-align: justify;
 }
 
+/*----------------------*/
+/* migration word press */
+/*----------------------*/
+.aligncenter {
+	display: block;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	clear: both;
+/*	margin: .8em auto;*/
+
+}
