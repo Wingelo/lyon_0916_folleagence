@@ -6,7 +6,6 @@ namespace LaFolleAgenceBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
@@ -24,7 +23,7 @@ class PostAdmin extends Admin
                 ))
             ->add('link', 'text',
                 array(
-                    'label' => 'URL de l article'
+                    'label' => 'URL de l\'article'
                 ))
             ->add('content', 'ckeditor',
                 array('label' => 'Contenu'
@@ -32,13 +31,14 @@ class PostAdmin extends Admin
 
             ->add('open_comment', CheckboxType::class,
                 array(
-                    'label' => 'Activer commentaire',
+                    'label' => 'Activer les commentaires',
                     'required' => false
                 ))
 
             ->add('statut', CheckboxType::class, array(
                 'data' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Publication'
             ))
         ;
     }
@@ -50,10 +50,18 @@ class PostAdmin extends Admin
             ->addIdentifier('title', null,
                 array('label' => 'Titre'
             ))
-            ->addIdentifier('statut')
-            ->addIdentifier('openComment')
-            ->addIdentifier('publicationDate')
-
+            ->addIdentifier('statut', null,
+                array(
+                    'label' => 'Publication'
+                ))
+            ->addIdentifier('openComment', null,
+                array(
+                    'label' => 'Activer les commentaires'
+                ))
+            ->addIdentifier('publicationDate', null,
+                array(
+                    'label' => 'Date de publication'
+                ))
             ;
     }
 

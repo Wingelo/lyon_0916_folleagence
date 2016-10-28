@@ -37,7 +37,7 @@ class Comment
     /**
      * @var bool
      */
-    private $approved;
+    private $approved = 0;
 
 
     /**
@@ -97,6 +97,31 @@ class Comment
     }
 
     /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Comment
+     */
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date
@@ -148,7 +173,7 @@ class Comment
      * @param boolean $approved
      * @return Comment
      */
-    public function setApproved($approved)
+    public function setApproved($approved = 0)
     {
         $this->approved = $approved;
 
@@ -164,34 +189,7 @@ class Comment
     {
         return $this->approved;
     }
-    /**
-     * @var string
-     */
-    private $manyToOne;
 
-
-    /**
-     * Set manyToOne
-     *
-     * @param string $manyToOne
-     * @return Comment
-     */
-    public function setManyToOne($manyToOne)
-    {
-        $this->manyToOne = $manyToOne;
-
-        return $this;
-    }
-
-    /**
-     * Get manyToOne
-     *
-     * @return string 
-     */
-    public function getManyToOne()
-    {
-        return $this->manyToOne;
-    }
     /**
      * @var \LaFolleAgenceBundle\Entity\Post
      */
@@ -219,5 +217,45 @@ class Comment
     public function getPost()
     {
         return $this->post;
+    }
+    /**
+     * @var string
+     */
+    private $title;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
+
+
+    /**
+     * @var string
+     */
+    private $my_answer;
+
+    /**
+     * Set myAnswer
+     *
+     * @param string $myAnswer
+     *
+     * @return Comment
+     */
+    public function setMyAnswer($myAnswer)
+    {
+        $this->my_answer = $myAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get myAnswer
+     *
+     * @return string
+     */
+    public function getMyAnswer()
+    {
+        return $this->my_answer;
     }
 }

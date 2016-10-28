@@ -63,31 +63,6 @@ class DefaultController extends Controller
         return $this->render('front/blog.html.twig');
     }
 
-    public function articleBlogAction() {
-
-    	$Request = $this->container->get('request_stack')->getCurrentRequest();
-		if ($Request->getMethod() == "POST") {
-			//$Subject = $Request->get("Subject");
-
-			$comment = $Request->get("comment");
-			$name = $Request->get("name");
-
-
-			$mailer = $this->container->get('mailer');
-			$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
-				->setUsername('etudiants.wildcodeschool@gmail.com')
-				->setPassword('jecode4lyon');
-			$mailer = \Swift_Mailer::newInstance($transport);
-			$message = \Swift_Message::newInstance('Test')
-				->setSubject("Un nouveau commentaire sur La Folle Agence")
-				->setFrom('etudiants.wildcodeschool@gmail.com')
-				->setTo('etudiants.wildcodeschool@gmail.com')
-				->setContentType("text/html")
-				->setBody("Nom : " . $name . "<br />" . "Commentaire : " . "<br />" . $comment);
-			$this->get('mailer')->send($message);
-		}
-        return $this->render('front/article-blog.html.twig');
-    }
 
 	/**
 	 * @Route("/admin")

@@ -123,6 +123,7 @@ sonata_admin:
     templates:
             layout:       standard_layout_lafolleagence.html.twig
 
+
 services:
     twig.extension.text:
        class: Twig_Extensions_Extension_Text

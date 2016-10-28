@@ -27,7 +27,6 @@ class CategoryAdmin extends Admin
 			'expanded' => true,
 			'multiple' => true,
 			'by_reference' => true,
-
 		)) ;
     }
 
@@ -55,14 +54,11 @@ class CategoryAdmin extends Admin
 
 	}
 
-
 	public function postPersist($object){
 
 		$em = $this->modelManager->getEntityManager($object);
 
 		$em->getRepository('LaFolleAgenceBundle:Category')->AddLink($object);
-
-
 	}
 
     public function preRemove ($object) {

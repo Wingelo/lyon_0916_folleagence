@@ -37,7 +37,7 @@ class Comment
     /**
      * @var bool
      */
-    private $approved;
+    private $approved = 0;
 
 
     /**
@@ -97,6 +97,31 @@ class Comment
     }
 
     /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Comment
+     */
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date
@@ -148,7 +173,7 @@ class Comment
      * @param boolean $approved
      * @return Comment
      */
-    public function setApproved($approved)
+    public function setApproved($approved = 0)
     {
         $this->approved = $approved;
 
@@ -164,32 +189,45 @@ class Comment
     {
         return $this->approved;
     }
+
     /**
-     * @var string
+     * @var \LaFolleAgenceBundle\Entity\Post
      */
-    private $manyToOne;
+    private $post;
 
 
     /**
-     * Set manyToOne
+     * Set post
      *
-     * @param string $manyToOne
+     * @param \LaFolleAgenceBundle\Entity\Post $post
      * @return Comment
      */
-    public function setManyToOne($manyToOne)
+    public function setPost(\LaFolleAgenceBundle\Entity\Post $post = null)
     {
-        $this->manyToOne = $manyToOne;
+        $this->post = $post;
 
         return $this;
     }
 
     /**
-     * Get manyToOne
+     * Get post
      *
-     * @return string 
+     * @return \LaFolleAgenceBundle\Entity\Post 
      */
-    public function getManyToOne()
+    public function getPost()
     {
-        return $this->manyToOne;
+        return $this->post;
     }
+    /**
+     * @var string
+     */
+    private $title;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
+
+
 }
