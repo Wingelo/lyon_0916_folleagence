@@ -195,7 +195,8 @@ polygon {
 #parcourspro hr,
 #portraitchi hr,
 #references hr,
-#community-management hr
+#gestion-projet hr,
+#veille-concurrentielle hr
 {
     border-bottom: 2px solid #d01d64;
 }
@@ -474,11 +475,12 @@ figure.effect-sadie:hover p {
 }
 
 #gestion-event h2,
-#veille-concurrentielle h2 {
+#community-management h2 {
     color: #641032;
 }
 
-#community-management h2 {
+#gestion-projet h2,
+#veille-concurrentielle h2 {
     color: #d01d64;
 }
 
