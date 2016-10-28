@@ -59,6 +59,7 @@ class PostRepository extends EntityRepository
     public function getLastSixArticles ($limit) {
         $carouselArticles = $this->createQueryBuilder('la')
             ->orderBy('la.id', 'DESC')
+            ->where('la.statut = 1')
             ->setMaxResults($limit)
             ->getQuery();
         return $carouselArticles->getResult();

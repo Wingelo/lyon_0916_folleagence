@@ -49,7 +49,7 @@
                     <!-- Comments Form -->
                     <div class="well" id="commentForm">
                         <h4>Envie de réagir à cet article ? Déposez un commentaire :</h4>
-                        {{ form_start(formComment) }}
+                        {{ form_start(formComment,{'action': path('lafolleagence_article_blog',{'link': post.link})}) }}
                         {{ form_widget(formComment) }}
                         <input type="submit" value="Envoyer un commentaire" class="purple-button"/>
                         {{ form_end(formComment) }}

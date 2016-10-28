@@ -106,6 +106,8 @@ class PostController extends Controller
      */
     public function showAction(Post $post, Request $request)
     {
+
+
         $comment = new Comment();
         $comment->setPost($post);
         $formComment = $this->createFormBuilder($comment)
@@ -122,7 +124,31 @@ class PostController extends Controller
             $em->persist($comment);
             $em->flush();
 
-            return $this->redirectToRoute('lafolleagence_article_blog', array('id' => $request->get('id')));
+
+				//$Subject = $Request->get("Subject");
+
+				$name = $comment->getAuthor();
+				$emailname = $comment->getAuthorEmail();
+				$title = $comment->getTitle();
+				$commente = $comment->getContent();
+				$url = $post->getLink();
+				$article = $post->getTitle();
+				$idComment = $comment->getId();
+
+				$mailer = $this->container->get('mailer');
+				$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
+					->setUsername('etudiants.wildcodeschool@gmail.com')
+					->setPassword('jecode4lyon');
+				$mailer = \Swift_Mailer::newInstance($transport);
+				$message = \Swift_Message::newInstance('Test')
+					->setSubject("Un nouveau commentaire sur La Folle Agence")
+					->setFrom('etudiants.wildcodeschool@gmail.com')
+					->setTo('etudiants.wildcodeschool@gmail.com')
+					->setContentType("text/html")
+					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commente ."<br><br><br>". "Cordialement,");
+				$this->get('mailer')->send($message);
+
+            return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -140,6 +166,7 @@ class PostController extends Controller
             'comments'      => $comments,
             'formComment'   => $formComment->createView()
         ));
+
     }
 
     /**
