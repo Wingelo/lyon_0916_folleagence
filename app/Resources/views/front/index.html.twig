@@ -122,7 +122,7 @@
                                             <blockquote>
                                                 <div class="row">
                                                     <div class="col-sm-8 col-sm-offset-2">
-                                                        <a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}">
+                                                        <a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">
                                                             <p>{{ post.content|striptags|truncate(300)|raw }}</p>
                                                             <small>{{ post.title }}</small>
                                                         </a>
@@ -135,6 +135,7 @@
                             <!-- Carousel Buttons Next/Prev -->
                             <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
                             <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
 

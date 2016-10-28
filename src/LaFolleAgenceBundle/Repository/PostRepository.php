@@ -51,10 +51,11 @@ class PostRepository extends EntityRepository
             $offset = 0;
         }
         $query = $this->createQueryBuilder('p')
-            //->select('post', 'p')
-            ->join('category', 'c')
+            ->innerJoin('p.categorys', 'c')
             ->where('c.id = ?1')
+            ->orderBy('p.publicationDate', 'DESC')
             ->setParameter(1, $category->getId())
+            ->andWhere('p.statut = 1')
             ->setFirstResult($offset)
             ->setMaxResults($itemPerPage)
         ;
@@ -64,6 +65,7 @@ class PostRepository extends EntityRepository
     public function getLastSixArticles ($limit) {
         $carouselArticles = $this->createQueryBuilder('la')
             ->orderBy('la.id', 'DESC')
+            ->where('la.statut = 1')
             ->setMaxResults($limit)
             ->getQuery();
         return $carouselArticles->getResult();
@@ -78,32 +80,6 @@ class PostRepository extends EntityRepository
         return new Paginator($query);
     }
 
-
-    public function getPrecedent(Post $post)
-    {
-        $publicationDate = $post->getPublicationDate()->format('m-d-Y');
-        $query = $this->createQueryBuilder('p')
-            ->orderBy('p.publicationDate', 'DESC')
-            ->where('p.statut = 1')
-            ->setMaxResults(1)
-            ->andWhere("p.publicationDate < $publicationDate")
-            ->getQuery();
-
-        return $query->getResult();
-    }
-
-    public function getSuivant(Post $post)
-    {
-        $publicationDate = $post->getPublicationDate()->format('m-d-Y');
-        $query = $this->createQueryBuilder('p')
-            ->orderBy('p.publicationDate', 'ASC')
-            ->where('p.statut = 1')
-            ->setMaxResults(1)
-            ->andWhere("p.publicationDate > $publicationDate")
-            ->getQuery();
-
-        return $query->getResult();
-    }
 
     public function getComments() {
         $comments = $this->createQueryBuilder('co')

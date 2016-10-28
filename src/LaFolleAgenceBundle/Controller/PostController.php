@@ -49,32 +49,6 @@ class PostController extends Controller
         ));
 
     }
-
-   /* public function filterIndexAction($category, $page = 1)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
-        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
-        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
-
-        $total = count($post);
-        $maxPage = (int)($total / PostRepository::MAX_RESULT);
-        if (($total % PostRepository::MAX_RESULT) !== 0) {
-            $maxPage++;
-        }
-        return $this->render('front/article-categorie.html.twig', array(
-
-            'maxPage'       => $maxPage,
-            'post'          => $post,
-            'page'          => $page,
-            'archive'       => $archive,
-            'categories'    => $categories
-
-        ));
-
-    }*/
-
     /**
      * Creates a new Post entity.
      *
@@ -126,8 +100,6 @@ class PostController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
-        $postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
         $comments = $post->getComments();
@@ -135,8 +107,6 @@ class PostController extends Controller
             'post'          => $post,
             'archive'       => $archive,
             'categories'    => $categories,
-            'postPrecedent' => $postPrecedent,
-            'postSuivant'   => $postSuivant,
             'comments'      => $comments,
             'formComment'   => $formComment->createView()
         ));

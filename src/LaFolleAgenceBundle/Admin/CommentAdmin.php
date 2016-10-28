@@ -16,20 +16,14 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class CommentAdmin extends Admin
 {
 
-    // Fields to be shown on filter forms
-    /*protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('author')
-            ->add('authorEmail')
-        ;
-    }*/
 
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('author')
+            ->add('author', null, array(
+                'label' => 'Auteur'
+            ))
             ->add('authorEmail')
             ->addIdentifier('content')
             ->add('date')

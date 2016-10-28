@@ -38,9 +38,9 @@ class CategoryController extends Controller
             $maxPage++;
         }
         return $this->render('front/article-categorie.html.twig', array(
-
+            'category'      => $category,
             'maxPage'       => $maxPage,
-            'posts'          => $posts,
+            'posts'         => $posts,
             'page'          => $page,
             'archive'       => $archive,
             'categories'    => $categories
@@ -49,9 +49,6 @@ class CategoryController extends Controller
 
     }
 
-	//public function __construct() {
-
-	//}
     /**
      * Lists all Category entities.
      *

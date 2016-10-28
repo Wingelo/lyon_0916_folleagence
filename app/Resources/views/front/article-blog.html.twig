@@ -26,25 +26,9 @@
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span>{{ post.publicationDate|date }}</p>
 
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
                 <!-- Post Content -->
                 <p class="lead">{{ post.content|raw }}</p>
 
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="previous">
-
-                        <a href="">Titre article précédent</a>
-
-                    </li>
-                    <li class="next">
-
-                        <a href="">Titre article suivant</a>
-
-                    </li>
-                </ul>
                 <!-- Blog Comments -->
                 {% if post.openComment %}
                     <!-- Comments Form -->
@@ -95,7 +79,7 @@
                      <div class="col-lg-12">
                          <ul class="list-unstyled">
                              <li>
-                                 <a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
+                                 <a href="{{ path('lafolleagence_category_blog',{'id': category.id }) }}">{{ category.categoryName }}</a>
                              </li>
                          </ul>
                      </div>

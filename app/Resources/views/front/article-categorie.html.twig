@@ -21,15 +21,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-1">
+
                     <h1 class="page-header">
-                        Page Heading |
-                        <small>Secondary Text</small>
+                        {{ category.categoryName }}
                     </h1>
 
-                    {%  for category in categories %}
-
+                    {% for post in posts %}
                         <h2>
-                            <a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
+                            <a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}" class="liencouleur">{{ post.title}}</a>
                         </h2>
 
                         <hr>
@@ -37,10 +36,8 @@
 
                         {{ post.content|striptags|truncate(400)|raw }}
                         <p></p>
-                        <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'id': post.id }) }}">Lire la suite <span
+                        <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'link': post.link }) }}">Lire la suite <span
                                     class="glyphicon glyphicon-chevron-right"></span></a>
-
-
                     {% endfor %}
 
                     <!-- Pager -->
@@ -48,14 +45,14 @@
                     <ul class="pager">
                         <li class="previous">
                             {% if page > 1 %}
-                                <a href="{{ path('lafolleagence_blog', {'page': page - 1}) }}">
+                                <a href="{{ path('lafolleagence_category_blog',{'id' : category.id , 'page': page - 1}) }}">
                                     Plus récent
                                 </a>
                             {% endif %}
                         </li>
                         <li class="next">
                             {% if page < maxPage %}
-                                <a href="{{ path('lafolleagence_blog', {'page': page + 1}) }}">
+                                <a href="{{ path('lafolleagence_category_blog',{'id' : category.id , 'page': page + 1}) }}">
                                     Plus ancien
                                 </a>
                             {% endif %}
@@ -73,9 +70,9 @@
                         <h4>Catégories</h4>
                         <div class="row">
                             {% for category in categories %}
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <ul class="list-unstyled">
-                                        <li><a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
+                                        <li><a href="{{ path('lafolleagence_category_blog',{'id': category.id }) }}">{{ category.categoryName }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -102,7 +99,7 @@
                             {#the current post year become the test year#}
                             {% set year = post.publicationDate|date('Y') %}
                             {% endif %}
-                            <li><a href="{{ path('lafolleagence_article_blog',{ 'id': post.id }) }}" class="liencouleur">{{ post.title}}</a>
+                            <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}" class="liencouleur">{{ post.title}}</a>
                             </li>
                             {% endfor %}
                         </ul>

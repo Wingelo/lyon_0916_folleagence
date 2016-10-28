@@ -18,6 +18,3 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-login:
-    path:     /login
-    defaults: { _controller: LaFolleAgenceBundle:Security:login }
