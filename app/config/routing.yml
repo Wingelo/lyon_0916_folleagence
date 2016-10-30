@@ -14,6 +14,7 @@ login:
 logout:
     path: /admin/logout
 
+
 la_folle_agence:
     resource: "@LaFolleAgenceBundle/Resources/config/routing.yml"
     prefix:   /
