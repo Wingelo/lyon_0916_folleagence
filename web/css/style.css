@@ -62,14 +62,8 @@ hr {
     text-decoration: none;
 }
 
-.btn-primary {
-    background-color: #641032;
-    border:none;
-}
-
-
 .pink-button {
-    background-color: #d01d64;;
+    background-color: #d01d64;
 }
 
 .purple-button:hover,
@@ -79,6 +73,15 @@ hr {
 
 .pink-button:hover {
     background-color: #641032;
+}
+.btn-primary {
+    background-color: #641032;
+    border:none;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    background-color: #d01d64;
 }
 
 /*Polygon triangle white sections*/
@@ -97,6 +100,10 @@ polygon {
 }
 
 .liencouleur:hover {
+    color: #641032;
+}
+
+.liencouleur:focus {
     color: #641032;
 }
 
@@ -429,7 +436,8 @@ figure.effect-sadie:hover p {
 #prestation-header,
 #contact-header,
 #references-header,
-#blog-header{
+#blog-header,
+#blog-article-header {
     background-image: url("../images/la-folle-agence-a-propos-infos.jpg");
     background-attachment: fixed;
     background-size: cover;
@@ -590,7 +598,8 @@ figure.effect-sadie:hover p {
 /* PAGE BLOG GLOBALE */
 /*-------------------*/
 
-#blog-header {
+#blog-header,
+#blog-article-header {
     background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
 }
 
@@ -631,9 +640,13 @@ h3.panel-title {
     font-weight: 500;
 }
 
-    /*----------------------*/
+/*----------------------*/
 /* PAGE ARTICLE DE BLOG */
 /*----------------------*/
+
+#blog-article-header {
+    height: 50vh;
+}
 
 .media {
     margin-bottom: 15px;
@@ -656,16 +669,19 @@ ul.pager li a:hover{
 }
 
 ul.list-unstyled li a {
-	color: #641032;
+	color: #d01d64;
 	text-decoration: none;
 }
 
 ul.list-unstyled li a:hover {
-	color:  #641032;
+	color: #641032;
 }
 
 .blogtitre {
 	color:  #641032;
+    margin-top: 55px;
+    font-family: 'Bad Script', cursive;
+    font-size: 1.8em;
 }
 
 #commentForm {
