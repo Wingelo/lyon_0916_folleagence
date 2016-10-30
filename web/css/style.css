@@ -533,9 +533,14 @@ figure.effect-sadie:hover p {
 
 #gestion-event h3,
 #community-management h3,
-#veille-concurrentielle h3 {
-    text-align: left;
+#veille-concurrentielle h3,
+#gestion-projet h3 {
     font-weight: 500;
+    text-align: justify;
+}
+
+#community-management h3 {
+    margin-top: 0;
 }
 
 #gestion-event img,
