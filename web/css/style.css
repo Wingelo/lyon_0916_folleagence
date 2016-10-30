@@ -193,7 +193,9 @@ polygon {
 }
 
 /*BANDEAU 2 | PRESTATIONS PROPOSEES*/
-#services h2 {
+#services h2,
+#parcourspro h2,
+#references h2{
     color: #d01d64;
 }
 
@@ -471,9 +473,6 @@ figure.effect-sadie:hover p {
     margin-bottom: 25px;
 }
 
-#parcourspro h2 {
-    color: #d01d64;
-}
 
 #parcoursetu h2 {
     color: #641032;
@@ -568,19 +567,16 @@ figure.effect-sadie:hover p {
 	text-align: center;
 }
 
-.image_projet {
-	display: block;
-	width:200px;
-	margin: auto;
+#museomix img,
+#blendWebMix img {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.fond_proj {
-	background-color:#e6e6e6 ;
-	padding-bottom: 50px;
-}
-
-.fond_proj h2 {
-	color: #d01d64;
+#museomix h4,
+#blendWebMix h4 {
+    margin: 25px 0 20px 0 ;
 }
 
 /*-------------------*/
@@ -621,7 +617,12 @@ h1.page-header {
 	border-color: white;
 }
 
-/*----------------------*/
+h3.panel-title {
+    text-align: left;
+    font-size: 1.2em;
+}
+
+    /*----------------------*/
 /* PAGE ARTICLE DE BLOG */
 /*----------------------*/
 
