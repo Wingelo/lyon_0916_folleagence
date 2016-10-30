@@ -32,7 +32,6 @@
 
                     <hr>
                     <p><span class="glyphicon glyphicon-time"></span> {{ post.publicationDate|date }}</p>
-                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                         {{ post.content|striptags|truncate(400)|raw }}
                     <p></p>
                     <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'link': post.link }) }}">Lire la suite <span
@@ -84,7 +83,7 @@
 
 
                     <!-- Side Widget Well -->
-                    <div class="well">
+                    <div class="well" id="archives">
                         <h4>Archives</h4>
                         {#Init var year#}
                         {% set year = '9999' %}
@@ -96,11 +95,11 @@
                             {% if year != '9999' %}
                                 </ul>
                             {% endif %}
-                        <ul class="list-unstyled"> {{ post.publicationDate|date('Y') }}
-                            {#the current post year become the test year#}
+                        <ul class="list-unstyled">
+                            <p>{{ post.publicationDate|date('Y') }}</p>
                             {% set year = post.publicationDate|date('Y') %}
                         {% endif %}
-                            <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}" class="liencouleur">{{ post.title}}</a>
+                            <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">{{ post.title}}</a>
                             </li>
                         {% endfor %}
                         </ul>

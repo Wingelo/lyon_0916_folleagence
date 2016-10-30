@@ -119,8 +119,7 @@
                         {#the current post year become the test year#}
                         {% set year = post.publicationDate|date('Y') %}
                         {% endif %}
-                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}"
-                               class="liencouleur">{{ post.title }}</a>
+                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">{{ post.title }}</a>
                         </li>
                         {% endfor %}
                     </ul>

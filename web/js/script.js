@@ -13,9 +13,9 @@ $(document).ready(function() {
     //Scroll top button appearing after px
     $(function(){
         $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-            if ($(this).scrollTop() > 500) { //si on a défilé de plus de 600px du haut vers le bas
+            if ($(this).scrollTop() > 300) { //si on a défilé de plus de 600px du haut vers le bas
                 $('#scroll-top-button').fadeIn().removeClass('hidden');
-            }else if ($(this).scrollTop() < 500){
+            }else if ($(this).scrollTop() < 300){
                 $('#scroll-top-button').fadeOut();
             }
         });
