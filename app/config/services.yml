@@ -12,19 +12,19 @@ services:
             class: LaFolleAgenceBundle\Admin\CategoryAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Catégories }
+                - { name: sonata.admin, manager_type: orm, group: Gestion des catégories, label: Catégories }
 
     admin.blog_post:
             class: LaFolleAgenceBundle\Admin\PostAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Articles }
+                - { name: sonata.admin, manager_type: orm, group: Blog, label: Articles }
 
 
     admin.comment:
             class: LaFolleAgenceBundle\Admin\CommentAdmin
             arguments: [~, LaFolleAgenceBundle\Entity\Comment, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Commentaires }
+                - { name: sonata.admin, manager_type: orm, group: Modération des commentaires, label: Commentaires }
 
 
