@@ -1,15 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-arrow.html.twig' %}
 
 {% block title %}La Folle Agence | Blog {% endblock %}
 {% block body %}
     <!-- Entête du site -->
-    <section class="container-fluid" id="blog-article-header">
-        <div class="row">
-            <div class="col-xs-12 col-md-10 col-md-offset-1">
-                <h1>Que vous propose <span id="prestation-pink-title">La Folle Agence</span> ?</h1>
-            </div>
-        </div>
-    </section>
+    <section class="container-fluid scrolling" id="blog-article-header"></section>
+
+    <!-- Bandeau de couleur -->
+    <section class="bandeau container-fluid"></section>
 
     <!-- Page Content -->
     <section id="article-content" class="white">
@@ -34,7 +31,7 @@
                     <!-- Comments Form -->
                     <div class="well" id="commentForm">
                         <h4>Envie de réagir à cet article ? Déposez un commentaire :</h4>
-                        {{ form_start(formComment) }}
+                        {{ form_start(formComment,{'action': path('lafolleagence_article_blog',{'link': post.link})}) }}
                         {{ form_widget(formComment) }}
                         <input type="submit" value="Envoyer un commentaire" class="purple-button"/>
                         {{ form_end(formComment) }}
@@ -105,12 +102,10 @@
                         {#the current post year become the test year#}
                         {% set year = post.publicationDate|date('Y') %}
                         {% endif %}
-                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}"
-                               class="liencouleur">{{ post.title }}</a>
+                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">{{ post.title }}</a>
                         </li>
                         {% endfor %}
                     </ul>
-
                 </div>
 
             </div>

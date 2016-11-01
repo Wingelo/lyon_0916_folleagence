@@ -25,10 +25,18 @@ class CommentAdmin extends Admin
             ->add('author', null, array(
                 'label' => 'Auteur'
             ))
-            ->add('authorEmail')
-            ->addIdentifier('content')
-            ->add('date')
-            ->addIdentifier('approved')
+            ->add('authorEmail', null, array(
+                'label' => 'E-mail'
+            ))
+            ->addIdentifier('content', null, array(
+                'label' => 'Message'
+            ))
+            ->add('date', null, array(
+                'label' => 'Date de publication'
+            ))
+            ->addIdentifier('approved', null, array(
+                'label' => 'Approuver'
+            ))
         ;
     }
 

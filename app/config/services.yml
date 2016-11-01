@@ -28,3 +28,4 @@ services:
                 - { name: sonata.admin, manager_type: orm, group: Modération des commentaires, label: Commentaires }
 
 
+
