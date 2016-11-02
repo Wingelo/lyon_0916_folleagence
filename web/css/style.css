@@ -387,7 +387,7 @@ figure.effect-sadie:hover p {
 
 #quote-carousel {
     padding: 0 10px 30px 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #quote-carousel .carousel-control {
@@ -408,6 +408,10 @@ figure.effect-sadie:hover p {
 
 .carousel-inner {
     min-height: 175px;
+}
+
+.carousel-inner a p{
+    font-weight: 300;
 }
 
 .carouselIndex a{
