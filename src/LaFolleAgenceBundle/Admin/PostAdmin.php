@@ -75,19 +75,5 @@ class PostAdmin extends Admin
 				  ))
 			  ;
 	  }
-
-	  public function preUpdate($object){
-
-		  $em = $this->modelManager->getEntityManager($object);
-		  $em = $this->getModelManager()->getEntityManager($this->getClass());
-		  $original = $em->getUnitOfWork()->
-		  $em->getRepository('LaFolleAgenceBundle:Post')->slugTest($object);
-
-	  }
-
-	  public function prePersist($object){
-
-		  $this->preUpdate($object);
-	  }
 }
 
