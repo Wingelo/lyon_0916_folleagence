@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <!--FONTS-->
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+        <script src="https://use.fontawesome.com/d97479808e.js"></script>
+        <!--CSS BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!--OUR CSS-->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/nav.css') }}">
+        <title>{% block title %}La Folle Agence{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block scroll_arrow %}{% endblock %}
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menubuilder" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <img alt="La Folle Agence | Votre communication digitale autrement" src="{{ asset('images/logo-lafolleagence-web.png') }}">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-right" id="navbar-menubuilder">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ path('lafolleagence_a-propos') }}">A propos</a></li>
+                            <li><a href="{{ path('lafolleagence_prestations') }}">Prestations</a></li>
+                            <li><a href="{{ path('lafolleagence_references_et_projets') }}">Références & Projets</a></li>
+                            <li><a href="{{ path('lafolleagence_blog') }}">Blog</a></li>
+                            <li><a href="{{ path('lafolleagence_contact') }}">Contact</a></li>
+                        </ul>
+
+                        <!-- social media icons -->
+                        <ul class="nav navbar-nav social-icons">
+                            <li class="social-media"><a href="https://fr-fr.facebook.com/LaFolleAgence/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="social-media"><a href="https://twitter.com/lafolleagence/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="social-media"><a href="https://www.instagram.com/lafolleagence/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li class="social-media"><a href="https://plus.google.com/+Lafolleagence"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li class="social-media"><a href="http://www.justine-remaudiere.com/"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div><!-- End collapse navbar-->
+                </div><!-- End container -->
+            </div><!-- End container fluid-->
+        </nav><!-- End navbar-->
+
+        {% block body %}<div class="col-xs-2 col-xs-offset-9 col-sm-1 col-sm-offset-11" id="scroll-top-button">
+            <a href="#header-index" id="scroll-top-arrow">
+                <img src="../public/images/scroll-down-la-folle-agence-lyon.png" alt="Remontez en haut de la page d'accueil">
+            </a>
+        </div>{% endblock %}
+
+    <footer>
+        <section id="first-footer-part" class="container-fluid">
+            <div class="container">
+                <div class="col-md-2 col-xs-12 row">
+                    <a href="/"><img id="logo-footer" src="{{ asset('images/logo-lafolleagence-web.png') }}" alt="La Folle Agence | Votre communication digitale autrement"/></a>
+                </div>
+
+                <ul class="col-xs-12 col-md-2 col-md-offset-1" id="hook-footer">
+                    <li><a href="{{ path('lafolleagence_prestations') }}">Prestations</a></li>
+                    <li><a href="{{ path('lafolleagence_blog') }}">Visitez notre blog</a></li>
+                    <li><a href="{{ path('lafolleagence_contact') }}">Contact</a></li>
+                </ul>
+
+                <!-- social media icons -->
+                <div class="col-xs-12 col-md-2 col-md-offset-5 align-right" id="social-bar">
+                    <p>Suivez-nous :</p>
+                    <ul class="social-icons" id="social-footer">
+                        <li class="social-media"><a href="https://fr-fr.facebook.com/LaFolleAgence/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li class="social-media"><a href="https://twitter.com/lafolleagence/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="social-media"><a href="https://www.instagram.com/lafolleagence/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="social-media"><a href="https://plus.google.com/+Lafolleagence"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li class="social-media"><a href="http://www.justine-remaudiere.com/"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div><!-- End container -->
+        </section>
+
+
+        <section id="second-footer-part" class="container-fluid">
+            <div class="col-xs-12 col-md-6 col-md-offset-3" id="copyright">
+                <p class="footer-copy">Copyright La Folle Agence | 2016</p>
+                <a href="{{ path('lafolleagence_mentionslegales') }}">Mentions légales</a>
+            </div>
+        </section>
+    </footer>
+        <!-- Import JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Our script -->
+        <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

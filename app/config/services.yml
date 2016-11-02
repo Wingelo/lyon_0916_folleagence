@@ -1,0 +1,31 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    admin.category:
+            class: LaFolleAgenceBundle\Admin\CategoryAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Category, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: Gestion des catégories, label: Catégories }
+
+    admin.blog_post:
+            class: LaFolleAgenceBundle\Admin\PostAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Post, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: Blog, label: Articles }
+
+
+    admin.comment:
+            class: LaFolleAgenceBundle\Admin\CommentAdmin
+            arguments: [~, LaFolleAgenceBundle\Entity\Comment, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: Modération des commentaires, label: Commentaires }
+
+
+

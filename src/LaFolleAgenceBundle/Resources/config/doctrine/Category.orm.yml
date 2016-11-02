@@ -1,0 +1,23 @@
+LaFolleAgenceBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: LaFolleAgenceBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        categoryName:
+            type: string
+            length: '30'
+            unique: true
+            column: category_name
+
+    manyToMany:
+        posts:
+          targetEntity: Post
+          mappedBy: categorys
+
+    lifecycleCallbacks: {  }

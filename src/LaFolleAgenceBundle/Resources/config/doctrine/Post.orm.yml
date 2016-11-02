@@ -1,0 +1,47 @@
+LaFolleAgenceBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: LaFolleAgenceBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        link:
+            type: string
+            length: 255
+        publicationDate:
+            type: datetime
+            column: publication_date
+        content:
+            type: text
+        openComment:
+            type: boolean
+            column: open_comment
+        statut:
+            type: boolean
+
+    oneToMany:
+        comments:
+            targetEntity: Comment
+            mappedBy: post
+
+    manyToMany:
+        categorys:
+            targetEntity: Category
+            inversedBy: posts
+            joinTable:
+                name: posts_categorys
+                joinColumns:
+                    post_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    category_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }
