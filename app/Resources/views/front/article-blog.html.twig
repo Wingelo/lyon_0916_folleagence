@@ -1,15 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-arrow.html.twig' %}
 
 {% block title %}La Folle Agence | Blog {% endblock %}
 {% block body %}
     <!-- Entête du site -->
-    <section class="container-fluid" id="blog-article-header">
-        <div class="row">
-            <div class="col-xs-12 col-md-10 col-md-offset-1">
-                <h1>Que vous propose <span id="prestation-pink-title">La Folle Agence</span> ?</h1>
-            </div>
-        </div>
-    </section>
+    <section class="container-fluid scrolling" id="blog-article-header"></section>
+
+    <!-- Bandeau de couleur -->
+    <section class="bandeau container-fluid"></section>
 
     <!-- Page Content -->
     <section id="article-content" class="white">
@@ -29,20 +26,6 @@
                 <!-- Post Content -->
                 <p class="lead">{{ post.content|raw }}</p>
 
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="previous">
-
-                        <a href="">Titre article précédent</a>
-
-                    </li>
-                    <li class="next">
-
-                        <a href="">Titre article suivant</a>
-
-                    </li>
-                </ul>
-
                 <hr>
                 <!-- Blog Comments -->
                 {% if post.openComment %}
@@ -51,6 +34,7 @@
                         <h4>Envie de réagir à cet article ? Déposez un commentaire :</h4>
                         {{ form_start(formComment,{'action': path('lafolleagence_article_blog',{'link': post.link})}) }}
                         {{ form_widget(formComment) }}
+                        <div class="g-recaptcha" data-sitekey="6LfVgwoUAAAAAPJn0bHIfrjBGkvdyicKOdyks-zt"></div>
                         <input type="submit" value="Envoyer un commentaire" class="purple-button"/>
                         {{ form_end(formComment) }}
                     </div>
@@ -58,9 +42,9 @@
                     <!-- Posted Comments -->
                     <!-- Comment -->
                     <section id="comment-zone">
-                        <h4>Ils ont commenté cette publication :</h4>
                         {% for comment in comments %}
                             {% if comment.approved %}
+                                <h4>Ils ont commenté cette publication :</h4>
                                 <div class="media">
                                     <div class="media-body">
                                         <h5 class="media-heading">{{ comment.title }}
@@ -82,8 +66,9 @@
                 {% endif %}
             </div>
 
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-3 blog-cat">
+
+     <!-- Blog Sidebar Widgets Column -->
+     <div class="col-md-3 blog-cat">
 
                 <!-- Blog Categories Well -->
                 <div class="well">
@@ -119,8 +104,7 @@
                         {#the current post year become the test year#}
                         {% set year = post.publicationDate|date('Y') %}
                         {% endif %}
-                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}"
-                               class="liencouleur">{{ post.title }}</a>
+                        <li><a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">{{ post.title }}</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -131,4 +115,7 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
     </section>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
+

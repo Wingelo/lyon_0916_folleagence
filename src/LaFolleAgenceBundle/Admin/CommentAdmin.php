@@ -17,29 +17,26 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class CommentAdmin extends Admin
 {
 
-	protected function configureRoutes(RouteCollection $collection)
-    {
-		$collection->remove('create');
-	}
-
-	// Fields to be shown on filter forms
-    /*protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('author')
-            ->add('authorEmail')
-        ;
-    }*/
 
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('author')
-            ->add('authorEmail')
-            ->addIdentifier('content')
-            ->add('date')
-            ->addIdentifier('approved')
+            ->add('author', null, array(
+                'label' => 'Auteur'
+            ))
+            ->add('authorEmail', null, array(
+                'label' => 'E-mail'
+            ))
+            ->addIdentifier('content', null, array(
+                'label' => 'Message'
+            ))
+            ->add('date', null, array(
+                'label' => 'Date de publication'
+            ))
+            ->addIdentifier('approved', null, array(
+                'label' => 'Approuver'
+            ))
         ;
     }
 
@@ -62,4 +59,11 @@ class CommentAdmin extends Admin
                     'label' => 'Répondre à ce commentaire'
             ));
     }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('create');
+    }
+
 }
+

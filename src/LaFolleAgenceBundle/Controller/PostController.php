@@ -84,14 +84,13 @@ class PostController extends Controller
     public function showAction(Post $post, Request $request)
     {
 
-
         $comment = new Comment();
         $comment->setPost($post);
         $formComment = $this->createFormBuilder($comment)
-            ->add('author', TextType::class)
-            ->add('authorEmail', TextType::class)
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('author', TextType::class, array('label' => 'Prénom et Nom'))
+            ->add('authorEmail', TextType::class, array('label' => 'E-mail'))
+            ->add('title', TextType::class, array('label' => 'Titre du commentaire'))
+            ->add('content', TextareaType::class, array('label' => 'Message'))
             ->getForm();
 
         $formComment->handleRequest($request);
@@ -107,7 +106,7 @@ class PostController extends Controller
 				$name = $comment->getAuthor();
 				$emailname = $comment->getAuthorEmail();
 				$title = $comment->getTitle();
-				$commente = $comment->getContent();
+				$commentContent = $comment->getContent();
 				$url = $post->getLink();
 				$article = $post->getTitle();
 				$idComment = $comment->getId();
@@ -122,15 +121,13 @@ class PostController extends Controller
 					->setFrom('etudiants.wildcodeschool@gmail.com')
 					->setTo('etudiants.wildcodeschool@gmail.com')
 					->setContentType("text/html")
-					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commente ."<br><br><br>". "Cordialement,");
+					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commentContent ."<br><br><br>". "Cordialement,");
 				$this->get('mailer')->send($message);
 
             return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
         }
 
         $em = $this->getDoctrine()->getManager();
-        //$postPrecedent = $em->getRepository('LaFolleAgenceBundle:Post')->getPrecedent($post);
-        //$postSuivant = $em->getRepository('LaFolleAgenceBundle:Post')->getSuivant($post);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
         $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
         $comments = $post->getComments();
@@ -138,8 +135,6 @@ class PostController extends Controller
             'post'          => $post,
             'archive'       => $archive,
             'categories'    => $categories,
-            //'postPrecedent' => $postPrecedent,
-            //'postSuivant'   => $postSuivant,
             'comments'      => $comments,
             'formComment'   => $formComment->createView()
         ));

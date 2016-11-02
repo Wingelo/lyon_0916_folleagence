@@ -40,6 +40,22 @@ hr {
     border-bottom: 2px solid #641032;
 }
 
+a {
+    color: #641032;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d01d64;
+    text-decoration: none;
+}
+
+a:focus {
+    color: #d01d64;
+    text-decoration: none;
+}
+
 .bold {
     font-weight: 500;
 }
@@ -62,14 +78,8 @@ hr {
     text-decoration: none;
 }
 
-.btn-primary {
-    background-color: #641032;
-    border:none;
-}
-
-
 .pink-button {
-    background-color: #d01d64;;
+    background-color: #d01d64;
 }
 
 .purple-button:hover,
@@ -80,6 +90,15 @@ hr {
 .pink-button:hover {
     background-color: #641032;
 }
+.btn-primary {
+    background-color: #641032;
+    border:none;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    background-color: #d01d64;
+}
 
 /*Polygon triangle white sections*/
 .triangle-down {
@@ -89,15 +108,6 @@ hr {
 
 polygon {
     stroke:#ffffff;
-}
-
-.liencouleur {
-    color: #641032;
-    font-weight: 500;
-}
-
-.liencouleur:hover {
-    color: #641032;
 }
 
 .grey {
@@ -115,6 +125,12 @@ polygon {
 /*Scroll top arrow button*/
 #scroll-top-button {
     z-index: 999;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
 }
 
 #scroll-top-arrow {
@@ -187,7 +203,9 @@ polygon {
 }
 
 /*BANDEAU 2 | PRESTATIONS PROPOSEES*/
-#services h2 {
+#services h2,
+#parcourspro h2,
+#references h2{
     color: #d01d64;
 }
 
@@ -369,7 +387,7 @@ figure.effect-sadie:hover p {
 
 #quote-carousel {
     padding: 0 10px 30px 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #quote-carousel .carousel-control {
@@ -389,7 +407,11 @@ figure.effect-sadie:hover p {
 }
 
 .carousel-inner {
-    min-height: 300px;
+    min-height: 175px;
+}
+
+.carousel-inner a p{
+    font-weight: 300;
 }
 
 .carouselIndex a{
@@ -409,10 +431,6 @@ figure.effect-sadie:hover p {
     margin-right: 10px;
 }
 
-.carousel-inner {
-    min-height: 100%;
-}
-
 /*---------------*/
 /* PAGE A PROPOS */
 /*---------------*/
@@ -421,7 +439,8 @@ figure.effect-sadie:hover p {
 #prestation-header,
 #contact-header,
 #references-header,
-#blog-header{
+#blog-header,
+#blog-article-header {
     background-image: url("../images/la-folle-agence-a-propos-infos.jpg");
     background-attachment: fixed;
     background-size: cover;
@@ -457,20 +476,52 @@ figure.effect-sadie:hover p {
     color: #641032;
 }
 
-#a_propos-text {
-
+#a_propospres img {
+    width: 100%;
+    display: block;
 }
 
-#parcourspro h2 {
-    color: #d01d64;
+#a_propos-text p:nth-child(3){
+    margin-bottom: 25px;
 }
+
 
 #parcoursetu h2 {
     color: #641032;
 }
 
+#parcoursetu h3 {
+    font-size: 1.3em;
+}
+
 #portraitchi h2 {
     color: #d01d64;
+}
+
+#portraitchi h3 {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.portraitchi-ans p {
+    text-align: center;
+    margin:0;
+}
+
+#portraitchi p span {
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+}
+
+#portraitchi img {
+    display: block;
+    width: 100%;
+}
+
+.portraitchi-ans {
+    padding: 15px 0 0 0;
 }
 
 /*------------------*/
@@ -493,9 +544,14 @@ figure.effect-sadie:hover p {
 
 #gestion-event h3,
 #community-management h3,
-#veille-concurrentielle h3 {
-    text-align: left;
+#veille-concurrentielle h3,
+#gestion-projet h3 {
     font-weight: 500;
+    text-align: justify;
+}
+
+#community-management h3 {
+    margin-top: 0;
 }
 
 #gestion-event img,
@@ -509,7 +565,7 @@ figure.effect-sadie:hover p {
 /*----------------------------*/
 
 #references-header {
-    background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
+    background-image: url("../images/ecriture-blog-la-folle-agence.jpg");
 }
 
 #references-pro h2 {
@@ -529,31 +585,30 @@ figure.effect-sadie:hover p {
 	text-align: center;
 }
 
-.image_projet {
-	display: block;
-	width:200px;
-	margin: auto;
+#museomix img,
+#blendWebMix img {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.fond_proj {
-	background-color:#e6e6e6 ;
-	padding-bottom: 50px;
-}
-
-.fond_proj h2 {
-	color: #d01d64;
+#museomix h4,
+#blendWebMix h4 {
+    margin: 25px 0 20px 0 ;
 }
 
 /*-------------------*/
 /* PAGE BLOG GLOBALE */
 /*-------------------*/
 
-#blog-header {
-    background-image: url("../images/ecriture-blog-la-folle-agence.jpg");
+#blog-header,
+#blog-article-header {
+    background-image: url("../images/la-folle-agence-references-projets-participation.jpg");
 }
 
 h1.page-header {
     color: #333333;
+    border:none;
 }
 
 .blog-cat {
@@ -563,28 +618,38 @@ h1.page-header {
 .panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
 	color: #641032;
 }
-.color-pink > a, .panel-title > small, .panel-title > small > a
-{
+.color-pink > a, .panel-title > small, .panel-title > small > a {
 	color : #d01d64;
 }
 
-.panel-default > .panel-heading
-{
+.panel-default > .panel-heading {
 	background-color: #e6e6e6;
 }
-.panel-projects > .panel-heading
-{
+.panel-projects > .panel-heading {
 	background-color: white;
 }
 
-.panel-projects > .panel-heading + .panel-collapse > .panel-body{
+.panel-projects > .panel-heading + .panel-collapse > .panel-body {
 	background-color: #e6e6e6;
 	border-color: white;
+}
+
+h3.panel-title {
+    text-align: left;
+    font-size: 1.2em;
+}
+
+#archives p {
+    font-weight: 500;
 }
 
 /*----------------------*/
 /* PAGE ARTICLE DE BLOG */
 /*----------------------*/
+
+#blog-article-header {
+    height: 50vh;
+}
 
 .media {
     margin-bottom: 15px;
@@ -599,8 +664,9 @@ ul.pager li a:hover{
 }
 
 .well {
-	background-color: #e6e6e6;
+	background-color: #ffffff;
     border:none;
+    border-left:1px solid #e6e6e6;
     box-shadow: none;
     border-radius: 0px;
 }
@@ -608,18 +674,23 @@ ul.pager li a:hover{
 ul.list-unstyled li a {
 	color: #d01d64;
 	text-decoration: none;
+    font-weight: 300;
 }
 
 ul.list-unstyled li a:hover {
-	color:  #641032;
+	color: #641032;
 }
 
 .blogtitre {
 	color:  #641032;
+    margin-top: 55px;
+    font-family: 'Bad Script', cursive;
+    font-size: 1.8em;
 }
 
 #commentForm {
     margin-bottom: 30px;
+    clear: both;
 }
 
 #commentForm h4 {
@@ -630,6 +701,18 @@ ul.list-unstyled li a:hover {
     font-size: 1em;
     font-weight: 300;
     margin-right: 15px;
+    margin-top:10px;
+}
+
+#commentForm input {
+    display: block;
+    width: 50%;
+}
+
+#commentForm textarea{
+    width:100%;
+    display: block;
+    margin-bottom:15px;
 }
 
 .commentAnswer {

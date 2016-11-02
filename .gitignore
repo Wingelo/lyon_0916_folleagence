@@ -12,4 +12,5 @@
 /composer.phar
 /.idea
 *.php~
-/wp_content/
+/wp_content/uploads/
+

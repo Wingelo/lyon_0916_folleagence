@@ -13,13 +13,10 @@ $(document).ready(function() {
     //Scroll top button appearing after px
     $(function(){
         $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-            if ($(this).scrollTop() > 500) { //si on a défilé de plus de 600px du haut vers le bas
-                $('#scroll-top-button').fadeIn(600);
-            }else{
-                $('#scroll-top-button').fadeOut(600);
-                //$('#scroll-top-button').animate({'opacity':'1'}); //on passe l'opacité de la div "scroll-top-button" à 1.
-            //} else if ($(this).scrollTop() <= 500){
-              //  $('#scroll-top-button').animate({'opacity':'0'});//sinon on retire la classe "appear" à <div id="scroll-top-button">
+            if ($(this).scrollTop() > 300) { //si on a défilé de plus de 600px du haut vers le bas
+                $('#scroll-top-button').fadeIn().removeClass('hidden');
+            }else if ($(this).scrollTop() < 300){
+                $('#scroll-top-button').fadeOut();
             }
         });
     });
@@ -36,7 +33,6 @@ $(document).ready(function() {
 
 
     //Carousel
-
     $(function(){
         $('.item:first-child').addClass('active');
     });

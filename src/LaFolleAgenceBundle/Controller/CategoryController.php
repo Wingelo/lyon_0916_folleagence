@@ -4,8 +4,9 @@ namespace LaFolleAgenceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use LaFolleAgenceBundle\Repository\PostRepository;
 use LaFolleAgenceBundle\Entity\Category;
+
 use LaFolleAgenceBundle\Form\CategoryType;
 use LaFolleAgenceBundle\Entity\PostCategorys;
 use Doctrine\DBAL\DriverManager;
@@ -20,11 +21,34 @@ use Doctrine\DBAL\DriverManager;
 class CategoryController extends Controller
 {
 
-	const MAX_PER_PAGE = 3;
+    const MAX_PER_PAGE = 3;
 
-	public function __construct() {
+    public function filterIndexAction(Category $category, $page = 1)
+    {
 
-	}
+        $em = $this->getDoctrine()->getManager();
+
+        $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
+        $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
+
+        $total = count($posts);
+        $maxPage = (int)($total / PostRepository::MAX_RESULT);
+        if (($total % PostRepository::MAX_RESULT) !== 0) {
+            $maxPage++;
+        }
+        return $this->render('front/article-categorie.html.twig', array(
+            'category'      => $category,
+            'maxPage'       => $maxPage,
+            'posts'         => $posts,
+            'page'          => $page,
+            'archive'       => $archive,
+            'categories'    => $categories
+
+        ));
+
+    }
+
     /**
      * Lists all Category entities.
      *
@@ -40,30 +64,6 @@ class CategoryController extends Controller
         ));
     }
 
-	public function filterIndexAction($category, $page = 1)
-	{
-		$em = $this->getDoctrine()->getManager();
-
-		$post = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
-		$archive = $em->getRepository('LaFolleAgenceBundle:Post')->findAll();
-		$categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
-
-		$total = count($post);
-		$maxPage = (int)($total / PostRepository::MAX_RESULT);
-		if (($total % PostRepository::MAX_RESULT) !== 0) {
-			$maxPage++;
-		}
-		return $this->render('front/blog.html.twig', array(
-
-			'maxPage' => $maxPage,
-			'post' => $post,
-			'page' => $page,
-			'archive' => $archive,
-			'categories' => $categories
-
-		));
-
-	}
     /**
      * Creates a new Category entity.
      *
@@ -133,10 +133,6 @@ class CategoryController extends Controller
 				$stmt = $conn->prepare($sql);
 				$stmt->bindValue($post->id, $catId);
        			$stmt->execute();
-				/*$postCategorys = new PostCategorys();
-				$postCategorys->setCategoryId($catId);
-				$postCategorys->setPostId($post->id);
-				$em->persist($postCategorys);*/
 			}
 			/*fin ajout gestion propre*/
             $em->flush();
@@ -184,4 +180,6 @@ class CategoryController extends Controller
             ->getForm()
         ;
     }
+
+
 }

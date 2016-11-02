@@ -39,9 +39,17 @@ class DefaultController extends Controller
         return $this->render('front/references-et-projets.html.twig');
     }
 
-    public function contactAction() {
+    public function contactAction($gRecaptchaResponse, $remoteIp) {
 
     	$Request = $this->container->get('request_stack')->getCurrentRequest();
+		$secret = '6Lf-jwoUAAAAAFPikc_ejPv0LF9NaYI1vQKa4eAf';
+		$recaptcha = new \ReCaptcha\ReCaptcha($secret);
+		$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+		if ($resp->isSuccess()) {
+
+		} else {
+			$errors = $resp->getErrorCodes();
+		}
 		if ($Request->getMethod() == "POST") {
 			//$Subject = $Request->get("Subject");
 			$email = $Request->get("email");

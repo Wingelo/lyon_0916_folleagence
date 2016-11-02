@@ -1,3 +1,5 @@
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
@@ -15,10 +17,10 @@ login:
 logout:
     path: /admin/logout
 
+
 la_folle_agence:
     resource: "@LaFolleAgenceBundle/Resources/config/routing.yml"
     prefix:   /
 
-elfinder:
-     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
 
