@@ -39,7 +39,7 @@ class Category
     public function setCategoryName($categoryName)
     {
         $this->categoryName = $categoryName;
-
+		$this->setslug($categoryName);
         return $this;
     }
 
@@ -116,5 +116,61 @@ class Category
 	public function setId($id)
     {
         $this->id = $id;
+    }
+    /**
+     * @var string
+     */
+    private $slug;
+
+	public function slugify($text)
+	{
+		// replace non letter or digits by -
+		$text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+		// trim
+		$text = trim($text, '-');
+
+		// transliterate
+		if (function_exists('iconv'))
+		{
+			$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+		}
+
+		// lowercase
+		$text = strtolower($text);
+
+		// remove unwanted characters
+		$text = preg_replace('#[^-\w]+#', '', $text);
+
+		if (empty($text))
+		{
+			return 'n-a';
+		}
+
+		return $text;
+	}
+
+    /**
+     * Set categorySlug
+     *
+     * @param string $categorySlug
+     *
+     * @return Category
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $this->slugify($slug);
+
+        return $this;
+    }
+
+    /**
+     * Get categorySlug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

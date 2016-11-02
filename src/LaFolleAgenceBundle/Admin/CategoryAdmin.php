@@ -20,11 +20,13 @@ class CategoryAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('categoryName', 'text');
+        $formMapper->add('categoryName', 'text', array(
+        	'label' => 'Nom de la categorie'
+		));
 		$formMapper->add('Posts',EntityType::class,array (
 			'class' => 'LaFolleAgenceBundle:Post',
 			'choice_label' => 'title',
-			'expanded' => true,
+			'expanded' => false,
 			'multiple' => true,
 			'by_reference' => true,
 		)) ;
@@ -58,7 +60,7 @@ class CategoryAdmin extends Admin
 
 		$em = $this->modelManager->getEntityManager($object);
 
-		$em->getRepository('LaFolleAgenceBundle:Category')->AddLink($object);
+		$em->getRepository('LaFolleAgenceBundle:Category')->addLink($object);
 	}
 
     public function preRemove ($object) {

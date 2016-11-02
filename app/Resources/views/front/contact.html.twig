@@ -30,7 +30,6 @@
                     Justine REMAUDIERE
                 </p>
                 <p><a href="tel:+33662131908">06 62 13 19 08</a></p>
-                <p><a href="mailto:&#106;u%73&#116;%69%6ee&#64;&#108;a&#102;&#111;&#108;%6c%65&#97;&#103;%65%6ece%2ec&#111;&#109;">justine&#64;lafolleagence.com</a></p>
                 <p>
                     Skype: justine.remaudiere
                 </p>
@@ -92,6 +91,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div  class="g-recaptcha" data-sitekey="6Lf-jwoUAAAAAHYZflFv0otlfv8RDnd8qQ8936l3" data-callback="enableBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-offset-5 col-md-2">
@@ -105,4 +113,8 @@
         </form>
     </div>
 </section>
+{% endblock %}
+{% block javascripts %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="{{  asset('js/contact.js') }}"></script>
 {% endblock %}

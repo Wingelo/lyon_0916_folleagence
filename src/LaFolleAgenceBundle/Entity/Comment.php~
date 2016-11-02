@@ -230,4 +230,32 @@ class Comment
 
 
 
+    /**
+     * @var string
+     */
+    private $my_answer;
+
+    /**
+     * Set myAnswer
+     *
+     * @param string $myAnswer
+     *
+     * @return Comment
+     */
+    public function setMyAnswer($myAnswer)
+    {
+        $this->my_answer = $myAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get myAnswer
+     *
+     * @return string
+     */
+    public function getMyAnswer()
+    {
+        return $this->my_answer;
+    }
 }
