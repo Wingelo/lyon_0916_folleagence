@@ -92,6 +92,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 inputGroupContainer">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div  class="g-recaptcha" data-sitekey="6Lf-jwoUAAAAAHYZflFv0otlfv8RDnd8qQ8936l3" data-callback="enableBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-offset-5 col-md-2">
@@ -106,4 +115,8 @@
 
     </div>
 </section>
+{% endblock %}
+{% block javascripts %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="{{  asset('js/contact.js') }}"></script>
 {% endblock %}
