@@ -54,6 +54,40 @@ class PostAdmin extends Admin
         ;
     }
 
+	 protected function configureListFields(ListMapper $listMapper)
+	  {
 
+		  $listMapper
+			  ->addIdentifier('title', null,
+				  array('label' => 'Titre'
+			  ))
+			  ->addIdentifier('statut', null,
+				  array(
+					  'label' => 'Publication'
+				  ))
+			  ->addIdentifier('openComment', null,
+				  array(
+					  'label' => 'Activer les commentaires'
+				  ))
+			  ->addIdentifier('publicationDate', null,
+				  array(
+					  'label' => 'Date de publication'
+				  ))
+			  ;
+	  }
+
+	  public function preUpdate($object){
+
+		  $em = $this->modelManager->getEntityManager($object);
+		  $em = $this->getModelManager()->getEntityManager($this->getClass());
+		  $original = $em->getUnitOfWork()->
+		  $em->getRepository('LaFolleAgenceBundle:Post')->slugTest($object);
+
+	  }
+
+	  public function prePersist($object){
+
+		  $this->preUpdate($object);
+	  }
 }
 

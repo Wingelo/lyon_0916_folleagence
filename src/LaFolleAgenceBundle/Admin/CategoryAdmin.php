@@ -26,7 +26,7 @@ class CategoryAdmin extends Admin
 		$formMapper->add('Posts',EntityType::class,array (
 			'class' => 'LaFolleAgenceBundle:Post',
 			'choice_label' => 'title',
-			'expanded' => true,
+			'expanded' => false,
 			'multiple' => true,
 			'by_reference' => true,
 		)) ;
