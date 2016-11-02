@@ -39,7 +39,7 @@ class Category
     public function setCategoryName($categoryName)
     {
         $this->categoryName = $categoryName;
-		$this->setCategorySlug($categoryName);
+		$this->setslug($categoryName);
         return $this;
     }
 
@@ -120,7 +120,7 @@ class Category
     /**
      * @var string
      */
-    private $categorySlug;
+    private $slug;
 
 	public function slugify($text)
 	{
@@ -157,9 +157,9 @@ class Category
      *
      * @return Category
      */
-    public function setCategorySlug($categorySlug)
+    public function setSlug($slug)
     {
-        $this->categorySlug = $this->slugify($categorySlug);
+        $this->slug = $this->slugify($slug);
 
         return $this;
     }
@@ -169,8 +169,8 @@ class Category
      *
      * @return string
      */
-    public function getCategorySlug()
+    public function getSlug()
     {
-        return $this->categorySlug;
+        return $this->slug;
     }
 }

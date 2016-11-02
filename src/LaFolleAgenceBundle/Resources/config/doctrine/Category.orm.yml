@@ -14,7 +14,7 @@ LaFolleAgenceBundle\Entity\Category:
             length: '30'
             unique: true
             column: category_name
-        categorySlug:
+        slug:
             type: string
             length: '30'
             unique: true

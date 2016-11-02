@@ -25,7 +25,6 @@ class CategoryController extends Controller
 
     public function filterIndexAction(Category $category, $page = 1)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
