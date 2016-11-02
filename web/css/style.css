@@ -674,6 +674,7 @@ ul.pager li a:hover{
 ul.list-unstyled li a {
 	color: #d01d64;
 	text-decoration: none;
+    font-weight: 300;
 }
 
 ul.list-unstyled li a:hover {
