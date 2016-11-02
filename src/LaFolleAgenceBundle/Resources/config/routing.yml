@@ -31,8 +31,8 @@ lafolleagence_blog:
         page: \d+
 
 lafolleagence_category_blog:
-    path:   /blog/{categoryName}/{page}
-    defaults: {_controller: "LaFolleAgenceBundle:Post:filterindex", categoryName: '', page: 1}
+    path:   /categorie/{id}/{page}
+    defaults: {_controller: "LaFolleAgenceBundle:Category:filterindex", page: 1}
     requirements:
         page: \d+
 

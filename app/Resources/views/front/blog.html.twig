@@ -73,7 +73,7 @@
                             {% for category in categories %}
                             <div class="col-lg-12">
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ path('lafolleagence_category_blog',{'categoryName': category.categoryName }) }}">{{ category.categoryName }}</a>
+                                    <li><a href="{{ path('lafolleagence_category_blog',{'id': category.id }) }}">{{ category.categoryName }}</a>
                                     </li>
                                 </ul>
                             </div>

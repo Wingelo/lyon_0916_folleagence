@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class CommentAdmin
@@ -16,7 +17,12 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class CommentAdmin extends Admin
 {
 
-    // Fields to be shown on filter forms
+	protected function configureRoutes(RouteCollection $collection)
+    {
+		$collection->remove('create');
+	}
+
+	// Fields to be shown on filter forms
     /*protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper

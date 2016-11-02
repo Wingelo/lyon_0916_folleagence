@@ -14,6 +14,12 @@ LaFolleAgenceBundle\Entity\Category:
             length: '30'
             unique: true
             column: category_name
+        categorySlug:
+            type: string
+            length: '30'
+            unique: true
+            column: slug
+            nullable: true
 
     manyToMany:
         posts:
