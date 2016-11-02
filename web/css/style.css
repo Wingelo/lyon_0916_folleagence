@@ -586,7 +586,8 @@ figure.effect-sadie:hover p {
 }
 
 #museomix img,
-#blendWebMix img {
+#blendWebMix img,
+#fhactory img {
     display: block;
     width: 90%;
     margin: 0 auto;
