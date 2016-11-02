@@ -64,7 +64,6 @@ class Post
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -78,6 +77,34 @@ class Post
         return $this->title;
     }
 
+	public function slugify($text)
+	{
+		// replace non letter or digits by -
+		$text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+		// trim
+		$text = trim($text, '-');
+
+		// transliterate
+		if (function_exists('iconv'))
+		{
+			$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+		}
+
+		// lowercase
+		$text = strtolower($text);
+
+		// remove unwanted characters
+		$text = preg_replace('#[^-\w]+#', '', $text);
+
+		if (empty($text))
+		{
+			return 'n-a';
+		}
+
+		return $text;
+	}
+
     /**
      * Set link
      *
@@ -86,7 +113,7 @@ class Post
      */
     public function setLink($link)
     {
-        $this->link = $link;
+        $this->link = $this->slugify($link);
 
         return $this;
     }
@@ -182,6 +209,11 @@ class Post
     public function setStatut($statut)
     {
         $this->statut = $statut;
+		if ($this->statut == 1) {
+			$this->setLink($this->title);
+		} else {
+			$this->setLink('');
+		}
 
         return $this;
     }
