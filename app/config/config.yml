@@ -126,6 +126,7 @@ sonata_admin:
     title_logo: /images/logo-lafolleagence-web.png
     templates:
             layout:       standard_layout_lafolleagence.html.twig
+
     dashboard:
             blocks:
                 -
@@ -170,7 +171,10 @@ fm_elfinder:
 
 ivory_ck_editor:
     default_config: default
+  # base_path: "bundle/ivoryckeditor"
+   # js_path: "js/backoffice.js"
     configs:
         default:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+            height:                             '500px'
