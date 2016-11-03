@@ -138,6 +138,10 @@ services:
        class: Twig_Extensions_Extension_Text
        tags:
             - { name: twig.extension }
+    twig.extension.intl:
+           class: Twig_Extensions_Extension_Intl
+           tags:
+                - { name: twig.extension }
 
 fm_elfinder:
     #assets_path: / # default is /assets, this is where css/js elfinder files are

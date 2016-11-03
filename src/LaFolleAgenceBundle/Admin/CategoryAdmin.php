@@ -29,6 +29,7 @@ class CategoryAdmin extends Admin
 			'expanded' => false,
 			'multiple' => true,
 			'by_reference' => true,
+            'label' => 'Articles'
 		)) ;
     }
 
@@ -45,7 +46,9 @@ class CategoryAdmin extends Admin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('categoryName');
+        $listMapper->addIdentifier('categoryName', null, array(
+            'label' => 'Catégories'
+        ));
     }
 
 
