@@ -21,7 +21,7 @@ use Doctrine\DBAL\DriverManager;
 class CategoryController extends Controller
 {
 
-    const MAX_PER_PAGE = 3;
+    const MAX_PER_PAGE = 4;
 
     public function filterIndexAction(Category $category, $page = 1)
     {

@@ -15,7 +15,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class PostRepository extends EntityRepository
 {
-    const MAX_RESULT = 3;
+    const MAX_RESULT = 4;
     /**
      * @param int $page
      * @param int $itemPerPage
