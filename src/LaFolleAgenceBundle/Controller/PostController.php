@@ -81,8 +81,16 @@ class PostController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function showAction(Post $post, Request $request)
+    public function showAction(Post $post, Request $request, $gRecaptchaResponse, $remoteIp)
     {
+		$secret = '6Leb8woUAAAAAGRJLVhWeRNipzy0bTPc7Kb4zaQ-';
+		$recaptcha = new \ReCaptcha\ReCaptcha($secret);
+		$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+		if ($resp->isSuccess()) {
+
+		} else {
+			$errors = $resp->getErrorCodes();
+		}
 
         $comment = new Comment();
         $comment->setPost($post);
