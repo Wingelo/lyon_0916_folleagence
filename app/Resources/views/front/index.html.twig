@@ -35,7 +35,7 @@
 
     <!-- Forme triangle en SVG -->
     <section class="container-fluid triangle-down">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 4" class="row" preserveAspectRatio="xMinYMin meet">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 5" class="row" preserveAspectRatio="xMinYMin meet">
             <title>Triangle pointe sections blanches</title>
             <polygon points="50 3, 100 0, 0 0" fill="rgba(255,255,255,1)"/>
         </svg>
@@ -121,9 +121,9 @@
                                         <div class="item carouselIndex">
                                             <blockquote>
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                    <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                                                         <a href="{{ path('lafolleagence_article_blog',{ 'link': post.link }) }}">
-                                                            <p>{{ post.content|striptags|truncate(300)|raw }}</p>
+                                                            <p>{{ post.content|striptags|truncate(250)|raw }}</p>
                                                             <small>{{ post.title }}</small>
                                                         </a>
                                                     </div>
