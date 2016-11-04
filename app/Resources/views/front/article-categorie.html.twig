@@ -34,7 +34,7 @@
                         <hr>
                         <p><span class="glyphicon glyphicon-time"></span> {{ post.publicationDate|localizeddate('full') }}</p>
 
-                        {{ post.content|striptags|truncate(400)|raw }}
+                        {{ post.content|striptags|truncate(800)|raw }}
                         <p></p>
                         <a class="btn btn-primary" href="{{ path('lafolleagence_article_blog', { 'link': post.link }) }}">Lire la suite <span
                                     class="glyphicon glyphicon-chevron-right"></span></a>
