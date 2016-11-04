@@ -76,10 +76,6 @@ class DefaultController extends Controller
 		return $this->render('front/contact.html.twig');
     }
 
-    public function blogAction() {
-        return $this->render('front/blog.html.twig');
-    }
-
 
 	/**
 	 * @Route("/admin")
