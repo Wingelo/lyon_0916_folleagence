@@ -149,10 +149,12 @@ polygon {
 /*HEADER INDEX*/
 #header-index {
     background-image: url("../images/la-folle-agence-evenementiel-community-management.jpg");
+    height: 80vh;
+    min-height: 350px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 80vh;
+    width:100%;
 }
 
 #header-index #logo-hook {
@@ -160,6 +162,20 @@ polygon {
     min-width: 260px;
     display: block;
     margin:25vh auto 0 auto;
+}
+
+@media screen and (max-width: 640px)
+{
+    #header-index #logo-hook {
+        margin:18% auto 0 auto;
+    }
+}
+
+@media screen and (max-width: 480px)
+{
+    #header-index #logo-hook {
+        margin:30% auto 0 auto;
+    }
 }
 
 #header-index #fleche-descendre {
@@ -170,6 +186,13 @@ polygon {
 
 #header-index h1 {
     padding-bottom: 30px;
+}
+
+@media screen and (max-width: 640px)
+{
+    #header-index h1 {
+        font-size: 1.8em;
+    }
 }
 
 #header-index .purple-button {
@@ -238,7 +261,6 @@ polygon {
 .grid figure img {
     position: relative;
     display: block;
-    min-height: 100%;
     max-width: 100%;
     opacity: 0.8;
 }
@@ -399,22 +421,22 @@ figure.effect-sadie:hover p {
 }
 
 #quote-carousel .carousel-control.left {
-    left: -60px;
+    left: -15px;
 }
 
 #quote-carousel .carousel-control.right {
-    right: -60px;
+    right: -15px;
 }
 
 .carousel-inner {
-    min-height: 175px;
+    min-height: 150px;
 }
 
-.carousel-inner a p{
+.carousel-inner a p {
     font-weight: 300;
 }
 
-.carouselIndex a{
+.carouselIndex a {
     text-decoration: none;
     color: #333333;
 }
@@ -446,11 +468,25 @@ figure.effect-sadie:hover p {
     background-size: cover;
     background-repeat: no-repeat;
     height: 75vh;
+    min-height:350px;
 }
 
 .page-header-style {
     padding-top: 30vh;
     display: block;
+    min-height: 300px;
+}
+
+@media screen and (max-width: 640px) {
+    .page-header-style {
+        padding-top: 20%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-header-style {
+        padding-top: 30%;
+    }
 }
 
 #a_propos h1,
@@ -472,6 +508,16 @@ figure.effect-sadie:hover p {
     font-weight: 500;
 }
 
+@media screen and (max-width: 640px) {
+    #a_propos h1,
+    #prestation-header h1,
+    #contact-header h1,
+    #references-header h1,
+    #blog-header h1 {
+        font-size: 2.5em;
+    }
+}
+
 #a_propospres h2 {
     color: #641032;
 }
@@ -485,6 +531,9 @@ figure.effect-sadie:hover p {
     margin-bottom: 25px;
 }
 
+#experiences {
+    padding-left: 10px;
+}
 
 #parcoursetu h2 {
     color: #641032;
@@ -746,6 +795,10 @@ ul.list-unstyled li a:hover {
 
 #success_message{ display: none;}
 
+.input-group {
+    margin: 0 10px;
+}
+
 /**//**//**//**//**/
 /*Mentions légales*/
 /**//**//**//**//**/
@@ -769,3 +822,16 @@ ul.list-unstyled li a:hover {
 	clear: both;
 }
 
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 640px) {
+    #header-index,
+    .hook-contact,
+    #a_propos,
+    #prestation-header,
+    #contact-header,
+    #references-header,
+    #blog-header {
+        background-attachment: local;
+    }
+}
