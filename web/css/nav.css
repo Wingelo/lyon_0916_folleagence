@@ -77,8 +77,9 @@
     margin-top: 10px;
     display: block;
 }
+
 .col-xs-12 #logo-footer {
-    margin:10px auto;
+    margin: 10px auto;
 }
 
 #hook-footer {
@@ -101,6 +102,11 @@
     text-align: center;
     display: block;
 }
+
+#social-bar {
+    padding: 0;
+}
+
 #social-bar p{
     color: #ffffff;
     margin:0;
