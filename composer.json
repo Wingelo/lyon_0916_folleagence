@@ -3,6 +3,7 @@
     "name": "david/lafolleagence",
     "license": "proprietary",
     "type": "project",
+    "description": "Web site www.lafolleagence.com with resumption of its former blog in wordpress",
     "autoload": {
         "psr-4": {
             "": "src/"
