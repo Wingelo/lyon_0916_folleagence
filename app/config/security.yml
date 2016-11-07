@@ -9,8 +9,8 @@ security:
         in_memory:
             memory:
               users:
-                admin:
-                  password: $2y$12$t3Jk3irZ6d5TLb6w92ekx.kOgwrXrb0GnQe.G3CUNyeBH2ltwPygC
+                lafolleagence:
+                  password: "%admin_password%"
                   roles: 'ROLE_SUPER_ADMIN'
                 dev:
                   password: $2y$12$7edUwLB78bzYkmUSIVZHSOTkXYYYv6mFQcCFRwq6W8EotPKN20fr.
