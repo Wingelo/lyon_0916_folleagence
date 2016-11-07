@@ -21,7 +21,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span>{{ post.publicationDate|date }}</p>
+                <p><span class="glyphicon glyphicon-time"></span>{{ post.publicationDate|localizeddate('full') }}</p>
 
                 <!-- Post Content -->
                 <p class="lead">{{ post.content|raw }}</p>

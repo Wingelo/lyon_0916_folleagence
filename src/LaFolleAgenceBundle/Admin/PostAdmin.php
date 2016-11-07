@@ -72,9 +72,11 @@ class PostAdmin extends Admin
 			  ->addIdentifier('publicationDate', null,
 				  array(
 					  'label' => 'Date de publication',
-					  'format' => 'd/m/Y H:i',
+                      'format' => 'd-m-Y-H:i:s'
 				  ))
 			  ;
 	  }
+
+
 }
 

@@ -21,7 +21,7 @@ class PostController extends Controller
      * Lists all Post entities.
      *
      */
-    const MAX_PER_PAGE = 3;
+    const MAX_PER_PAGE = 4;
 
 
     public function indexAction($page = 1)
@@ -119,18 +119,15 @@ class PostController extends Controller
 				$article = $post->getTitle();
 				$idComment = $comment->getId();
 
-				$mailer = $this->container->get('mailer');
-				$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
-					->setUsername('etudiants.wildcodeschool@gmail.com')
-					->setPassword('jecode4lyon');
-				$mailer = \Swift_Mailer::newInstance($transport);
-				$message = \Swift_Message::newInstance('Test')
-					->setSubject("Un nouveau commentaire sur La Folle Agence")
-					->setFrom('etudiants.wildcodeschool@gmail.com')
-					->setTo('etudiants.wildcodeschool@gmail.com')
-					->setContentType("text/html")
-					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commentContent ."<br><br><br>". "Cordialement,");
-				$this->get('mailer')->send($message);
+			$mailTo = $this->container->getParameter('mailer_to');
+			$mailFrom = $this->container->getParameter('mailer_from');
+			$message = \Swift_Message::newInstance('Test')
+				->setSubject("Un nouveau commentaire sur La Folle Agence")
+				->setTo($mailTo)
+				->setfrom($mailFrom)
+				->setContentType("text/html")
+				->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commentContent ."<br><br><br>". "Cordialement,");
+			$this->get('mailer')->send($message);
 
             return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
         }
