@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use LaFolleAgenceBundle\Entity\Post;
+
 
 /**
  * Class PostAdmin

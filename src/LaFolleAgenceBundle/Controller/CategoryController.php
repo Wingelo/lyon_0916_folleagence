@@ -7,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use LaFolleAgenceBundle\Repository\PostRepository;
 use LaFolleAgenceBundle\Entity\Category;
 
-use LaFolleAgenceBundle\Form\CategoryType;
-use LaFolleAgenceBundle\Entity\PostCategorys;
-use Doctrine\DBAL\DriverManager;
 
 
 
