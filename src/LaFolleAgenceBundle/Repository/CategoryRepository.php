@@ -37,7 +37,10 @@ class CategoryRepository extends EntityRepository
 		}
 	}
 
-	public function getAll () {
-
+	public function getAllOrderByName () {
+		$category = $this->createQueryBuilder('ca')
+			->orderBy('ca.categoryName', 'ASC')
+			->getQuery();
+		return $category->getResult();
 	}
 }

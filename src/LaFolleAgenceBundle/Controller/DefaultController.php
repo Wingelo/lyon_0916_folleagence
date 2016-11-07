@@ -48,7 +48,7 @@ class DefaultController extends Controller
 		if ($resp->isSuccess()) {
 
 		} else {
-
+			$errors = $resp->getErrorCodes();
 		}
 		if ($Request->getMethod() == "POST") {
 
@@ -71,10 +71,6 @@ class DefaultController extends Controller
 
 		}
 		return $this->render('front/contact.html.twig');
-    }
-
-    public function blogAction() {
-        return $this->render('front/blog.html.twig');
     }
 
 
