@@ -48,10 +48,10 @@ class DefaultController extends Controller
 		if ($resp->isSuccess()) {
 
 		} else {
-			$errors = $resp->getErrorCodes();
+			
 		}
 		if ($Request->getMethod() == "POST") {
-			//$Subject = $Request->get("Subject");
+
 			$email = $Request->get("email");
 			$message = $Request->get("message");
 			$last_name = $Request->get("last_name");

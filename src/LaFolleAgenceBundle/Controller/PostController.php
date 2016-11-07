@@ -109,7 +109,7 @@ class PostController extends Controller
             $em->flush();
 
 
-				//$Subject = $Request->get("Subject");
+
 
 				$name = $comment->getAuthor();
 				$emailname = $comment->getAuthorEmail();
