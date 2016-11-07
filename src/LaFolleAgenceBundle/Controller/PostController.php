@@ -31,7 +31,7 @@ class PostController extends Controller
 
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
-        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->getAllOrderByName();
 
         $total = count($post);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);
@@ -83,8 +83,6 @@ class PostController extends Controller
             $em->flush();
 
 
-				//$Subject = $Request->get("Subject");
-
 				$name = $comment->getAuthor();
 				$emailname = $comment->getAuthorEmail();
 				$title = $comment->getTitle();
@@ -93,25 +91,21 @@ class PostController extends Controller
 				$article = $post->getTitle();
 				$idComment = $comment->getId();
 
-				$mailer = $this->container->get('mailer');
-				$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
-					->setUsername('etudiants.wildcodeschool@gmail.com')
-					->setPassword('jecode4lyon');
-				$mailer = \Swift_Mailer::newInstance($transport);
+				$mailTo = $this->container->getParameter('mailer_to');
+				$mailFrom = $this->container->getParameter('mailer_from');
 				$message = \Swift_Message::newInstance('Test')
 					->setSubject("Un nouveau commentaire sur La Folle Agence")
-					->setFrom('etudiants.wildcodeschool@gmail.com')
-					->setTo('etudiants.wildcodeschool@gmail.com')
+					->setTo($mailTo)
+					->setfrom($mailFrom)
 					->setContentType("text/html")
 					->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commentContent ."<br><br><br>". "Cordialement,");
-				$this->get('mailer')->send($message);
-
+			$this->get('mailer')->send($message);
             return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
         }
 
         $em = $this->getDoctrine()->getManager();
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
-        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->getAllOrderByName();
         $comments = $post->getComments();
         return $this->render('front/article-blog.html.twig', array(
             'post'          => $post,

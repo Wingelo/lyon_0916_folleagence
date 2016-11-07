@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         $posts = $em->getRepository('LaFolleAgenceBundle:Post')->categoryGetByPage($category, $page, self::MAX_PER_PAGE);
         $archive = $em->getRepository('LaFolleAgenceBundle:Post')->getAllOrderByDate();
-        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->findAll();
+        $categories = $em->getRepository('LaFolleAgenceBundle:Category')->getAllOrderByName();
 
         $total = count($posts);
         $maxPage = (int)($total / PostRepository::MAX_RESULT);

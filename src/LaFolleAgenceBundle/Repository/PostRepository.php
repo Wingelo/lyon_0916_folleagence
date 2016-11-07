@@ -3,7 +3,6 @@
 namespace LaFolleAgenceBundle\Repository;
 
 use LaFolleAgenceBundle\Entity\Category;
-use LaFolleAgenceBundle\Entity\Post;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
