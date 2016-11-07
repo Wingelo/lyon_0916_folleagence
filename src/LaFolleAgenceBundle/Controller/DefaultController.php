@@ -58,15 +58,12 @@ class DefaultController extends Controller
 			$first_name = $Request->get("first_name");
 			$tel = $Request->get("tel");
 
-			$mailer = $this->container->get('mailer');
-			$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
-				->setUsername('etudiants.wildcodeschool@gmail.com')
-				->setPassword('jecode4lyon');
-			$mailer = \Swift_Mailer::newInstance($transport);
+			$mailTo = $this->container->getParameter('mailer_to');
+			$mailFrom = $this->container->getParameter('mailer_from');
 			$message = \Swift_Message::newInstance('Test')
-				->setSubject("Un nouveau message sur La Folle Agence")
-				->setFrom($email)
-				->setTo('etudiants.wildcodeschool@gmail.com')
+				->setSubject("Un nouveau commentaire sur La Folle Agence")
+				->setTo($mailTo)
+				->setfrom($mailFrom)
 				->setContentType("text/html")
 				->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
 					'N° de téléphone : ' . $tel . '<br /><br />' . $message);
