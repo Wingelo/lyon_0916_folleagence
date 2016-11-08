@@ -40,7 +40,7 @@ You have to add at the end of file : sql-mode=""
              captcha_secret_public1: your key public
              ...
 </pre>
-- For the second key must make a new recaptcha
+- For the second key you must make a new recaptcha
 <pre>parameters:
              ...
              captcha_secret_private2: your key private
