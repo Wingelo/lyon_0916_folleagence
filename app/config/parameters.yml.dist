@@ -14,20 +14,20 @@ parameters:
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
     mailer_user:       ~
-    mailer_password:   ~
+    mailer_password:   ~ #
 
-    #Adresse d'email
+    #Email
     mailer_to: ~
     mailer_from: ~
 
-    #Mot de passe
+    #Password
     admin_password: ~
 
-    #Captcha Google : Page de contact
+    #Captcha Google : contact page
     captcha_secret_private1: ~
     captcha_secret_public1: ~
 
-    #Captcha Google : Page de blog
+    #Captcha Google : blog post page
     captcha_secret_private2: ~
     captcha_secret_public2: ~
 
