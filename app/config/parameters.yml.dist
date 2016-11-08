@@ -16,8 +16,20 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    #Adresse d'email
     mailer_to: ~
-
     mailer_from: ~
+
+    #Mot de passe de justine
+    admin_password: ~
+
+    #Captcha Google : Page de contact
+    captcha_secret_private1: ~
+    captcha_secret_public1: ~
+
+    #Captcha Google : Page de blog
+    captcha_secret_private2: ~
+    captcha_secret_public2: ~
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
