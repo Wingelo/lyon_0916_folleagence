@@ -66,8 +66,9 @@ doctrine:
 swiftmailer:
     encryption: ssl
     auth_mode: login
-    transport: gmail
-    host:      smtp.gmail.com
+    port: 465
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -170,11 +171,10 @@ fm_elfinder:
                         #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
 
 ivory_ck_editor:
-    default_config: default
-  # base_path: "bundle/ivoryckeditor"
-   # js_path: "js/backoffice.js"
+    default_config: my_custom_config
     configs:
-        default:
+        my_custom_config:
+            toolbar: [ [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ], [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ], [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ], [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ], [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ], [ 'Link','Unlink' ], [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ], [ 'Styles','Format','Font','FontSize' ], [ 'TextColor','BGColor' ], [ 'Maximize', 'ShowBlocks','-','About' ]]
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
             height:                             '500px'

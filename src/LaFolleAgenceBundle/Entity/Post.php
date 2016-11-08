@@ -227,62 +227,7 @@ class Post
     {
         return $this->statut;
     }
-    /**
-     * @var string
-     */
-    private $oneToMany;
 
-    /**
-     * @var string
-     */
-    private $manyToMany;
-
-
-    /**
-     * Set oneToMany
-     *
-     * @param string $oneToMany
-     * @return Post
-     */
-    public function setOneToMany($oneToMany)
-    {
-        $this->oneToMany = $oneToMany;
-
-        return $this;
-    }
-
-    /**
-     * Get oneToMany
-     *
-     * @return string 
-     */
-    public function getOneToMany()
-    {
-        return $this->oneToMany;
-    }
-
-    /**
-     * Set manyToMany
-     *
-     * @param string $manyToMany
-     * @return Post
-     */
-    public function setManyToMany($manyToMany)
-    {
-        $this->manyToMany = $manyToMany;
-
-        return $this;
-    }
-
-    /**
-     * Get manyToMany
-     *
-     * @return string 
-     */
-    public function getManyToMany()
-    {
-        return $this->manyToMany;
-    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */

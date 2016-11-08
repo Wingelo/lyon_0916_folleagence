@@ -234,7 +234,6 @@ class Comment
     }
 
 
-
     /**
      * @var string
      */

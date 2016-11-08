@@ -51,22 +51,18 @@ class DefaultController extends Controller
 			$errors = $resp->getErrorCodes();
 		}
 		if ($Request->getMethod() == "POST") {
-			//$Subject = $Request->get("Subject");
 			$email = $Request->get("email");
 			$message = $Request->get("message");
 			$last_name = $Request->get("last_name");
 			$first_name = $Request->get("first_name");
 			$tel = $Request->get("tel");
 
-			$mailer = $this->container->get('mailer');
-			$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
-				->setUsername('etudiants.wildcodeschool@gmail.com')
-				->setPassword('jecode4lyon');
-			$mailer = \Swift_Mailer::newInstance($transport);
+			$mailFrom = $this->container->getParameter('mailer_from');
+			$mailTo = $this->container->getParameter('mailer_to');
 			$message = \Swift_Message::newInstance('Test')
 				->setSubject("Un nouveau message sur La Folle Agence")
-				->setFrom($email)
-				->setTo('etudiants.wildcodeschool@gmail.com')
+				->setFrom($mailFrom)
+				->setTo($mailTo)
 				->setContentType("text/html")
 				->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
 					'N° de téléphone : ' . $tel . '<br /><br />' . $message);
@@ -74,10 +70,6 @@ class DefaultController extends Controller
 
 		}
 		return $this->render('front/contact.html.twig');
-    }
-
-    public function blogAction() {
-        return $this->render('front/blog.html.twig');
     }
 
 
