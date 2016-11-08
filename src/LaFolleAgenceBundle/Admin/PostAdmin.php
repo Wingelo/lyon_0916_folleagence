@@ -46,7 +46,7 @@ class PostAdmin extends Admin
 			->add('Categorys',EntityType::class,array (
 				'class' => 'LaFolleAgenceBundle:Category',
 				'choice_label' => 'category_name',
-				'label' => 'catégories',
+				'label' => 'Catégories',
 				'expanded' => true,
 				'multiple' => true,
 				'by_reference' => true,

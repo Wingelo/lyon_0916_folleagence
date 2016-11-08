@@ -812,6 +812,15 @@ ul.list-unstyled li a:hover {
 }
 
 /*----------------------*/
+/*     error page       */
+/*----------------------*/
+#error404,
+#error403,
+#error {
+    margin: 0 auto;
+    display: block;
+}
+/*----------------------*/
 /* migration word press */
 /*----------------------*/
 .aligncenter {
