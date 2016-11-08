@@ -228,7 +228,7 @@ polygon {
 /*BANDEAU 2 | PRESTATIONS PROPOSEES*/
 #services h2,
 #parcourspro h2,
-#references h2{
+#references h2 {
     color: #d01d64;
 }
 
@@ -237,8 +237,8 @@ polygon {
 #portraitchi hr,
 #references hr,
 #gestion-projet hr,
-#veille-concurrentielle hr
-{
+#veille-concurrentielle hr,
+#credits-images hr {
     border-bottom: 2px solid #d01d64;
 }
 
@@ -811,6 +811,13 @@ ul.list-unstyled li a:hover {
     text-align: justify;
 }
 
+#credits-images h2 {
+    color: #d01d64;
+}
+
+.legal-img {
+    margin-left: 8px;
+}
 /*----------------------*/
 /*     error page       */
 /*----------------------*/
@@ -833,7 +840,7 @@ ul.list-unstyled li a:hover {
 
 /*MEDIA QUERIES*/
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1100px) {
     #header-index,
     .hook-contact,
     #a_propos,
