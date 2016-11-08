@@ -10,7 +10,7 @@ use LaFolleAgenceBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use ReCaptcha\ReCaptcha; // Include the recaptcha
+use ReCaptcha\ReCaptcha;
 
 /**
  * Post controller.
@@ -85,12 +85,12 @@ class PostController extends Controller
 				// Do something if the submit wasn't valid ! Use the message to show something
 
 				$name = $comment->getAuthor();
-				$emailname = $comment->getAuthorEmail();
+				$emailName = $comment->getAuthorEmail();
 				$title = $comment->getTitle();
 				$commentContent = $comment->getContent();
 				$url = $post->getLink();
 				$article = $post->getTitle();
-				$idComment = $comment->getId();
+
 
 				$mailTo = $this->container->getParameter('mailer_to');
 				$mailFrom = $this->container->getParameter('mailer_from');
@@ -99,7 +99,7 @@ class PostController extends Controller
 					->setTo($mailTo)
 					->setfrom($mailFrom)
 					->setContentType("text/html")
-					->setBody("Bonjour Justine, " . "<br><br>" . "Vous avez reçu un nouveau commentaire sur l'article : " . "<a href=" . $url . ">" . $article . "</a>" . "<br><br>" . "Rendez-vous sur la page Admin : <a href=" . "'https://www.lafolleagence.com/admin'" . ">Cliquez ici</a>" . "<br><br>" . "Nom : " . $name . "<br>" . "email : " . $emailname . "<br>" . "titre : " . $title . "<br><br>" . "Commentaire : " . "<br><br>" . $commentContent . "<br><br><br>" . "Cordialement,");
+					->setBody("Bonjour Justine, " . "<br><br>" . "Vous avez reçu un nouveau commentaire sur l'article : " . "<a href=" . $url . ">" . $article . "</a>" . "<br><br>" . "Rendez-vous sur la page Admin : <a href=" . "'https://www.lafolleagence.com/admin'" . ">Cliquez ici</a>" . "<br><br>" . "Nom : " . $name . "<br>" . "email : " . $emailName . "<br>" . "titre : " . $title . "<br><br>" . "Commentaire : " . "<br><br>" . $commentContent . "<br><br><br>" . "Cordialement,");
 				$this->get('mailer')->send($message);
 
 				return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
