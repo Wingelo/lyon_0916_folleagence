@@ -40,7 +40,7 @@
 
 <section class="container-fluid white">
     <div class="container">
-        <form class="form-horizontal" action="{{ path('lafolleagence_contact') }}" method="post"  id="contact_form">
+        <form class="form-horizontal" action="{{ path('lafolleagence_contact') }}" method="POST"  id="contact_form">
             <fieldset>
 
                 <div class="row">
@@ -95,7 +95,7 @@
                     <div class="col-xs-10 col-xs-offset-1 col-md-offset-1 col-md-10 inputGroupContainer">
                         <div class="form-group">
                             <div class="input-group">
-                                <div  class="g-recaptcha" data-sitekey="6Lf-jwoUAAAAAHYZflFv0otlfv8RDnd8qQ8936l3" data-callback="enableBtn"></div>
+                                <div  class="g-recaptcha" data-sitekey="{{ key }}" data-callback="enableBtn"></div>
                             </div>
                         </div>
                     </div>

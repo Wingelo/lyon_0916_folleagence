@@ -10,6 +10,7 @@ use LaFolleAgenceBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use ReCaptcha\ReCaptcha; // Include the recaptcha
 
 /**
  * Post controller.
@@ -55,16 +56,12 @@ class PostController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function showAction(Post $post, Request $request, $gRecaptchaResponse, $remoteIp)
+    public function showAction(Post $post, Request $request)
     {
-		$secret = '6Leb8woUAAAAAGRJLVhWeRNipzy0bTPc7Kb4zaQ-';
-		$recaptcha = new \ReCaptcha\ReCaptcha($secret);
-		$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
-		if ($resp->isSuccess()) {
+		$recaptcha = new ReCaptcha($this->container->getParameter('captcha_secret_private2'));
+		$resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
-		} else {
-			$errors = $resp->getErrorCodes();
-		}
+
 
         $comment = new Comment();
         $comment->setPost($post);
@@ -76,14 +73,16 @@ class PostController extends Controller
             ->getForm();
 
         $formComment->handleRequest($request);
+		if ($resp->isSuccess()) {
+        	if ($formComment->isSubmitted() && $formComment->isValid()) {
+            	$em = $this->getDoctrine()->getManager();
+            	$em->persist($comment);
+            	$em->flush();
 
-        if ($formComment->isSubmitted() && $formComment->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
 
 
 
+				// Do something if the submit wasn't valid ! Use the message to show something
 
 				$name = $comment->getAuthor();
 				$emailname = $comment->getAuthorEmail();
@@ -93,17 +92,18 @@ class PostController extends Controller
 				$article = $post->getTitle();
 				$idComment = $comment->getId();
 
-			$mailTo = $this->container->getParameter('mailer_to');
-			$mailFrom = $this->container->getParameter('mailer_from');
-			$message = \Swift_Message::newInstance('Test')
-				->setSubject("Un nouveau commentaire sur La Folle Agence")
-				->setTo($mailTo)
-				->setfrom($mailFrom)
-				->setContentType("text/html")
-				->setBody("Bonjour Justine, ". "<br><br>". "Vous avez reçu un nouveau commentaire sur l'article : ". "<a href=". $url.">". $article. "</a>". "<br><br>" ."Rendez-vous sur la page Admin : <a href="."'https://www.lafolleagence.com/admin'".">Cliquez ici</a>". "<br><br>"."Nom : " . $name . "<br>". "email : ". $emailname. "<br>". "titre : ". $title. "<br><br>". "Commentaire : ". "<br><br>". $commentContent ."<br><br><br>". "Cordialement,");
-			$this->get('mailer')->send($message);
+				$mailTo = $this->container->getParameter('mailer_to');
+				$mailFrom = $this->container->getParameter('mailer_from');
+				$message = \Swift_Message::newInstance('Test')
+					->setSubject("Un nouveau commentaire sur La Folle Agence")
+					->setTo($mailTo)
+					->setfrom($mailFrom)
+					->setContentType("text/html")
+					->setBody("Bonjour Justine, " . "<br><br>" . "Vous avez reçu un nouveau commentaire sur l'article : " . "<a href=" . $url . ">" . $article . "</a>" . "<br><br>" . "Rendez-vous sur la page Admin : <a href=" . "'https://www.lafolleagence.com/admin'" . ">Cliquez ici</a>" . "<br><br>" . "Nom : " . $name . "<br>" . "email : " . $emailname . "<br>" . "titre : " . $title . "<br><br>" . "Commentaire : " . "<br><br>" . $commentContent . "<br><br><br>" . "Cordialement,");
+				$this->get('mailer')->send($message);
 
-            return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
+				return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));
+			}
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -115,7 +115,8 @@ class PostController extends Controller
             'archive'       => $archive,
             'categories'    => $categories,
             'comments'      => $comments,
-            'formComment'   => $formComment->createView()
+            'formComment'   => $formComment->createView(),
+			'key'			=> $this->container->getParameter('captcha_secret_public1')
         ));
 
     }
