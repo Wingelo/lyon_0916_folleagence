@@ -131,9 +131,11 @@ sonata_admin:
     dashboard:
             blocks:
                 -
-                    class:    col-xs-12          # twitter bootstrap responsive code
+                    class:    col-lg-12 col-xs-6          # twitter bootstrap responsive code
                     position: top                        # zone in the dashboard
                     type:     sonata.admin.block.admin_list   # block id
+
+
 
 services:
     twig.extension.text:
@@ -141,9 +143,9 @@ services:
        tags:
             - { name: twig.extension }
     twig.extension.intl:
-           class: Twig_Extensions_Extension_Intl
-           tags:
-                - { name: twig.extension }
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
 
 fm_elfinder:
     #assets_path: / # default is /assets, this is where css/js elfinder files are
@@ -177,4 +179,5 @@ ivory_ck_editor:
             toolbar: [ [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ], [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ], [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ], [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ], [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ], [ 'Link','Unlink' ], [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ], [ 'Styles','Format','Font','FontSize' ], [ 'TextColor','BGColor' ], [ 'Maximize', 'ShowBlocks','-','About' ]]
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
-            height:                             '500px'
+            height: '500px'
+            
