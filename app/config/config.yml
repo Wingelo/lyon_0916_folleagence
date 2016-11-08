@@ -181,3 +181,4 @@ ivory_ck_editor:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
             height: '500px'
+            

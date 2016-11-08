@@ -20,7 +20,7 @@ parameters:
     mailer_to: ~
     mailer_from: ~
 
-    #Mot de passe de justine
+    #Mot de passe
     admin_password: ~
 
     #Captcha Google : Page de contact
