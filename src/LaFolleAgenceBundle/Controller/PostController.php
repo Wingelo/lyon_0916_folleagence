@@ -24,10 +24,8 @@ class PostController extends Controller
      */
     const MAX_PER_PAGE = 4;
 
-
     public function indexAction($page = 1)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $post = $em->getRepository('LaFolleAgenceBundle:Post')->getByPage($page, self::MAX_PER_PAGE);
@@ -40,15 +38,12 @@ class PostController extends Controller
             $maxPage++;
         }
         return $this->render('front/blog.html.twig', array(
-
             'maxPage' => $maxPage,
             'post' => $post,
             'page' => $page,
             'archive' => $archive,
             'categories' => $categories
-
         ));
-
     }
 
     /**
@@ -60,8 +55,6 @@ class PostController extends Controller
     {
 		$recaptcha = new ReCaptcha($this->container->getParameter('captcha_secret_private2'));
 		$resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
-
-
 
         $comment = new Comment();
         $comment->setPost($post);
@@ -79,9 +72,6 @@ class PostController extends Controller
             	$em->persist($comment);
             	$em->flush();
 
-
-
-
 				// Do something if the submit wasn't valid ! Use the message to show something
 
 				$name = $comment->getAuthor();
@@ -90,7 +80,6 @@ class PostController extends Controller
 				$commentContent = $comment->getContent();
 				$url = $post->getLink();
 				$article = $post->getTitle();
-
 
 				$mailTo = $this->container->getParameter('mailer_to');
 				$mailFrom = $this->container->getParameter('mailer_from');
@@ -118,7 +107,5 @@ class PostController extends Controller
             'formComment'   => $formComment->createView(),
 			'key'			=> $this->container->getParameter('captcha_secret_public1')
         ));
-
     }
-
 }

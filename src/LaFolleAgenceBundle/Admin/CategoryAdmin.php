@@ -51,25 +51,21 @@ class CategoryAdmin extends Admin
         ));
     }
 
-
 	public function postUpdate( $object){
 
 		$this->preRemove($object);
 		$this->postPersist($object);
-
 	}
 
 	public function postPersist($object){
 
 		$em = $this->modelManager->getEntityManager($object);
-
 		$em->getRepository('LaFolleAgenceBundle:Category')->addLink($object);
 	}
 
     public function preRemove ($object) {
 
 		$em = $this->modelManager->getEntityManager($object);
-
 		$em->getRepository('LaFolleAgenceBundle:Category')->deleteLink($object);
 
     }

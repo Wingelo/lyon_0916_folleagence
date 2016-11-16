@@ -19,7 +19,6 @@ class Category
      */
     private $categoryName;
 
-
     /**
      * Get id
      *
@@ -146,7 +145,6 @@ class Category
 		{
 			return 'n-a';
 		}
-
 		return $text;
 	}
 

@@ -44,7 +44,6 @@ class Post
      */
     private $statut;
 
-
     /**
      * Get id
      *
@@ -101,7 +100,6 @@ class Post
 		{
 			return 'n-a';
 		}
-
 		return $text;
 	}
 
@@ -114,7 +112,6 @@ class Post
     public function setLink($link)
     {
         $this->link = $this->slugify($link);
-
         return $this;
     }
 
@@ -137,7 +134,6 @@ class Post
     public function setPublicationDate($publicationDate)
     {
         $this->publicationDate = $publicationDate;
-
         return $this;
     }
 
@@ -160,7 +156,6 @@ class Post
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -186,7 +181,6 @@ class Post
     public function setOpenComment($openComment)
     {
         $this->openComment = $openComment;
-
         return $this;
     }
 
@@ -257,7 +251,6 @@ class Post
     public function addComment(\LaFolleAgenceBundle\Entity\Comment $comment)
     {
         $this->comments[] = $comment;
-
         return $this;
     }
 

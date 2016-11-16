@@ -22,7 +22,6 @@ class DefaultController extends Controller
         );
     }
 
-
     public function mentionslegalesAction() {
         return $this->render('front/mentionslegales.html.twig');
     }
@@ -46,25 +45,23 @@ class DefaultController extends Controller
 
 		if ($resp->isSuccess()) {
 
+            $email = $request->get("email");
+            $message = $request->get("message");
+            $last_name = $request->get("last_name");
+            $first_name = $request->get("first_name");
+            $tel = $request->get("tel");
 
-				$email = $request->get("email");
-				$message = $request->get("message");
-				$last_name = $request->get("last_name");
-				$first_name = $request->get("first_name");
-				$tel = $request->get("tel");
-
-				$mailTo = $this->container->getParameter('mailer_to');
-				$mailFrom = $this->container->getParameter('mailer_from');
-				$message = \Swift_Message::newInstance('Test')
-					->setSubject("Un nouveau message sur La Folle Agence")
-					->setTo($mailTo)
-					->setfrom($mailFrom)
-					->setContentType("text/html")
-					->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
-						'N° de téléphone : ' . $tel . '<br /><br />' . $message);
-				$this->get('mailer')->send($message);
-
-			}
+            $mailTo = $this->container->getParameter('mailer_to');
+            $mailFrom = $this->container->getParameter('mailer_from');
+            $message = \Swift_Message::newInstance('Test')
+                ->setSubject("Un nouveau message sur La Folle Agence")
+                ->setTo($mailTo)
+                ->setfrom($mailFrom)
+                ->setContentType("text/html")
+                ->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
+                    'N° de téléphone : ' . $tel . '<br /><br />' . $message);
+            $this->get('mailer')->send($message);
+        }
 			return $this->render('front/contact.html.twig', array(
 				'key' => $this->container->getParameter('captcha_secret_public1')
 			));

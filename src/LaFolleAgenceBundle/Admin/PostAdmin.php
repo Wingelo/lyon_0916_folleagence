@@ -50,13 +50,12 @@ class PostAdmin extends Admin
 				'expanded' => true,
 				'multiple' => true,
 				'by_reference' => true,
-			)) ;
+			));
         ;
     }
 
 	 protected function configureListFields(ListMapper $listMapper)
 	  {
-
 		  $listMapper
 			  ->addIdentifier('title', null,
 				  array('label' => 'Titre'
@@ -73,8 +72,7 @@ class PostAdmin extends Admin
 				  array(
 					  'label' => 'Date de publication',
 					  'format' => 'd/m/Y H:i',
-				  ))
-			  ;
+				  ));
 	  }
 }
 

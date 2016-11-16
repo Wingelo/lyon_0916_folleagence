@@ -8,7 +8,6 @@ $(document).ready(function() {
         return false;
     });
 
-
 //Scroll top button
     //Scroll top button appearing after px
     $(function(){
@@ -21,7 +20,6 @@ $(document).ready(function() {
         });
     });
 
-
     //Scroll top slow
     $('#scroll-top-arrow').on('click', function() {
         var page = $(this).attr('href');
@@ -30,7 +28,6 @@ $(document).ready(function() {
         $(page).offset().top }, speed );
         return false;
     });
-
 
     //Carousel
     $(function(){

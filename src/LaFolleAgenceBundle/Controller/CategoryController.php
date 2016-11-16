@@ -17,7 +17,6 @@ use LaFolleAgenceBundle\Entity\Category;
  */
 class CategoryController extends Controller
 {
-
     const MAX_PER_PAGE = 4;
 
     public function filterIndexAction(Category $category, $page = 1)
@@ -40,8 +39,6 @@ class CategoryController extends Controller
             'page'          => $page,
             'archive'       => $archive,
             'categories'    => $categories
-
         ));
-
     }
 }

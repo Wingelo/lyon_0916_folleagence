@@ -14,7 +14,6 @@ class CategoryRepository extends EntityRepository
 {
 	public function deleteLink ($object)
 	{
-
 		$conn = $this->_em->getConnection();
 		$catId = $object->getId();
 

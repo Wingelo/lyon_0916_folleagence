@@ -94,6 +94,5 @@ class PostRepository extends EntityRepository
             ->orderBy('co.id', 'DESC')
             ->getQuery();
         return $comments->getResult();
-
     }
 }

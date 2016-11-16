@@ -39,7 +39,6 @@ class Comment
      */
     private $approved = 0;
 
-
     /**
      * Get id
      *
@@ -195,7 +194,6 @@ class Comment
      */
     private $post;
 
-
     /**
      * Set post
      *
@@ -233,7 +231,6 @@ class Comment
         $this->date = new \DateTime();
     }
 
-
     /**
      * @var string
      */
@@ -249,7 +246,6 @@ class Comment
     public function setMyAnswer($myAnswer)
     {
         $this->my_answer = $myAnswer;
-
         return $this;
     }
 

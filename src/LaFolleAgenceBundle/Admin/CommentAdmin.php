@@ -16,7 +16,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class CommentAdmin extends Admin
 {
 
-
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -35,8 +34,7 @@ class CommentAdmin extends Admin
             ))
             ->addIdentifier('approved', null, array(
                 'label' => 'Approuver'
-            ))
-        ;
+            ));
     }
 
     // Fields to be modified in back office
@@ -64,6 +62,5 @@ class CommentAdmin extends Admin
     {
         $collection->remove('create');
     }
-
 }
 
