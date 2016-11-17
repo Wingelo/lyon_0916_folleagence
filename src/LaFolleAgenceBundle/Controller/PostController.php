@@ -86,9 +86,21 @@ class PostController extends Controller
 				$message = \Swift_Message::newInstance('Test')
 					->setSubject("Un nouveau commentaire sur La Folle Agence")
 					->setTo($mailTo)
-					->setfrom($mailFrom)
+					->setFrom($mailFrom)
 					->setContentType("text/html")
-					->setBody("Bonjour Justine, " . "<br><br>" . "Vous avez reçu un nouveau commentaire sur l'article : " . "<a href=" . $url . ">" . $article . "</a>" . "<br><br>" . "Rendez-vous sur la page Admin : <a href=" . "'https://www.lafolleagence.com/admin'" . ">Cliquez ici</a>" . "<br><br>" . "Nom : " . $name . "<br>" . "email : " . $emailName . "<br>" . "titre : " . $title . "<br><br>" . "Commentaire : " . "<br><br>" . $commentContent . "<br><br><br>" . "Cordialement,");
+					->setBody(
+						$this->renderView(
+							'Swift/message-commentaire.html.twig',
+							array(
+							'name' => $name,
+							'emailname' => $emailName,
+							'title'=> $title,
+							'commentContent' => $commentContent,
+							'url' => $url,
+							'article' => $article
+							)
+						)
+					);
 				$this->get('mailer')->send($message);
 
 				return $this->redirectToRoute('lafolleagence_article_blog', array('link' => $post->getLink()));

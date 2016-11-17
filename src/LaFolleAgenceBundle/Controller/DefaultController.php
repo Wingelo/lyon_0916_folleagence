@@ -56,10 +56,19 @@ class DefaultController extends Controller
             $message = \Swift_Message::newInstance('Test')
                 ->setSubject("Un nouveau message sur La Folle Agence")
                 ->setTo($mailTo)
-                ->setfrom($mailFrom)
+                ->setFrom($mailFrom)
                 ->setContentType("text/html")
-                ->setBody('email : ' . $email . '<br />' . 'Prénom : ' . $first_name . '<br />' . 'Nom : ' . $last_name . '<br />' .
-                    'N° de téléphone : ' . $tel . '<br /><br />' . $message);
+                ->setBody(
+                	$this->renderView(
+                		'Swift/message-contact.html.twig',
+						array(
+							'email' => $email,
+							'first_name' => $first_name,
+							'last_name' => $last_name,
+							'tel' => $tel,
+							'message' => $message
+						))
+					);
             $this->get('mailer')->send($message);
         }
 			return $this->render('front/contact.html.twig', array(
@@ -67,3 +76,5 @@ class DefaultController extends Controller
 			));
 	}
 }
+
+
