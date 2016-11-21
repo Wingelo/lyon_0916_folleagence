@@ -48,6 +48,9 @@ You have to add at the end of file : sql-mode=""
              ...
 </pre>
 
+###Images older site
+Move the file wp_content in web directory
+
           
     
 
